@@ -4,6 +4,11 @@
   "description": "",
   "main": "index.js",
   "type": "module",
+  "imports": {
+    "#config/*.js": "./src/config/*.js",
+    "#middlewares/*.js": "./src/middlewares/*.js",
+    "#routes/*.js": "./src/routes/*.js"
+  },
   "scripts": {
     "start": "cross-env NODE_ENV=production node -r dotenv/config ./src/index.js",
     "dev": "cross-env NODE_ENV=development nodemon -r dotenv/config ./src/index.js",

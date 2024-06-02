@@ -2,9 +2,9 @@ import express from 'express';
 import logger from 'morgan';
 import cors from 'cors';
 
-import { connectDB, startServer } from './config/index.js';
-import { urlNotFound, errorHandler } from './middlewares/index.js';
-import { initRoutes } from './routes/index.js';
+import { initRoutes } from '#routes/index.js';
+import { errorHandler, urlNotFound } from '#middlewares/index.js';
+import { connectDB, startServer } from '#config/index.js';
 
 const app = express();
 
