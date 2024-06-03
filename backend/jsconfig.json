@@ -4,7 +4,9 @@
     "paths": {
       "#config/*": ["./src/config/*"],
       "#middlewares/*": ["./src/middlewares/*"],
-      "#routes/*": ["./src/routes/*"]
+      "#models/*": ["./src/models/*"],
+      "#routes/*": ["./src/routes/*"],
+      "#validators/*": ["./src/validators/*"]
     }
   }
 }

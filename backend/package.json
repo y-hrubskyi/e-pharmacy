@@ -7,7 +7,9 @@
   "imports": {
     "#config/*.js": "./src/config/*.js",
     "#middlewares/*.js": "./src/middlewares/*.js",
-    "#routes/*.js": "./src/routes/*.js"
+    "#models/*.js": "./src/models/*.js",
+    "#routes/*.js": "./src/routes/*.js",
+    "#validators/*.js": "./src/validators/*.js"
   },
   "scripts": {
     "start": "cross-env NODE_ENV=production node -r dotenv/config ./src/index.js",
