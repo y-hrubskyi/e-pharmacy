@@ -9,6 +9,7 @@
     "#middlewares/*.js": "./src/middlewares/*.js",
     "#models/*.js": "./src/models/*.js",
     "#routes/*.js": "./src/routes/*.js",
+    "#utils/*.js": "./src/utils/*.js",
     "#validators/*.js": "./src/validators/*.js"
   },
   "scripts": {
