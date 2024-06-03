@@ -6,7 +6,7 @@ import { supplierRoutes } from './supplierRoutes.js';
 import { orderRoutes } from './orderRoutes.js';
 
 export const initRoutes = app => {
-  app.use('/api/users', userRoutes);
+  app.use('/api/user', userRoutes);
   app.use('/api/dashboard', dashboardRoutes);
   app.use('/api/customers', customerRoutes);
   app.use('/api/products', productRoutes);
