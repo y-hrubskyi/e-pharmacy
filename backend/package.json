@@ -6,6 +6,7 @@
   "type": "module",
   "imports": {
     "#config/*.js": "./src/config/*.js",
+    "#controllers/*.js": "./src/controllers/*.js",
     "#middlewares/*.js": "./src/middlewares/*.js",
     "#models/*.js": "./src/models/*.js",
     "#routes/*.js": "./src/routes/*.js",
