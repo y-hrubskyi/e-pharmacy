@@ -18,7 +18,7 @@ initRoutes(app);
 app.use(urlNotFound);
 app.use(errorHandler);
 
-const start = async () => {
+(async () => {
   try {
     await connectDB();
     startServer(app);
@@ -26,6 +26,4 @@ const start = async () => {
     console.log(err.message);
     process.exit(1);
   }
-};
-
-start();
+})();
