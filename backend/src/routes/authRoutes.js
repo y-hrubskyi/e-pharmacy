@@ -12,4 +12,6 @@ router.get('/logout', authenticate, authController.logout);
 
 router.get('/user-info', authenticate, authController.getCurrent);
 
+router.get('/refresh', authController.refresh);
+
 export { router as authRoutes };
