@@ -16,9 +16,7 @@ export const login = async (email, password) => {
     throw HttpError(401, 'Email or password is wrong');
   }
 
-  const payload = {
-    id: user._id,
-  };
+  const payload = { id: user._id };
   const accessToken = jwt.sign(payload, ACCESS_SECRET_KEY, {
     expiresIn: '15m',
   });
