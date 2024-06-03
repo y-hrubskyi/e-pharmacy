@@ -10,4 +10,6 @@ router.post('/login', validateBody(joiSchemas.login), authController.login);
 
 router.get('/logout', authenticate, authController.logout);
 
+router.get('/user-info', authenticate, authController.getCurrent);
+
 export { router as authRoutes };
