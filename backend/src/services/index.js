@@ -1,1 +1,1 @@
-export * as userService from './user/index.js';
+export * as authService from './auth/index.js';

@@ -1,1 +1,1 @@
-export * as userController from './user/index.js';
+export * as authController from './auth/index.js';
