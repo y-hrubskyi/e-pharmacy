@@ -6,8 +6,13 @@
   "type": "module",
   "imports": {
     "#config/*.js": "./src/config/*.js",
+    "#controllers/*.js": "./src/controllers/*.js",
     "#middlewares/*.js": "./src/middlewares/*.js",
-    "#routes/*.js": "./src/routes/*.js"
+    "#models/*.js": "./src/models/*.js",
+    "#routes/*.js": "./src/routes/*.js",
+    "#services/*.js": "./src/services/*.js",
+    "#utils/*.js": "./src/utils/*.js",
+    "#validators/*.js": "./src/validators/*.js"
   },
   "scripts": {
     "start": "cross-env NODE_ENV=production node -r dotenv/config ./src/index.js",
@@ -19,11 +24,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.5",
     "express": "^4.18.3",
     "joi": "^17.13.1",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.2.1",
     "morgan": "^1.10.0"
   },
