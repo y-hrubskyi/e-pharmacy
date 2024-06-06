@@ -39,4 +39,5 @@ const supplierSchema = Joi.object({
 
 export const joiSchemas = {
   create: supplierSchema,
+  update: supplierSchema,
 };
