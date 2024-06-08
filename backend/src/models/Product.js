@@ -27,7 +27,7 @@ const productSchema = new Schema(
       },
       name: {
         type: String,
-        match: Regexps.NAME,
+        match: Regexps.SUPPLIER,
         required: [true, 'Supplier info is required'],
       },
     },
