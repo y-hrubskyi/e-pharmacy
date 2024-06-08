@@ -37,4 +37,5 @@ const productSchema = Joi.object({
 
 export const joiSchemas = {
   create: productSchema,
+  update: productSchema,
 };
