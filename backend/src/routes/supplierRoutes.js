@@ -18,7 +18,7 @@ router.post(
 router.put(
   '/:supplierId',
   authenticate,
-  isValidId,
+  isValidId('supplierId'),
   validateBody(joiSchemas.update),
   supplierController.update
 );
