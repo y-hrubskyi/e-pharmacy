@@ -23,4 +23,11 @@ router.put(
   productController.update
 );
 
+router.delete(
+  '/:productId',
+  authenticate,
+  isValidId('productId'),
+  productController.remove
+);
+
 export { router as productRoutes };
