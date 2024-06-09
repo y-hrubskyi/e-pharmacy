@@ -6,7 +6,7 @@ import { supplierController } from '#controllers/index.js';
 
 const router = Router();
 
-router.get('/', authenticate, supplierController.getAll);
+router.get('/', authenticate, supplierController.get);
 
 router.post(
   '/',
