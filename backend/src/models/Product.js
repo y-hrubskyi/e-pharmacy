@@ -4,6 +4,10 @@ import { Regexps, Enums } from '#validators/productValidator.js';
 
 const productSchema = new Schema(
   {
+    photo: {
+      type: String,
+      default: '',
+    },
     name: {
       type: String,
       match: Regexps.NAME,
