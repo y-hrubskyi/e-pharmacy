@@ -6,7 +6,7 @@ import { productController } from '#controllers/index.js';
 
 const router = Router();
 
-router.get('/', authenticate, productController.getAll);
+router.get('/', authenticate, productController.get);
 
 router.post(
   '/',

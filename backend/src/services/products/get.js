@@ -2,7 +2,7 @@ import { Product, Supplier } from '#models/index.js';
 import { setPaginationOptions } from '#utils/index.js';
 import { Enums } from '#validators/productValidator.js';
 
-export const getAll = async (page, limit, name) => {
+export const get = async (page, limit, name) => {
   const filter = {};
   if (name) filter.name = { $regex: name, $options: 'i' };
 
