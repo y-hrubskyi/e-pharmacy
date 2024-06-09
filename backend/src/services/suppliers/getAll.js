@@ -17,6 +17,7 @@ export const getAll = async (page, limit, name) => {
       $facet: {
         paginatedResult: [
           { $match: filter },
+          { $sort: { createdAt: -1 } },
           { $skip: paginationOptions.skip },
           { $limit: paginationOptions.limit },
         ],
