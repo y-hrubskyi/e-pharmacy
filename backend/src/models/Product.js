@@ -44,4 +44,6 @@ const productSchema = new Schema(
   { versionKey: false, timestamps: true }
 );
 
+productSchema.index({ name: 1, 'supplier.name': 1 }, { unique: true });
+
 export const Product = model('Product', productSchema);
