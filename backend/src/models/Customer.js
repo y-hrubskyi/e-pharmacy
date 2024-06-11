@@ -25,6 +25,7 @@ const customerSchema = new Schema(
     email: {
       type: String,
       match: Regexps.EMAIL,
+      unique: true,
       required: [true, 'Email is required'],
     },
     spent: {
@@ -35,6 +36,7 @@ const customerSchema = new Schema(
     phone: {
       type: String,
       match: Regexps.PHONE,
+      unique: true,
       required: [true, 'Phone is required'],
     },
     address: {
