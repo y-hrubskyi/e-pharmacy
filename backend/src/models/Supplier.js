@@ -26,6 +26,7 @@ const supplierSchema = new Schema(
     company: {
       type: String,
       match: Regexps.COMPANY,
+      unique: true,
       required: [true, 'Company is required'],
     },
     date: {
