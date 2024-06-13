@@ -4,7 +4,7 @@ import cors from 'cors';
 
 import { initRoutes } from '#routes/index.js';
 import { errorHandler, urlNotFound } from '#middlewares/index.js';
-import { connectDB, startServer } from '#config/index.js';
+import { connectDB, startServer, job } from '#config/index.js';
 
 const app = express();
 
@@ -22,6 +22,7 @@ app.use(errorHandler);
   try {
     await connectDB();
     startServer(app);
+    job.start();
   } catch (err) {
     console.log(err.message);
     process.exit(1);
