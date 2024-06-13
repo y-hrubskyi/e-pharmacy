@@ -5,14 +5,14 @@
   "main": "index.js",
   "type": "module",
   "imports": {
-    "#config/*.js": "./src/config/*.js",
-    "#controllers/*.js": "./src/controllers/*.js",
-    "#middlewares/*.js": "./src/middlewares/*.js",
-    "#models/*.js": "./src/models/*.js",
-    "#routes/*.js": "./src/routes/*.js",
-    "#services/*.js": "./src/services/*.js",
-    "#utils/*.js": "./src/utils/*.js",
-    "#validators/*.js": "./src/validators/*.js"
+    "#config/*": "./src/config/*",
+    "#controllers/*": "./src/controllers/*",
+    "#middlewares/*": "./src/middlewares/*",
+    "#models/*": "./src/models/*",
+    "#routes/*": "./src/routes/*",
+    "#services/*": "./src/services/*",
+    "#utils/*": "./src/utils/*",
+    "#validators/*": "./src/validators/*"
   },
   "scripts": {
     "start": "cross-env NODE_ENV=production node -r dotenv/config ./src/index.js",
