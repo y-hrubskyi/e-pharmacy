@@ -39,6 +39,10 @@
     {
       "name": "Products",
       "description": "Operations related to products management"
+    },
+    {
+      "name": "Customers",
+      "description": "Operations related to customers management"
     }
   ],
   "paths": {
@@ -458,6 +462,61 @@
           },
           "404": {
             "description": "Not Found (Product)"
+          }
+        }
+      }
+    },
+    "/customers": {
+      "get": {
+        "tags": ["Customers"],
+        "summary": "Get customers",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Number of page",
+            "schema": {
+              "type": "integer",
+              "min": 1,
+              "default": 1,
+              "example": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Limit per page",
+            "schema": {
+              "type": "integer",
+              "min": 1,
+              "default": 5,
+              "example": 5
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Customer name",
+            "schema": {
+              "type": "string",
+              "example": "Clayton Santos"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK (Customers returned)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetCustomersResponseSuccess"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }
@@ -894,6 +953,70 @@
             "minimum": 0.01,
             "example": 12,
             "description": "Product price"
+          }
+        }
+      },
+      "Customer": {
+        "type": "object",
+        "description": "Customer",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "example": "65e605a9403aaceab1749408",
+            "description": "Customer id"
+          },
+          "image": {
+            "type": "string",
+            "example": "https://i.imgur.com/1As0akH.png1",
+            "description": "Customer avatar"
+          },
+          "name": {
+            "type": "string",
+            "example": "Charlotte Lee",
+            "description": "Customer name"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "example": "charlotte.lee@gmail.com",
+            "description": "Customer email"
+          },
+          "spent": {
+            "type": "number",
+            "example": 133.53,
+            "description": "Customer spent"
+          },
+          "phone": {
+            "type": "string",
+            "example": "+380802890124",
+            "description": "Customer phone"
+          },
+          "address": {
+            "type": "string",
+            "example": "Uttara-4, Bldg. 47, Apt. 141",
+            "description": "Customer address"
+          },
+          "registerDate": {
+            "type": "string",
+            "example": "May 1, 2024",
+            "description": "Customer registration date"
+          }
+        }
+      },
+      "GetCustomersResponseSuccess": {
+        "type": "object",
+        "properties": {
+          "paginatedResult": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Customer"
+            },
+            "description": "Paginated customers list"
+          },
+          "totalCount": {
+            "type": "number",
+            "example": 2,
+            "description": "Total customers quantity (by query params filters)"
           }
         }
       }
