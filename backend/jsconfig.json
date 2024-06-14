@@ -4,6 +4,7 @@
     "paths": {
       "#config/*": ["./src/config/*"],
       "#controllers/*": ["./src/controllers/*"],
+      "#docs/*": ["./src/docs/*"],
       "#middlewares/*": ["./src/middlewares/*"],
       "#models/*": ["./src/models/*"],
       "#routes/*": ["./src/routes/*"],
