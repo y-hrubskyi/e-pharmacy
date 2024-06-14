@@ -43,6 +43,10 @@
     {
       "name": "Customers",
       "description": "Operations related to customers management"
+    },
+    {
+      "name": "Orders",
+      "description": "Operations related to orders management"
     }
   ],
   "paths": {
@@ -511,6 +515,61 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/GetCustomersResponseSuccess"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/orders": {
+      "get": {
+        "tags": ["Orders"],
+        "summary": "Get orders",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Number of page",
+            "schema": {
+              "type": "integer",
+              "min": 1,
+              "default": 1,
+              "example": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Limit per page",
+            "schema": {
+              "type": "integer",
+              "min": 1,
+              "default": 5,
+              "example": 5
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Customer name",
+            "schema": {
+              "type": "string",
+              "example": "Clayton Santos"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK (Orders returned)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetOrdersResponseSuccess"
                 }
               }
             }
@@ -1017,6 +1076,75 @@
             "type": "number",
             "example": 2,
             "description": "Total customers quantity (by query params filters)"
+          }
+        }
+      },
+      "Order": {
+        "type": "object",
+        "description": "Order",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "example": "65e605a9403aaceab1749408",
+            "description": "Order id"
+          },
+          "customer": {
+            "type": "object",
+            "description": "Customer info",
+            "properties": {
+              "photo": {
+                "type": "string",
+                "example": "https://i.imgur.com/1As0akH.png1",
+                "description": "Customer avatar"
+              },
+              "name": {
+                "type": "string",
+                "example": "Charlotte Lee",
+                "description": "Customer name"
+              },
+              "address": {
+                "type": "string",
+                "example": "Uttara-4, Bldg. 47, Apt. 141",
+                "description": "Customer address"
+              }
+            }
+          },
+          "products": {
+            "type": "number",
+            "example": 12,
+            "description": "Order products quantity"
+          },
+          "price": {
+            "type": "number",
+            "example": 133.53,
+            "description": "Order total amount"
+          },
+          "status": {
+            "type": "string",
+            "example": "Processing",
+            "description": "Order status"
+          },
+          "orderDate": {
+            "type": "string",
+            "example": "June 11, 2024",
+            "description": "Order creating date"
+          }
+        }
+      },
+      "GetOrdersResponseSuccess": {
+        "type": "object",
+        "properties": {
+          "paginatedResult": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Order"
+            },
+            "description": "Paginated orders list"
+          },
+          "totalCount": {
+            "type": "number",
+            "example": 2,
+            "description": "Total orders quantity (by query params filters)"
           }
         }
       }
