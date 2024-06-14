@@ -1,0 +1,30 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "ePharmacy",
+    "summary": "API for managing pharmacy operations and inventory",
+    "description": "The ePharmacy API is designed to facilitate the management of key pharmacy operations, including user management, supplier management, product management, and order processing. This API provides comprehensive endpoints to streamline and automate pharmacy processes, ensuring efficient and accurate management of pharmaceutical products and related business operations.",
+    "termsOfService": "http://swagger.io/terms/",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://e-pharmacy-0e2p.onrender.com",
+      "description": "Production server"
+    },
+    {
+      "url": "http://localhost:{port}/api",
+      "description": "Development server",
+      "variables": {
+        "port": {
+          "description": "this value is assigned by yourself in .env",
+          "default": "3000"
+        }
+      }
+    }
+  ]
+}
