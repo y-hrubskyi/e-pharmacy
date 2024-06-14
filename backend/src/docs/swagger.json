@@ -3,7 +3,7 @@
   "info": {
     "title": "ePharmacy",
     "summary": "API for managing pharmacy operations and inventory",
-    "description": "The ePharmacy API is designed to facilitate the management of key pharmacy operations, including user management, supplier management, product management, and order processing. This API provides comprehensive endpoints to streamline and automate pharmacy processes, ensuring efficient and accurate management of pharmaceutical products and related business operations.",
+    "description": "The ePharmacy API is designed to facilitate the management of key pharmacy operations, including customer management, supplier management, product management, and order processing. This API provides comprehensive endpoints to streamline and automate pharmacy processes, ensuring efficient and accurate management of pharmaceutical products and related business operations.",
     "termsOfService": "http://swagger.io/terms/",
     "license": {
       "name": "MIT",
@@ -35,6 +35,10 @@
     {
       "name": "Suppliers",
       "description": "Operations related to suppliers management"
+    },
+    {
+      "name": "Products",
+      "description": "Operations related to products management"
     }
   ],
   "paths": {
@@ -280,6 +284,183 @@
           }
         }
       }
+    },
+    "/products": {
+      "post": {
+        "tags": ["Products"],
+        "summary": "Create new product",
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "description": "New product",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProductRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created (New product successfully created)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request (Invalid new product data)"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "409": {
+            "description": "Conflict (Duplicate product name and supplier name)"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Products"],
+        "summary": "Get products",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Number of page",
+            "schema": {
+              "type": "integer",
+              "min": 1,
+              "default": 1,
+              "example": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Limit per page",
+            "schema": {
+              "type": "integer",
+              "min": 1,
+              "default": 5,
+              "example": 5
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Product name",
+            "schema": {
+              "type": "string",
+              "example": "Aspirin"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK (Products returned)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetProductsResponseSuccess"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/products/{productId}": {
+      "put": {
+        "tags": ["Products"],
+        "summary": "Update product by id",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "description": "Product id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "65e605a9403aaceab1749408"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Update product data",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProductRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK (Product successfully updated)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request (Invalid id or product data)"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found (Product)"
+          },
+          "409": {
+            "description": "Conflict (Duplicate product name and supplier name)"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Products"],
+        "summary": "Delete product by id",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "description": "Product id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "65e605a9403aaceab1749408"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content (Product successfully deleted)"
+          },
+          "400": {
+            "description": "Bad Request (Invalid id)"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found (Product)"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -509,6 +690,195 @@
             "enum": ["Active", "Deactive"],
             "example": "Active",
             "description": "Supplier status"
+          }
+        }
+      },
+      "Product": {
+        "type": "object",
+        "description": "Product",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Aspirin",
+            "description": "Product name"
+          },
+          "category": {
+            "type": "string",
+            "example": "Medicine",
+            "description": "Product category"
+          },
+          "stock": {
+            "type": "number",
+            "example": 7,
+            "description": "Product stock"
+          },
+          "supplier": {
+            "type": "object",
+            "description": "Supplier info",
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "65e605a9403aaceab1749408",
+                "description": "Supplier id"
+              },
+              "name": {
+                "type": "string",
+                "example": "Square",
+                "description": "Supplier name"
+              }
+            }
+          },
+          "price": {
+            "type": "number",
+            "example": 12,
+            "description": "Product price"
+          }
+        }
+      },
+      "CreateProductRequest": {
+        "type": "object",
+        "description": "New product request",
+        "required": ["name", "category", "stock", "supplier", "price"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "/^[a-zA-Z0-9_- ]{3,30}$/",
+            "example": "Aspirin",
+            "description": "Product name"
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "Baby Care",
+              "Dental Care",
+              "Eye Care",
+              "Hand",
+              "Head",
+              "Medicine",
+              "Orthopedic Products",
+              "Skin Care",
+              "Vitamins & Supplements"
+            ],
+            "example": "Medicine",
+            "description": "Product category"
+          },
+          "stock": {
+            "type": "number",
+            "minimum": 0,
+            "example": 7,
+            "description": "Product stock"
+          },
+          "supplier": {
+            "type": "object",
+            "description": "Supplier info",
+            "required": ["id", "name"],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "/^[0-9a-fA-F]{24}$/",
+                "example": "65e605a9403aaceab1749408",
+                "description": "Supplier id"
+              },
+              "name": {
+                "type": "string",
+                "pattern": "/^[a-zA-Z0-9_- ]{3,30}$/",
+                "example": "Square",
+                "description": "Supplier name"
+              }
+            }
+          },
+          "price": {
+            "type": "number",
+            "minimum": 0.01,
+            "example": 12,
+            "description": "Product price"
+          }
+        }
+      },
+      "GetProductsResponseSuccess": {
+        "type": "object",
+        "properties": {
+          "paginatedResult": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Product"
+            },
+            "description": "Paginated products list"
+          },
+          "totalCount": {
+            "type": "number",
+            "example": 2,
+            "description": "Total products quantity (by query params filters)"
+          },
+          "categories": {
+            "type": "array",
+            "example": ["Head", "Medicine"],
+            "description": "Products categories"
+          },
+          "suppliers": {
+            "type": "array",
+            "example": ["Square", "ACI"],
+            "description": "Suppliers"
+          }
+        }
+      },
+      "UpdateProductRequest": {
+        "type": "object",
+        "description": "Update product request",
+        "required": ["name", "category", "stock", "supplier", "price"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "/^[a-zA-Z0-9_- ]{3,30}$/",
+            "example": "Aspirin",
+            "description": "Product name"
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "Baby Care",
+              "Dental Care",
+              "Eye Care",
+              "Hand",
+              "Head",
+              "Medicine",
+              "Orthopedic Products",
+              "Skin Care",
+              "Vitamins & Supplements"
+            ],
+            "example": "Medicine",
+            "description": "Product category"
+          },
+          "stock": {
+            "type": "number",
+            "minimum": 0,
+            "example": 7,
+            "description": "Product stock"
+          },
+          "supplier": {
+            "type": "object",
+            "description": "Supplier info",
+            "required": ["id", "name"],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "/^[0-9a-fA-F]{24}$/",
+                "example": "65e605a9403aaceab1749408",
+                "description": "Supplier id"
+              },
+              "name": {
+                "type": "string",
+                "pattern": "/^[a-zA-Z0-9_- ]{3,30}$/",
+                "example": "Square",
+                "description": "Supplier name"
+              }
+            }
+          },
+          "price": {
+            "type": "number",
+            "minimum": 0.01,
+            "example": 12,
+            "description": "Product price"
           }
         }
       }
