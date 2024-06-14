@@ -31,6 +31,10 @@
     {
       "name": "Auth",
       "description": "Operations related to user authentication and authorization"
+    },
+    {
+      "name": "Suppliers",
+      "description": "Operations related to suppliers management"
     }
   ],
   "paths": {
@@ -130,6 +134,152 @@
           }
         }
       }
+    },
+    "/suppliers": {
+      "post": {
+        "tags": ["Suppliers"],
+        "summary": "Create new supplier",
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "description": "New supplier",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSupplierRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created (New supplier successfully created)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Supplier"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request (Invalid new supplier data)"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "409": {
+            "description": "Conflict (Duplicate company)"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Suppliers"],
+        "summary": "Get suppliers",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Number of page",
+            "schema": {
+              "type": "integer",
+              "min": 1,
+              "default": 1,
+              "example": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Limit per page",
+            "schema": {
+              "type": "integer",
+              "min": 1,
+              "default": 5,
+              "example": 5
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Supplier name",
+            "schema": {
+              "type": "string",
+              "example": "Square"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK (Suppliers returned)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetSuppliersResponseSuccess"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/suppliers/{supplierId}": {
+      "put": {
+        "tags": ["Suppliers"],
+        "summary": "Update supplier by id",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "supplierId",
+            "in": "path",
+            "description": "Supplier id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "65e605a9403aaceab1749408"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Update supplier data",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSupplierRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK (Supplier successfully updated)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Supplier"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request (Invalid id or supplier data)"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found (Supplier)"
+          },
+          "409": {
+            "description": "Conflict (Duplicate company)"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -222,6 +372,143 @@
             "type": "string",
             "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTYwNWE5NDAzYWFjZWFiMTc0OTQwOCIsImlhdCI6MTcwOTU4MzExNiwiZXhwIjoxNzA5NTk3NTE2fQ.3LbFoM0av9dMOLYhbRzylNhwcW0SvAyMX_ONbQcT_hQ",
             "description": "User's auth refresh token"
+          }
+        }
+      },
+      "Supplier": {
+        "type": "object",
+        "description": "Supplier",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Allen Raymond",
+            "description": "Supplier info"
+          },
+          "address": {
+            "type": "string",
+            "example": "Mripur-1",
+            "description": "Supplier address"
+          },
+          "company": {
+            "type": "string",
+            "example": "Square",
+            "description": "Supplier name"
+          },
+          "date": {
+            "type": "string",
+            "example": "September 19, 2024",
+            "description": "Delivery date"
+          },
+          "amount": {
+            "type": "number",
+            "example": 12,
+            "description": "Supplier amount"
+          },
+          "status": {
+            "type": "string",
+            "example": "Active",
+            "description": "Supplier status"
+          }
+        }
+      },
+      "CreateSupplierRequest": {
+        "type": "object",
+        "description": "New supplier request",
+        "required": ["name", "address", "company", "date", "amount", "status"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "/^[a-zA-Z0-9_- ]{3,30}$/",
+            "example": "Allen Raymond",
+            "description": "Supplier info"
+          },
+          "address": {
+            "type": "string",
+            "pattern": "/^[a-zA-Z0-9s,'-]+$/",
+            "example": "Mripur-1",
+            "description": "Supplier address"
+          },
+          "company": {
+            "type": "string",
+            "pattern": "/^[a-zA-Z0-9_- ]{3,30}$/",
+            "example": "Square",
+            "description": "Supplier name"
+          },
+          "date": {
+            "type": "string",
+            "example": "September 19, 2024",
+            "description": "Delivery date"
+          },
+          "amount": {
+            "type": "number",
+            "minimum": 0.01,
+            "example": 12,
+            "description": "Supplier amount"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["Active", "Deactive"],
+            "example": "Active",
+            "description": "Supplier status"
+          }
+        }
+      },
+      "GetSuppliersResponseSuccess": {
+        "type": "object",
+        "properties": {
+          "paginatedResult": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Supplier"
+            },
+            "description": "Paginated suppliers list"
+          },
+          "totalCount": {
+            "type": "number",
+            "example": 2,
+            "description": "Total suppliers quantity (by query params filters)"
+          }
+        }
+      },
+      "UpdateSupplierRequest": {
+        "type": "object",
+        "description": "Update supplier request",
+        "required": ["name", "address", "company", "date", "amount", "status"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "/^[a-zA-Z0-9_- ]{3,30}$/",
+            "example": "Allen Raymond",
+            "description": "Supplier info"
+          },
+          "address": {
+            "type": "string",
+            "pattern": "/^[a-zA-Z0-9s,'-]+$/",
+            "example": "Mripur-1",
+            "description": "Supplier address"
+          },
+          "company": {
+            "type": "string",
+            "pattern": "/^[a-zA-Z0-9_- ]{3,30}$/",
+            "example": "Square",
+            "description": "Supplier name"
+          },
+          "date": {
+            "type": "string",
+            "example": "September 19, 2024",
+            "description": "Delivery date"
+          },
+          "amount": {
+            "type": "number",
+            "minimum": 0.01,
+            "example": 12,
+            "description": "Supplier amount"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["Active", "Deactive"],
+            "example": "Active",
+            "description": "Supplier status"
           }
         }
       }
