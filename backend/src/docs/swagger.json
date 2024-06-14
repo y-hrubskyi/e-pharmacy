@@ -47,6 +47,10 @@
     {
       "name": "Orders",
       "description": "Operations related to orders management"
+    },
+    {
+      "name": "Dashboard",
+      "description": "Operations related to dashboard"
     }
   ],
   "paths": {
@@ -570,6 +574,28 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/GetOrdersResponseSuccess"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/dashboard": {
+      "get": {
+        "tags": ["Dashboard"],
+        "summary": "Get dashboard info",
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": {
+            "description": "OK (Dashboard info returned)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetDashboardResponseSuccess"
                 }
               }
             }
@@ -1131,7 +1157,88 @@
           }
         }
       },
+      "Transaction": {
+        "type": "object",
+        "description": "Transaction",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "example": "65e605a9403aaceab1749408",
+            "description": "Transaction id"
+          },
+          "type": {
+            "type": "string",
+            "example": "Income",
+            "description": "Transaction type"
+          },
+          "participant": {
+            "type": "object",
+            "description": "Participant info",
+            "properties": {
+              "role": {
+                "type": "string",
+                "example": "Client",
+                "description": "Participant role"
+              },
+              "id": {
+                "type": "string",
+                "example": "65e605a9403aaceab1749408",
+                "description": "Participant id"
+              },
+              "name": {
+                "type": "string",
+                "example": "Charlotte Lee",
+                "description": "Participant name"
+              }
+            }
+          },
+          "amount": {
+            "type": "number",
+            "example": 121.53,
+            "description": "Transaction total amount"
+          },
+          "date": {
+            "type": "string",
+            "example": "June 11, 2024",
+            "description": "Transaction creating date"
+          }
+        }
+      },
       "GetOrdersResponseSuccess": {
+        "type": "object",
+        "properties": {
+          "productsQuantity": {
+            "type": "number",
+            "example": 54,
+            "description": "Total products quantity"
+          },
+          "suppliersQuantity": {
+            "type": "number",
+            "example": 7,
+            "description": "Total suppliers quantity"
+          },
+          "customersQuantity": {
+            "type": "number",
+            "example": 157,
+            "description": "Total customers quantity"
+          },
+          "recentCustomers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Customer"
+            },
+            "description": "Recent customers list"
+          },
+          "recentTransactions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Transaction"
+            },
+            "description": "Recent transactions list"
+          }
+        }
+      },
+      "GetDashboardResponseSuccess": {
         "type": "object",
         "properties": {
           "paginatedResult": {
