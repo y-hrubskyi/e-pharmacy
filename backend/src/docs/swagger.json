@@ -26,5 +26,212 @@
         }
       }
     }
-  ]
+  ],
+  "tags": [
+    {
+      "name": "Auth",
+      "description": "Operations related to user authentication and authorization"
+    }
+  ],
+  "paths": {
+    "/user/login": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Login user",
+        "requestBody": {
+          "description": "Login's object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginUserRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK (User successfully logged in)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginUserResponseSuccess"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request (Invalid login data)"
+          },
+          "401": {
+            "description": "Unauthorized (Wrong credentials)"
+          }
+        }
+      }
+    },
+    "/user/logout": {
+      "get": {
+        "tags": ["Auth"],
+        "summary": "Logout user",
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "204": {
+            "description": "No Content (User successfully logged out)"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/user/user-info": {
+      "get": {
+        "tags": ["Auth"],
+        "summary": "Refresh (get) user info",
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": {
+            "description": "OK (User data successfully refreshed)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RefreshUserResponseSuccess"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/user/refresh": {
+      "get": {
+        "tags": ["Auth"],
+        "summary": "Refresh auth tokens (access and refresh)",
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": {
+            "description": "OK (Auth tokens successfully refreshed)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RefreshAuthTokensResponseSuccess"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "LoginUserRequest": {
+        "type": "object",
+        "required": ["email", "password"],
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "pattern": "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/",
+            "example": "user@example.com",
+            "description": "User's email"
+          },
+          "password": {
+            "type": "string",
+            "format": "password",
+            "pattern": "/^(?=.*[a-z])(?=.*[A-Z])(?=.*d).{8,20}$/",
+            "example": "Qwerty123",
+            "description": "User's password"
+          }
+        }
+      },
+      "LoginUserResponseSuccess": {
+        "type": "object",
+        "properties": {
+          "tokens": {
+            "type": "object",
+            "description": "Auth tokens",
+            "properties": {
+              "accessToken": {
+                "type": "string",
+                "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTYwNWE5NDAzYWFjZWFiMTc0OTQwOCIsImlhdCI6MTcwOTU4MzExNiwiZXhwIjoxNzA5NTk3NTE2fQ.3LbFoM0av9dMOLYhbRzylNhwcW0SvAyMX_ONbQcT_hQ",
+                "description": "User's auth access token"
+              },
+              "refreshToken": {
+                "type": "string",
+                "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTYwNWE5NDAzYWFjZWFiMTc0OTQwOCIsImlhdCI6MTcwOTU4MzExNiwiZXhwIjoxNzA5NTk3NTE2fQ.3LbFoM0av9dMOLYhbRzylNhwcW0SvAyMX_ONbQcT_hQ",
+                "description": "User's auth refresh token"
+              }
+            }
+          },
+          "user": {
+            "type": "object",
+            "description": "User's credentials",
+            "properties": {
+              "name": {
+                "type": "string",
+                "example": "Clayton Santos",
+                "description": "User's name"
+              },
+              "email": {
+                "type": "string",
+                "format": "email",
+                "example": "user@example.com",
+                "description": "User's email"
+              }
+            }
+          }
+        }
+      },
+      "RefreshUserResponseSuccess": {
+        "type": "object",
+        "description": "User's credentials",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Clayton Santos",
+            "description": "User's name"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "example": "user@example.com",
+            "description": "User's email"
+          }
+        }
+      },
+      "RefreshAuthTokensResponseSuccess": {
+        "type": "object",
+        "description": "Auth tokens",
+        "properties": {
+          "accessToken": {
+            "type": "string",
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTYwNWE5NDAzYWFjZWFiMTc0OTQwOCIsImlhdCI6MTcwOTU4MzExNiwiZXhwIjoxNzA5NTk3NTE2fQ.3LbFoM0av9dMOLYhbRzylNhwcW0SvAyMX_ONbQcT_hQ",
+            "description": "User's auth access token"
+          },
+          "refreshToken": {
+            "type": "string",
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTYwNWE5NDAzYWFjZWFiMTc0OTQwOCIsImlhdCI6MTcwOTU4MzExNiwiZXhwIjoxNzA5NTk3NTE2fQ.3LbFoM0av9dMOLYhbRzylNhwcW0SvAyMX_ONbQcT_hQ",
+            "description": "User's auth refresh token"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
 }
