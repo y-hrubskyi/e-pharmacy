@@ -702,6 +702,16 @@
         "type": "object",
         "description": "Product",
         "properties": {
+          "_id": {
+            "type": "string",
+            "example": "65e605a9403aaceab1749408",
+            "description": "Product id"
+          },
+          "photo": {
+            "type": "string",
+            "example": "https://i.ibb.co/bLKP624/5-15-1000x1000-min.jpg",
+            "description": "Product photo"
+          },
           "name": {
             "type": "string",
             "example": "Aspirin",
