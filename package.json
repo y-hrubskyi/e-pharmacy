@@ -1,0 +1,12 @@
+{
+  "name": "e-pharmacy",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
