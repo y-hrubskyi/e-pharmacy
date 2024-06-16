@@ -1,10 +1,13 @@
+import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 
 export const PrivateLayout = () => {
   return (
     <div>
       PrivateLayout
-      <Outlet />
+      <Suspense>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };

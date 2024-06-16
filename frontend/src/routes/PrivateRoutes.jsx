@@ -1,11 +1,13 @@
+import { lazy } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import { PrivateLayout } from "#components/PrivateLayout/PrivateLayout";
-import DashboardPage from "#pages/DashboardPage/DashboardPage";
-import OrdersPage from "#pages/OrdersPage/OrdersPage";
-import ProductsPage from "#pages/ProductsPage/ProductsPage";
-import SuppliersPage from "#pages/SuppliersPage/SuppliersPage";
-import CustomersPage from "#pages/CustomersPage/CustomersPage";
+
+const DashboardPage = lazy(() => import("#pages/DashboardPage/DashboardPage"));
+const OrdersPage = lazy(() => import("#pages/OrdersPage/OrdersPage"));
+const ProductsPage = lazy(() => import("#pages/ProductsPage/ProductsPage"));
+const SuppliersPage = lazy(() => import("#pages/SuppliersPage/SuppliersPage"));
+const CustomersPage = lazy(() => import("#pages/CustomersPage/CustomersPage"));
 
 const PrivateRoutes = () => {
   return (
