@@ -1,8 +1,8 @@
-# e-Pharmacy App
+# E-Pharmacy App
 
 ## Description
 
-The e-Pharmacy App is designed to facilitate the management of key pharmacy
+The E-Pharmacy App is designed to facilitate the management of key pharmacy
 operations, including customer management, supplier management, product
 management, and order processing.
 
