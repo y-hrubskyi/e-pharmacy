@@ -1,3 +1,10 @@
+import PrivateRoutes from "#routes/PrivateRoutes";
+import RestrictedRoutes from "#routes/RestrictedRoutes";
+
 export const App = () => {
-  return <div>App</div>;
+  const isLoggedIn = true;
+
+  if (isLoggedIn) return <PrivateRoutes />;
+
+  return <RestrictedRoutes />;
 };
