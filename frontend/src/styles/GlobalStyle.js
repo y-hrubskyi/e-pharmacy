@@ -32,8 +32,10 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: 'Inter', sans-serif;
+    color: ${(p) => p.theme.colors.primaryText};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: ${(p) => p.theme.colors.pageBg};
   }
   
   h1,
