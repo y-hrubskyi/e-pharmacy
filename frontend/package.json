@@ -10,11 +10,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.6.0",
     "modern-normalize": "^2.0.0",
     "react": "^18.2.0",
+    "react-datepicker": "^7.0.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.52.0",
     "react-router-dom": "^6.23.1",
-    "styled-components": "^6.1.11"
+    "react-select": "^5.8.0",
+    "styled-components": "^6.1.11",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
