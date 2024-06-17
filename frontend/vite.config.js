@@ -9,6 +9,7 @@ export default defineConfig({
       "#": "/src",
       "#assets": "/src/assets",
       "#components": "/src/components",
+      "#config": "/src/config",
       "#pages": "/src/pages",
       "#routes": "/src/routes",
       "#styles": "/src/styles",
