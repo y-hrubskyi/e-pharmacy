@@ -14,19 +14,30 @@ const initialState = {
     refreshToken: null,
   },
   isLoggedIn: false,
+  isLoading: false,
   isRefreshing: false,
 };
 
-const loginFulfilled = (state, { payload }) => {
+const authPending = (state) => {
+  state.isLoading = true;
+};
+
+const authRejected = (state) => {
+  state.isLoading = false;
+};
+
+const authInFulfilled = (state, { payload }) => {
   state.user = payload.user;
   state.tokens = payload.tokens;
   state.isLoggedIn = true;
+  state.isLoading = false;
 };
 
-const logoutFulfilled = (state) => {
+const authOutFulfilled = (state) => {
   state.user = { name: null, email: null };
   state.tokens = { accessToken: null, refreshToken: null };
   state.isLoggedIn = false;
+  state.isLoading = false;
 };
 
 const authSlice = createSlice({
@@ -40,7 +51,7 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) =>
     builder
-      .addCase(login.fulfilled, loginFulfilled)
+      .addCase(login.fulfilled, authInFulfilled)
       .addCase(refreshUser.pending, (state) => {
         state.isRefreshing = true;
       })
@@ -53,7 +64,9 @@ const authSlice = createSlice({
       .addCase(refreshUser.rejected, (state) => {
         state.isRefreshing = false;
       })
-      .addMatcher(isAnyOf(logout.fulfilled, logout.rejected), logoutFulfilled),
+      .addMatcher(isAnyOf(login.pending, logout.pending), authPending)
+      .addMatcher(isAnyOf(login.rejected, logout.rejected), authRejected)
+      .addMatcher(isAnyOf(logout.fulfilled, logout.rejected), authOutFulfilled),
 });
 
 const authPersistConfig = {
