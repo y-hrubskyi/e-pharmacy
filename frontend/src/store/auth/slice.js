@@ -32,6 +32,12 @@ const logoutFulfilled = (state) => {
 const authSlice = createSlice({
   name: "auth",
   initialState,
+  reducers: {
+    setTokens: (state, { payload }) => {
+      console.log("SET TOKENS");
+      state.tokens = payload;
+    },
+  },
   extraReducers: (builder) =>
     builder
       .addCase(login.fulfilled, loginFulfilled)
@@ -55,5 +61,7 @@ const authPersistConfig = {
   storage,
   whitelist: ["tokens"],
 };
+
+export const { setTokens } = authSlice.actions;
 
 export const authReducer = persistReducer(authPersistConfig, authSlice.reducer);
