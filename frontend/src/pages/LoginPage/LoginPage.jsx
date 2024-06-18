@@ -1,3 +1,5 @@
+import { LoginForm } from "#components/LoginForm/LoginForm";
+
 import * as SC from "./LoginPage.styled";
 
 const LoginPage = () => {
@@ -12,7 +14,7 @@ const LoginPage = () => {
           Your medication, delivered. Say goodbye to all{" "}
           <SC.AccentText>your healthcare</SC.AccentText> worries with us
         </SC.Heading>
-        LOGIN FORM
+        <LoginForm />
       </SC.ContentWrapper>
       <SC.DecorElements />
     </SC.Container>
