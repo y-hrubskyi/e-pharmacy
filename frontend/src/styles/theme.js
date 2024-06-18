@@ -1,12 +1,13 @@
 export const theme = Object.freeze({
   colors: {
     pageBg: "#f7f8fa",
-    primaryBg: "#1f1f1f",
+    primaryBg: "#ffffff",
     backdrop: "rgba(29, 30, 33, 0.3)",
     primaryText: "#1d1e21",
     secondaryText: "rgba(29, 30, 33, 0.4)",
     green: (alpha = 1) => `rgba(89, 177, 122, ${alpha})`,
     red: (alpha = 1) => `rgba(232, 80, 80, ${alpha})`,
+    hover: "#3f945f",
     border: "rgba(29, 30, 33, 0.1)",
     order: {
       completed: (alpha = 1) => `rgba(89, 177, 122, ${alpha})`,

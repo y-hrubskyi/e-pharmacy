@@ -47,6 +47,10 @@ export const GlobalStyle = createGlobalStyle`
   p {
     margin: 0;
   }
+
+  button {
+  cursor: pointer;
+  }
   
   ul,
   ol {
