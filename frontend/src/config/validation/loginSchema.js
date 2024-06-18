@@ -9,5 +9,9 @@ export const loginSchema = Yup.object().shape({
     ),
   password: Yup.string()
     .required("Password is required")
-    .min(8, "Must be 8 or more"),
+    .min(8, "Must be 8 or more")
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,20}$/,
+      "Enter a valid Password*"
+    ),
 });
