@@ -29,8 +29,6 @@ instance.interceptors.response.use(
 
         const { data } = await instance.get("/user/refresh");
 
-        console.log(data);
-
         setAuthHeader(data.accessToken);
         store.dispatch(setTokens(data));
         error.config.headers.authorization = `Bearer ${data.accessToken}`;
