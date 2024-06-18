@@ -1,6 +1,8 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
-import { login, logout } from "./operations";
+import { login, logout, refreshUser } from "./operations";
 
 const initialState = {
   user: {
@@ -12,6 +14,7 @@ const initialState = {
     refreshToken: null,
   },
   isLoggedIn: false,
+  isRefreshing: false,
 };
 
 const loginFulfilled = (state, { payload }) => {
@@ -32,7 +35,25 @@ const authSlice = createSlice({
   extraReducers: (builder) =>
     builder
       .addCase(login.fulfilled, loginFulfilled)
+      .addCase(refreshUser.pending, (state) => {
+        state.isRefreshing = true;
+      })
+      .addCase(refreshUser.fulfilled, (state, { payload }) => {
+        state.user.name = payload.name;
+        state.user.email = payload.email;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+      })
+      .addCase(refreshUser.rejected, (state) => {
+        state.isRefreshing = false;
+      })
       .addMatcher(isAnyOf(logout.fulfilled, logout.rejected), logoutFulfilled),
 });
 
-export const authReducer = authSlice.reducer;
+const authPersistConfig = {
+  key: "auth",
+  storage,
+  whitelist: ["tokens"],
+};
+
+export const authReducer = persistReducer(authPersistConfig, authSlice.reducer);

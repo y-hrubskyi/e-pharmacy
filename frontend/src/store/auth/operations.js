@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import API, { clearAuthHeader, setAuthHeader } from "@/services/axios";
+import API, { clearAuthHeader, setAuthHeader } from "#services/axios";
 
 export const login = createAsyncThunk(
   "auth/login",
@@ -21,6 +21,25 @@ export const logout = createAsyncThunk(
     try {
       const { data } = await API.post("/user/logout");
       clearAuthHeader();
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const refreshUser = createAsyncThunk(
+  "auth/user-info",
+  async (_, { getState, rejectWithValue }) => {
+    try {
+      const persistedAccessToken = getState().auth.tokens.accessToken;
+      if (persistedAccessToken === null) {
+        return rejectWithValue("Unable to fetch user info");
+      }
+
+      setAuthHeader(persistedAccessToken);
+      const { data } = await API.get("/user/user-info");
+
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
