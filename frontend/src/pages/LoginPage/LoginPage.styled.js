@@ -59,16 +59,19 @@ export const ContentWrapper = styled.div`
   flex-direction: column;
   gap: ${(p) => p.theme.spacing(10)};
   padding-top: ${(p) => p.theme.spacing(37)};
+  padding-bottom: ${(p) => p.theme.spacing(58.5)};
 
   @media screen and (min-width: 768px) {
     gap: ${(p) => p.theme.spacing(12.5)};
     padding-top: ${(p) => p.theme.spacing(51)};
+    padding-bottom: ${(p) => p.theme.spacing(69)};
   }
 
   @media screen and (min-width: 1440px) {
     flex-direction: row;
     gap: ${(p) => p.theme.spacing(37.5)};
     padding-top: ${(p) => p.theme.spacing(56.5)};
+    padding-bottom: ${(p) => p.theme.spacing(65.5)};
   }
 `;
 
@@ -119,6 +122,7 @@ export const DecorElements = styled.div`
   position: fixed;
   right: -206px;
   bottom: -199px;
+  z-index: -1;
 
   width: 464px;
   height: 345px;
