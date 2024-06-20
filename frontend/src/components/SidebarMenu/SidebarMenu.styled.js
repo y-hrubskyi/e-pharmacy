@@ -14,9 +14,6 @@ export const NavList = styled.ul`
 `;
 
 export const NavItem = styled.li`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 38px;
   height: 38px;
 
@@ -31,9 +28,11 @@ export const NavItem = styled.li`
 `;
 
 export const NavLink = styled(Link)`
-  width: 14px;
-  height: 14px;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
   color: #dcdddf;
 
   transition: ${(p) => p.theme.transition("color")};
@@ -43,16 +42,16 @@ export const NavLink = styled(Link)`
   &:focus {
     color: ${(p) => p.theme.colors.green()};
   }
+`;
+
+export const NavItemIcon = styled.svg`
+  width: 14px;
+  height: 14px;
+
+  fill: currentColor;
 
   @media screen and (min-width: 768px) {
     width: 16px;
     height: 16px;
   }
-`;
-
-export const NavItemIcon = styled.svg`
-  width: 100%;
-  height: 100%;
-
-  fill: currentColor;
 `;
