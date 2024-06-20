@@ -32,6 +32,13 @@ export const MobileMenuBtn = styled.button`
   border: none;
   background-color: transparent;
 
+  transition: ${(p) => p.theme.transition("color")};
+
+  &:hover,
+  &:focus {
+    color: ${(p) => p.theme.colors.green()};
+  }
+
   @media screen and (min-width: 7680px) {
     margin-right: ${(p) => p.theme.spacing(4)};
   }

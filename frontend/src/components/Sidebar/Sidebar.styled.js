@@ -45,6 +45,13 @@ export const SidebarCloseBtn = styled.button`
   border: none;
   background-color: transparent;
 
+  transition: ${(p) => p.theme.transition("color")};
+
+  &:hover,
+  &:focus {
+    color: ${(p) => p.theme.colors.green()};
+  }
+
   @media screen and (min-width: 1440px) {
     display: none;
   }
