@@ -10,6 +10,7 @@ export const SidebarWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  gap: ${(p) => p.theme.spacing(2)};
   width: 78px;
   height: 100%;
   padding-top: ${(p) => p.theme.spacing(23)};
@@ -25,9 +26,18 @@ export const SidebarWrapper = styled.div`
 
   @media screen and (min-width: 1440px) {
     position: static;
+
     display: flex;
     width: 80px;
     padding-top: ${(p) => p.theme.spacing(10)};
+  }
+
+  @media screen and (max-height: 444px) and (min-width: 768px) and (max-width: 1439px) {
+    padding-top: ${(p) => p.theme.spacing(16)};
+  }
+
+  @media screen and (max-height: 404px) and (max-width: 767px) {
+    padding-top: ${(p) => p.theme.spacing(14)};
   }
 `;
 

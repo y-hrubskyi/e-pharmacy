@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  height: 100%;
   margin: 0 auto;
-
-  outline: 1px solid red;
 
   @media screen and (min-width: 375px) {
     width: 375px;
@@ -20,10 +19,17 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
   position: relative;
+
   display: flex;
+  height: calc(100% - 79px);
+
+  @media screen and (min-width: 768px) {
+    height: calc(100% - 81px);
+  }
 `;
 
 export const Main = styled.main`
+  width: 100%;
   padding-right: ${(p) => p.theme.spacing(5)};
   padding-left: ${(p) => p.theme.spacing(5)};
 

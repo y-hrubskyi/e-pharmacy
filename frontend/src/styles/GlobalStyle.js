@@ -30,6 +30,10 @@ export const GlobalStyle = createGlobalStyle`
     font-style: normal;
   }
 
+  html, body, #root {
+    height: 100%;
+  }
+
   body {
     font-family: 'Inter', sans-serif;
     color: ${(p) => p.theme.colors.primaryText};

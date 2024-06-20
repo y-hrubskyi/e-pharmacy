@@ -7,6 +7,10 @@ export const NavList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: ${(p) => p.theme.spacing(3.5)};
+
+  @media screen and (max-height: 464px) and (max-width: 1439px) {
+    gap: ${(p) => p.theme.spacing(1)};
+  }
 `;
 
 export const NavItem = styled.li`
