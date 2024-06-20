@@ -6,12 +6,16 @@ import { selectAuthUser } from "#store/auth/selectors";
 import { LogOutBtn } from "#components/common/LogOutBtn/LogOutBtn";
 import * as SC from "./Header.styled";
 
-export const Header = () => {
+export const Header = ({ onOpenSidebar }) => {
   const user = useSelector(selectAuthUser);
 
   return (
     <SC.Header>
-      <SC.MobileMenuBtn type="button">
+      <SC.MobileMenuBtn
+        type="button"
+        onClick={onOpenSidebar}
+        aria-label="open sidebar"
+      >
         <SC.MobileMenuIcon>
           <use href={Icons.mobileMenu}></use>
         </SC.MobileMenuIcon>

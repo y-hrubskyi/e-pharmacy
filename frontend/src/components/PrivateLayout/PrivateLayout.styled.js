@@ -18,6 +18,11 @@ export const Container = styled.div`
   }
 `;
 
+export const Wrapper = styled.div`
+  position: relative;
+  display: flex;
+`;
+
 export const Main = styled.main`
   padding-right: ${(p) => p.theme.spacing(5)};
   padding-left: ${(p) => p.theme.spacing(5)};
