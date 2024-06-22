@@ -18,7 +18,6 @@ const transactionSchema = new Schema(
       id: {
         type: Schema.Types.ObjectId,
         ref: function (doc) {
-          console.log(doc);
           return doc.participant.role;
         },
         required: true,
