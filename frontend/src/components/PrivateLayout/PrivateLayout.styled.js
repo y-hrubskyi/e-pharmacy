@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 100%;
   margin: 0 auto;
 
   @media screen and (min-width: 375px) {
@@ -21,10 +20,10 @@ export const Wrapper = styled.div`
   position: relative;
 
   display: flex;
-  height: calc(100% - 79px);
+  min-height: calc(100vh - 79px);
 
   @media screen and (min-width: 768px) {
-    height: calc(100% - 81px);
+    min-height: calc(100vh - 81px);
   }
 `;
 
@@ -32,6 +31,8 @@ export const Main = styled.main`
   width: 100%;
   padding-right: ${(p) => p.theme.spacing(5)};
   padding-left: ${(p) => p.theme.spacing(5)};
+
+  overflow: hidden;
 
   @media screen and (min-width: 768px) {
     padding-right: ${(p) => p.theme.spacing(8)};

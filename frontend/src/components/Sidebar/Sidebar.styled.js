@@ -6,6 +6,7 @@ export const SidebarWrapper = styled.div`
   left: 0;
   z-index: 100;
 
+  flex-shrink: 0;
   display: ${(p) => (p["data-is-sidebar-open"] ? "flex" : "none")};
   flex-direction: column;
   align-items: center;
@@ -29,6 +30,7 @@ export const SidebarWrapper = styled.div`
 
     display: flex;
     width: 80px;
+    height: auto;
     padding-top: ${(p) => p.theme.spacing(10)};
   }
 
