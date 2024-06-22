@@ -9,6 +9,8 @@ export const theme = Object.freeze({
     red: (alpha = 1) => `rgba(232, 80, 80, ${alpha})`,
     hover: "#3f945f",
     border: "rgba(29, 30, 33, 0.1)",
+    scrollbarTrack: "#f1f1f1",
+    scrollbarThumb: "#e6e6e6",
     order: {
       completed: (alpha = 1) => `rgba(89, 177, 122, ${alpha})`,
       confirmed: (alpha = 1) => `rgba(128, 89, 228, ${alpha})`,
@@ -23,6 +25,7 @@ export const theme = Object.freeze({
     btn: "60px",
     modal: "12px",
     table: "8px",
+    scrollbar: "10px",
   },
   transition: (prop = "") => `${prop} 250ms linear`,
   spacing: (value) => `${value * 4}px`,
