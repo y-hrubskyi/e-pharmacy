@@ -4,6 +4,7 @@ import API from "#services/axios";
 
 import { Statistics } from "#components/Statistics/Statistics";
 import { RecentCustomersTable } from "#components/RecentCustomersTable/RecentCustomersTable";
+import { IncomesExpensesTable } from "#components/IncomesExpensesTable/IncomesExpensesTable";
 
 import * as SC from "./DashboardPage.styled";
 
@@ -33,6 +34,11 @@ const DashboardPage = () => {
           <SC.TablesContainer>
             <SC.TableWrapper>
               <RecentCustomersTable customers={dashboardInfo.recentCustomers} />
+            </SC.TableWrapper>
+            <SC.TableWrapper>
+              <IncomesExpensesTable
+                transactions={dashboardInfo.recentTransactions}
+              />
             </SC.TableWrapper>
           </SC.TablesContainer>
         </>
