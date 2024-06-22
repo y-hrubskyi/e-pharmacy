@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import API from "#services/axios";
 
 import { Statistics } from "#components/Statistics/Statistics";
+import { RecentCustomersTable } from "#components/RecentCustomersTable/RecentCustomersTable";
 
 import * as SC from "./DashboardPage.styled";
 
@@ -23,11 +24,18 @@ const DashboardPage = () => {
   return (
     <SC.PageWrapper>
       {dashboardInfo && (
-        <Statistics
-          productsQuantity={dashboardInfo.productsQuantity}
-          suppliersQuantity={dashboardInfo.suppliersQuantity}
-          customersQuantity={dashboardInfo.customersQuantity}
-        />
+        <>
+          <Statistics
+            productsQuantity={dashboardInfo.productsQuantity}
+            suppliersQuantity={dashboardInfo.suppliersQuantity}
+            customersQuantity={dashboardInfo.customersQuantity}
+          />
+          <SC.TablesContainer>
+            <SC.TableWrapper>
+              <RecentCustomersTable customers={dashboardInfo.recentCustomers} />
+            </SC.TableWrapper>
+          </SC.TablesContainer>
+        </>
       )}
     </SC.PageWrapper>
   );

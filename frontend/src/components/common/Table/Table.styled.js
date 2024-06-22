@@ -115,3 +115,14 @@ export const TDataCell = styled.td`
     line-height: 1.125;
   }
 `;
+
+export const Avatar = styled.img`
+  width: 24px;
+  height: 24px;
+  border-radius: ${(p) => p.theme.radii.img};
+
+  @media screen and (min-width: 768px) {
+    width: 36px;
+    height: 36px;
+  }
+`;
