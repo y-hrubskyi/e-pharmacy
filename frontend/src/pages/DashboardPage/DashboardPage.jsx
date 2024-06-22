@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 
 import API from "#services/axios";
 
+import { Statistics } from "#components/Statistics/Statistics";
+
 import * as SC from "./DashboardPage.styled";
 
 const DashboardPage = () => {
@@ -18,7 +20,17 @@ const DashboardPage = () => {
     })();
   }, []);
 
-  return <SC.PageWrapper></SC.PageWrapper>;
+  return (
+    <SC.PageWrapper>
+      {dashboardInfo && (
+        <Statistics
+          productsQuantity={dashboardInfo.productsQuantity}
+          suppliersQuantity={dashboardInfo.suppliersQuantity}
+          customersQuantity={dashboardInfo.customersQuantity}
+        />
+      )}
+    </SC.PageWrapper>
+  );
 };
 
 export default DashboardPage;
