@@ -21,4 +21,12 @@ export const Icons = {
     import.meta.url
   ),
   cross: new URL("#assets/icons/sprite.svg#icon-cross", import.meta.url),
+  statProducts: new URL(
+    "#assets/icons/sprite.svg#icon-stat-products",
+    import.meta.url
+  ),
+  statUsers: new URL(
+    "#assets/icons/sprite.svg#icon-stat-users",
+    import.meta.url
+  ),
 };
