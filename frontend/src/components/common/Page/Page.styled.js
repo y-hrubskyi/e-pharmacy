@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const PageWrapper = styled.div`
+  height: 100%;
   padding-top: ${(p) => p.theme.spacing(10)};
   padding-bottom: ${(p) => p.theme.spacing(5)};
 
@@ -24,4 +25,8 @@ export const ControlPanel = styled.div`
     justify-content: space-between;
     gap: 0;
   }
+`;
+
+export const PlaceholderWrapper = styled.div`
+  margin-top: 100px;
 `;
