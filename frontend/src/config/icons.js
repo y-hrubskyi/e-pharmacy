@@ -29,4 +29,5 @@ export const Icons = {
     "#assets/icons/sprite.svg#icon-stat-users",
     import.meta.url
   ),
+  filter: new URL("#assets/icons/sprite.svg#icon-filter", import.meta.url),
 };
