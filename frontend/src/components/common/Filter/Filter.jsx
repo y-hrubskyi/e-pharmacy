@@ -7,7 +7,12 @@ import { filterSchema } from "#config/validation/filterSchema";
 import { TextField } from "#components/common/TextField/TextField";
 import * as SC from "./Filter.styled";
 
-export const Filter = ({ placeholder, fieldName }) => {
+export const Filter = ({
+  placeholder,
+  fieldName,
+  onFilterSubmit,
+  isLoading,
+}) => {
   const {
     register,
     handleSubmit,
@@ -17,8 +22,8 @@ export const Filter = ({ placeholder, fieldName }) => {
     resolver: yupResolver(filterSchema(fieldName)),
   });
 
-  const onSubmit = async (data) => {
-    console.log(data);
+  const onSubmit = (data) => {
+    onFilterSubmit(data.name);
   };
 
   const isCorrectName = dirtyFields.name && !errors.name;
@@ -36,7 +41,7 @@ export const Filter = ({ placeholder, fieldName }) => {
         />
       </TextField>
 
-      <SC.FilterSubmitBtn type="submit">
+      <SC.FilterSubmitBtn type="submit" disabled={isLoading}>
         <SC.FilterIcon>
           <use href={Icons.filter}></use>
         </SC.FilterIcon>

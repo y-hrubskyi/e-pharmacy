@@ -16,6 +16,7 @@ import * as SC from "./CustomerPage.styled";
 
 const CustomersPage = () => {
   const [customers, setCustomers] = useState([]);
+  const [filter, setFilter] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -25,7 +26,10 @@ const CustomersPage = () => {
         setIsLoading(true);
         setError(null);
 
-        const { data } = await API.get("/customers");
+        const searchParams = new URLSearchParams();
+        if (filter) searchParams.set("name", filter);
+
+        const { data } = await API.get(`/customers?${searchParams}`);
         setCustomers(data.paginatedResult);
       } catch (error) {
         setError(error.message);
@@ -33,7 +37,11 @@ const CustomersPage = () => {
         setIsLoading(false);
       }
     })();
-  }, []);
+  }, [filter]);
+
+  const onFilterSubmit = (value) => {
+    setFilter(value);
+  };
 
   const emptyData = customers.length === 0;
   const loading = !error && isLoading;
@@ -44,7 +52,12 @@ const CustomersPage = () => {
   return (
     <PageWrapper>
       <ControlPanel>
-        <Filter placeholder="User Name" fieldName="User Name" />
+        <Filter
+          placeholder="User Name"
+          fieldName="User Name"
+          onFilterSubmit={onFilterSubmit}
+          isLoading={isLoading}
+        />
       </ControlPanel>
 
       {content && (
