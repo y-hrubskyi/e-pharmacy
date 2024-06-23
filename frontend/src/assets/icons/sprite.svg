@@ -33,5 +33,15 @@
       <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="4" d="M48 16l-32 32"></path>
       <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="4" d="M16 16l32 32"></path>
     </symbol>
+    <symbol id="icon-stat-products" viewBox="0 0 64 64">
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="4.8" d="M41.143 34.286c11.361 0 20.572-4.093 20.572-9.143s-9.21-9.143-20.572-9.143c-11.361 0-20.572 4.093-20.572 9.143s9.21 9.143 20.572 9.143z"></path>
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="4.8" d="M20.572 25.143v27.429c0 5.029 9.143 9.143 20.572 9.143s20.572-4.114 20.572-9.143v-27.429"></path>
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="4.8" d="M61.715 38.857c0 5.029-9.143 9.143-20.572 9.143s-20.571-4.114-20.571-9.143M40.686 6.857c-5.342-3.297-11.56-4.891-17.829-4.571-11.383 0-20.571 4.114-20.571 9.143 0 2.697 2.651 5.12 6.857 6.857"></path>
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="4.8" d="M9.143 45.714c-4.206-1.737-6.857-4.16-6.857-6.857v-27.429"></path>
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="4.8" d="M9.143 32c-4.206-1.737-6.857-4.16-6.857-6.857"></path>
+    </symbol>
+    <symbol id="icon-stat-users" viewBox="0 0 64 64">
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="4.8" d="M56 53.333c0-4.645-4.453-8.595-10.667-10.061M40 53.333c0-5.893-7.163-10.667-16-10.667s-16 4.773-16 10.667M40 34.667c2.829 0 5.542-1.124 7.542-3.124s3.124-4.713 3.124-7.542-1.124-5.542-3.124-7.543c-2-2-4.713-3.124-7.542-3.124M24 34.667c-2.829 0-5.542-1.124-7.542-3.124s-3.124-4.713-3.124-7.542 1.124-5.542 3.124-7.543c2-2 4.713-3.124 7.542-3.124s5.542 1.124 7.542 3.124c2 2 3.124 4.713 3.124 7.543s-1.124 5.542-3.124 7.542c-2 2-4.713 3.124-7.542 3.124z"></path>
+    </symbol>
   </defs>
 </svg>

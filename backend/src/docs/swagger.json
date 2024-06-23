@@ -1157,6 +1157,23 @@
           }
         }
       },
+      "GetOrdersResponseSuccess": {
+        "type": "object",
+        "properties": {
+          "paginatedResult": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Order"
+            },
+            "description": "Paginated orders list"
+          },
+          "totalCount": {
+            "type": "number",
+            "example": 2,
+            "description": "Total orders quantity (by query params filters)"
+          }
+        }
+      },
       "Transaction": {
         "type": "object",
         "description": "Transaction",
@@ -1204,7 +1221,7 @@
           }
         }
       },
-      "GetOrdersResponseSuccess": {
+      "GetDashboardResponseSuccess": {
         "type": "object",
         "properties": {
           "productsQuantity": {
@@ -1235,23 +1252,6 @@
               "$ref": "#/components/schemas/Transaction"
             },
             "description": "Recent transactions list"
-          }
-        }
-      },
-      "GetDashboardResponseSuccess": {
-        "type": "object",
-        "properties": {
-          "paginatedResult": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Order"
-            },
-            "description": "Paginated orders list"
-          },
-          "totalCount": {
-            "type": "number",
-            "example": 2,
-            "description": "Total orders quantity (by query params filters)"
           }
         }
       }
