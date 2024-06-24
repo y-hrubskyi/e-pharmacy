@@ -16,7 +16,7 @@ import { Placeholder } from "#components/common/Placeholder/Placeholder";
 
 const ProductsPage = () => {
   const [products, setProducts] = useState(null);
-
+  const [filter, setFilter] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -26,7 +26,10 @@ const ProductsPage = () => {
         setIsLoading(true);
         setError(null);
 
-        const { data } = await API.get("/products");
+        const searchParams = new URLSearchParams();
+        if (filter) searchParams.set("name", filter.split("/")[0]);
+
+        const { data } = await API.get(`/products?${searchParams}`);
         setProducts(data);
       } catch (error) {
         setError(error.message);
@@ -34,7 +37,12 @@ const ProductsPage = () => {
         setIsLoading(false);
       }
     })();
-  }, []);
+  }, [filter]);
+
+  const onFilterSubmit = (value) => {
+    setFilter(`${value}/${Date.now()}`);
+    setProducts(null);
+  };
 
   const loading = !error && isLoading;
   const hasError = !isLoading && error;
@@ -45,7 +53,12 @@ const ProductsPage = () => {
   return (
     <PageWrapper>
       <ControlPanel>
-        <Filter placeholder="Product Name" fieldName="Product Name" />
+        <Filter
+          placeholder="Product Name"
+          fieldName="Product Name"
+          onFilterSubmit={onFilterSubmit}
+          isLoading={isLoading}
+        />
         <AddBtnWithPlusIcon onClick={() => {}}>
           Add a new product
         </AddBtnWithPlusIcon>
