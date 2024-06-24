@@ -12,11 +12,13 @@ export const theme = Object.freeze({
     scrollbarTrack: "#f1f1f1",
     scrollbarThumb: "#e6e6e6",
     order: {
-      completed: (alpha = 1) => `rgba(89, 177, 122, ${alpha})`,
-      confirmed: (alpha = 1) => `rgba(128, 89, 228, ${alpha})`,
       pending: (alpha = 1) => `rgba(247, 144, 66, ${alpha})`,
-      cancelled: (alpha = 1) => `rgba(232, 80, 80, ${alpha})`,
       processing: (alpha = 1) => `rgba(112, 166, 232, ${alpha})`,
+      confirmed: (alpha = 1) => `rgba(128, 89, 228, ${alpha})`,
+      shipped: (alpha = 1) => `rgba(30, 144, 255, ${alpha})`,
+      delivered: (alpha = 1) => `rgba(50, 205, 50, ${alpha})`,
+      completed: (alpha = 1) => `rgba(89, 177, 122, ${alpha})`,
+      cancelled: (alpha = 1) => `rgba(232, 80, 80, ${alpha})`,
     },
   },
   radii: {
