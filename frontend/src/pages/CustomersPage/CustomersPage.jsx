@@ -8,12 +8,11 @@ import {
   PlaceholderWrapper,
 } from "#components/common/Page/Page.styled";
 import { Filter } from "#components/common/Filter/Filter";
+import { TableWrapper } from "#components/common/Table/Table.styled";
 import { CustomersDataTable } from "#components/CustomersDataTable/CustomersDataTable";
 import { Paginator } from "#components/common/Paginator/Paginator";
 import { Loader } from "#components/common/Loader/Loader";
 import { Placeholder } from "#components/common/Placeholder/Placeholder";
-
-import * as SC from "./CustomerPage.styled";
 
 const CustomersPage = () => {
   const [customers, setCustomers] = useState(null);
@@ -66,9 +65,9 @@ const CustomersPage = () => {
 
       {content && (
         <>
-          <SC.TableWrapper>
+          <TableWrapper>
             <CustomersDataTable customers={customers.paginatedResult} />
-          </SC.TableWrapper>
+          </TableWrapper>
           <Paginator totalCount={customers.totalCount} setPage={setPage} />
         </>
       )}

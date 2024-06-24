@@ -29,7 +29,6 @@ export const TablesContainer = styled.div`
 
 export const TableWrapper = styled(BaseTableWrapper)`
   flex-shrink: 0;
-  padding-bottom: 20px;
 
   @media screen and (min-width: 1440px) {
     flex-basis: calc((100% - 20px) / 2);
