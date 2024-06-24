@@ -25,7 +25,7 @@ export const CustomersDataTable = ({ customers }) => {
         {customers.map((customer) => (
           <TRow key={customer._id}>
             <SC.NameDataCell>
-              <Avatar src={customer.image} alt={`${customer.image} avatar`} />
+              <Avatar src={customer.image} alt={`${customer.name} avatar`} />
               {customer.name}
             </SC.NameDataCell>
             <TDataCell>{customer.email}</TDataCell>
