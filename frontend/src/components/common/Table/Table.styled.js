@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const TableWrapper = styled.div`
+  padding-bottom: 20px;
+
   overflow: auto;
 
   &::-webkit-scrollbar {
