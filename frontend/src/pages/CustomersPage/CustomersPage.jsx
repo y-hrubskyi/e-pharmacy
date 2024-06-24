@@ -9,14 +9,16 @@ import {
 } from "#components/common/Page/Page.styled";
 import { Filter } from "#components/common/Filter/Filter";
 import { CustomersDataTable } from "#components/CustomersDataTable/CustomersDataTable";
+import { Paginator } from "#components/common/Paginator/Paginator";
 import { Loader } from "#components/common/Loader/Loader";
 import { Placeholder } from "#components/common/Placeholder/Placeholder";
 
 import * as SC from "./CustomerPage.styled";
 
 const CustomersPage = () => {
-  const [customers, setCustomers] = useState([]);
+  const [customers, setCustomers] = useState(null);
   const [filter, setFilter] = useState("");
+  const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -26,28 +28,30 @@ const CustomersPage = () => {
         setIsLoading(true);
         setError(null);
 
-        const searchParams = new URLSearchParams();
-        if (filter) searchParams.set("name", filter);
+        const searchParams = new URLSearchParams({ page });
+        if (filter) searchParams.set("name", filter.split("/")[0]);
 
         const { data } = await API.get(`/customers?${searchParams}`);
-        setCustomers(data.paginatedResult);
+        setCustomers(data);
       } catch (error) {
         setError(error.message);
       } finally {
         setIsLoading(false);
       }
     })();
-  }, [filter]);
+  }, [page, filter]);
 
   const onFilterSubmit = (value) => {
-    setFilter(value);
+    setFilter(`${value}/${Date.now()}`);
+    setPage(1);
+    setCustomers([]);
   };
 
-  const emptyData = customers.length === 0;
   const loading = !error && isLoading;
   const hasError = !isLoading && error;
-  const content = !isLoading && !error && !emptyData;
-  const noData = !isLoading && !error && emptyData;
+  const content = !error && customers?.paginatedResult?.length > 0;
+  const noData =
+    !isLoading && !error && customers?.paginatedResult?.length === 0;
 
   return (
     <PageWrapper>
@@ -61,9 +65,12 @@ const CustomersPage = () => {
       </ControlPanel>
 
       {content && (
-        <SC.TableWrapper>
-          <CustomersDataTable customers={customers} />
-        </SC.TableWrapper>
+        <>
+          <SC.TableWrapper>
+            <CustomersDataTable customers={customers.paginatedResult} />
+          </SC.TableWrapper>
+          <Paginator totalCount={customers.totalCount} setPage={setPage} />
+        </>
       )}
       {loading && <Loader />}
       {hasError && (
