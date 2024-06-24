@@ -3,7 +3,7 @@ import { setPaginationOptions } from '#utils/index.js';
 
 export const get = async (page, limit, name) => {
   const filter = {};
-  if (name) filter.name = { $regex: name, $options: 'i' };
+  if (name) filter['customer.name'] = { $regex: name, $options: 'i' };
 
   const paginationOptions = setPaginationOptions(page, limit);
 
