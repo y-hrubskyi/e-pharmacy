@@ -30,4 +30,5 @@ export const Icons = {
     import.meta.url
   ),
   filter: new URL("#assets/icons/sprite.svg#icon-filter", import.meta.url),
+  plus: new URL("#assets/icons/sprite.svg#icon-plus", import.meta.url),
 };

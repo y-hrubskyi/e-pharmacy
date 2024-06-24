@@ -46,5 +46,8 @@
     <symbol id="icon-filter" viewBox="0 0 64 64">
       <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="6.8571" d="M58.667 8h-53.333l21.333 25.227v17.44l10.667 5.334v-22.773l21.333-25.227z"></path>
     </symbol>
+    <symbol id="icon-plus" viewBox="0 0 64 64">
+      <path d="M13.333 34.667h16v16c0 1.472 1.195 2.667 2.667 2.667s2.667-1.195 2.667-2.667v-16h16c1.472 0 2.667-1.195 2.667-2.667s-1.195-2.667-2.667-2.667h-16v-16c0-1.472-1.195-2.667-2.667-2.667s-2.667 1.195-2.667 2.667v16h-16c-1.472 0-2.667 1.195-2.667 2.667s1.195 2.667 2.667 2.667z"></path>
+    </symbol>
   </defs>
 </svg>
