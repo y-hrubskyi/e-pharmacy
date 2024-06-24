@@ -15,6 +15,7 @@ import { Placeholder } from "#components/common/Placeholder/Placeholder";
 
 const OrdersPage = () => {
   const [orders, setOrders] = useState(null);
+  const [filter, setFilter] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -24,7 +25,10 @@ const OrdersPage = () => {
         setIsLoading(true);
         setError(null);
 
-        const { data } = await API.get("/orders");
+        const searchParams = new URLSearchParams();
+        if (filter) searchParams.set("name", filter.split("/")[0]);
+
+        const { data } = await API.get(`/orders?${searchParams}`);
         setOrders(data);
       } catch (error) {
         setError(error.message);
@@ -32,7 +36,12 @@ const OrdersPage = () => {
         setIsLoading(false);
       }
     })();
-  }, []);
+  }, [filter]);
+
+  const onFilterSubmit = (value) => {
+    setFilter(`${value}/${Date.now()}`);
+    setOrders(null);
+  };
 
   const loading = !error && isLoading;
   const hasError = !isLoading && error;
@@ -42,7 +51,12 @@ const OrdersPage = () => {
   return (
     <PageWrapper>
       <ControlPanel>
-        <Filter placeholder="User Name" fieldName="User Name" />
+        <Filter
+          placeholder="User Name"
+          fieldName="User Name"
+          onFilterSubmit={onFilterSubmit}
+          isLoading={isLoading}
+        />
       </ControlPanel>
 
       {content && (
