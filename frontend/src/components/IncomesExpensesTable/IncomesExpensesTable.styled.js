@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { THeadCell, TDataCell } from "#components/common/Table/Table.styled";
 import { TransactionTypes } from "#config/constants";
 
-const getTextColorByTransactonType = (p) => {
+const getTextColorByTransactionType = (p) => {
   const transactionType = p["data-transaction-type"];
 
   switch (transactionType) {
@@ -16,7 +16,7 @@ const getTextColorByTransactonType = (p) => {
   }
 };
 
-const getBgColorByTransactonType = (p) => {
+const getBgColorByTransactionType = (p) => {
   const transactionType = p["data-transaction-type"];
 
   switch (transactionType) {
@@ -50,9 +50,9 @@ export const TransactionTypeText = styled.p`
 
   letter-spacing: -0.05em;
   text-align: center;
-  color: ${getTextColorByTransactonType};
+  color: ${getTextColorByTransactionType};
 
-  background-color: ${getBgColorByTransactonType};
+  background-color: ${getBgColorByTransactionType};
   border-radius: 40px;
 
   @media screen and (min-width: 768px) {
@@ -83,7 +83,7 @@ export const TransactionAmountCell = styled(TDataCell)`
     p["data-transaction-type"] === TransactionTypes.ERROR
       ? "line-through"
       : "unset"};
-  color: ${getTextColorByTransactonType};
+  color: ${getTextColorByTransactionType};
 
   border-left: 0;
 

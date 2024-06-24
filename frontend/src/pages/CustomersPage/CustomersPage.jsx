@@ -43,7 +43,7 @@ const CustomersPage = () => {
   const onFilterSubmit = (value) => {
     setFilter(`${value}/${Date.now()}`);
     setPage(1);
-    setCustomers([]);
+    setCustomers(null);
   };
 
   const loading = !error && isLoading;
