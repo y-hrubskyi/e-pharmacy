@@ -10,12 +10,14 @@ import {
 import { Filter } from "#components/common/Filter/Filter";
 import { TableWrapper } from "#components/common/Table/Table.styled";
 import { AllOrdersTable } from "#components/AllOrdersTable/AllOrdersTable";
+import { Paginator } from "#components/common/Paginator/Paginator";
 import { Loader } from "#components/common/Loader/Loader";
 import { Placeholder } from "#components/common/Placeholder/Placeholder";
 
 const OrdersPage = () => {
   const [orders, setOrders] = useState(null);
   const [filter, setFilter] = useState("");
+  const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -25,7 +27,7 @@ const OrdersPage = () => {
         setIsLoading(true);
         setError(null);
 
-        const searchParams = new URLSearchParams();
+        const searchParams = new URLSearchParams({ page });
         if (filter) searchParams.set("name", filter.split("/")[0]);
 
         const { data } = await API.get(`/orders?${searchParams}`);
@@ -36,10 +38,11 @@ const OrdersPage = () => {
         setIsLoading(false);
       }
     })();
-  }, [filter]);
+  }, [page, filter]);
 
   const onFilterSubmit = (value) => {
     setFilter(`${value}/${Date.now()}`);
+    setPage(1);
     setOrders(null);
   };
 
@@ -64,6 +67,7 @@ const OrdersPage = () => {
           <TableWrapper>
             <AllOrdersTable orders={orders.paginatedResult} />
           </TableWrapper>
+          <Paginator totalCount={orders.totalCount} setPage={setPage} />
         </>
       )}
       {loading && <Loader />}
