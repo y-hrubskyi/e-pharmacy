@@ -137,6 +137,7 @@ export const AddressDataCell = styled(TDataCell)`
 `;
 
 export const OrderStatusText = styled.p`
+  width: fit-content;
   padding: ${(p) => p.theme.spacing(1)} ${(p) => p.theme.spacing(3)};
 
   letter-spacing: -0.05em;
