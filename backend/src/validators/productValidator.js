@@ -12,6 +12,8 @@ const categories = [
   'Eye Care',
   'Hand',
   'Head',
+  'Heart',
+  'Leg',
   'Medicine',
   'Orthopedic Products',
   'Skin Care',
