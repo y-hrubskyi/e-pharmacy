@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import API from "#services/axios";
+import { useModal } from "#hooks/useModal";
 
 import {
   PageWrapper,
@@ -12,6 +13,7 @@ import { AddBtnWithoutPlusIcon } from "#components/common/AddBtnWithoutPlusIcon/
 import { TableWrapper } from "#components/common/Table/Table.styled";
 import { AllSuppliersTable } from "#components/AllSuppliersTable/AllSuppliersTable";
 import { Paginator } from "#components/common/Paginator/Paginator";
+import { AddNewSupplierModal } from "#components/AddNewSupplierModal/AddNewSupplierModal";
 import { Loader } from "#components/common/Loader/Loader";
 import { Placeholder } from "#components/common/Placeholder/Placeholder";
 
@@ -21,6 +23,7 @@ const SuppliersPage = () => {
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const { isModalOpen, toggleModal } = useModal();
 
   useEffect(() => {
     (async () => {
@@ -62,7 +65,7 @@ const SuppliersPage = () => {
           onFilterSubmit={onFilterSubmit}
           isLoading={isLoading}
         />
-        <AddBtnWithoutPlusIcon type="button" onClick={() => {}}>
+        <AddBtnWithoutPlusIcon type="button" onClick={toggleModal}>
           Add a new supplier
         </AddBtnWithoutPlusIcon>
       </ControlPanel>
@@ -87,6 +90,14 @@ const SuppliersPage = () => {
             Nothing found. Please check your spelling or try other terms
           </Placeholder>
         </PlaceholderWrapper>
+      )}
+
+      {isModalOpen && (
+        <AddNewSupplierModal
+          isOpen={isModalOpen}
+          onClose={toggleModal}
+          setSuppliers={setSuppliers}
+        />
       )}
     </PageWrapper>
   );
