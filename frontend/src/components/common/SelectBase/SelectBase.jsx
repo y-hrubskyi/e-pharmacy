@@ -14,6 +14,7 @@ const getBorderColorByValidationResult = (theme, isCorrect, hasError) => {
 export const SelectBase = ({
   placeholder,
   options,
+  defaultValue,
   onChange,
   isCorrect,
   hasError,
@@ -35,6 +36,7 @@ export const SelectBase = ({
         }),
       }}
       options={options}
+      defaultValue={defaultValue}
       onChange={(selected) => onChange(selected?.value || "")}
       isCorrect={isCorrect}
       hasError={hasError}
