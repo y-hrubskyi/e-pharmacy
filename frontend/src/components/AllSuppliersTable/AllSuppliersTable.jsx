@@ -1,4 +1,7 @@
+import { useState } from "react";
+
 import { Icons } from "#config/icons";
+import { useModal } from "#hooks/useModal";
 
 import {
   Table,
@@ -6,10 +9,19 @@ import {
   TRow,
   TDataCell,
 } from "#components/common/Table/Table.styled";
+import { EditSupplierDataModal } from "#components/EditSupplierDataModal/EditSupplierDataModal";
 
 import * as SC from "./AllSuppliersTable.styled";
 
-export const AllSuppliersTable = ({ suppliers }) => {
+export const AllSuppliersTable = ({ suppliers, setSuppliers }) => {
+  const [currentSupplier, setCurrentSupplier] = useState(null);
+  const { isModalOpen, toggleModal } = useModal();
+
+  const handleEditSupplierClick = (supplier) => {
+    setCurrentSupplier(supplier);
+    toggleModal();
+  };
+
   return (
     <>
       <Table>
@@ -39,7 +51,10 @@ export const AllSuppliersTable = ({ suppliers }) => {
                 </SC.SupplierStatusText>
               </TDataCell>
               <TDataCell>
-                <SC.EditBtn type="button" onClick={() => {}}>
+                <SC.EditBtn
+                  type="button"
+                  onClick={() => handleEditSupplierClick(supplier)}
+                >
                   <SC.ActionIcon>
                     <use href={Icons.edit}></use>
                   </SC.ActionIcon>
@@ -50,6 +65,15 @@ export const AllSuppliersTable = ({ suppliers }) => {
           ))}
         </tbody>
       </Table>
+
+      {isModalOpen && (
+        <EditSupplierDataModal
+          isOpen={isModalOpen}
+          onClose={toggleModal}
+          supplier={currentSupplier}
+          setSuppliers={setSuppliers}
+        />
+      )}
     </>
   );
 };
