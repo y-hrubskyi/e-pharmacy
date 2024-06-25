@@ -4,7 +4,7 @@ import { store } from "#store/store";
 import { setTokens } from "#store/auth/slice";
 
 const instance = axios.create({
-  baseURL: "http://localhost:3000/api",
+  baseURL: "https://e-pharmacy-0e2p.onrender.com/api",
 });
 
 export const setAuthHeader = (token) => {
