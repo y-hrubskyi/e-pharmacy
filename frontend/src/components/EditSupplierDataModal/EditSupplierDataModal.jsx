@@ -24,7 +24,12 @@ import { DatePicker } from "#components/common/DatePicker/DatePicker";
 
 const statusOptions = createSelectOptions(Object.values(SupplierStatuses));
 
-export const EditSupplierDataModal = ({ isOpen, onClose, supplier }) => {
+export const EditSupplierDataModal = ({
+  isOpen,
+  onClose,
+  supplier,
+  setSuppliers,
+}) => {
   const {
     register,
     handleSubmit,
@@ -50,7 +55,15 @@ export const EditSupplierDataModal = ({ isOpen, onClose, supplier }) => {
       const editSupplierPromise = API.put(`/suppliers/${supplier._id}`, data);
       await toast.promise(editSupplierPromise, {
         loading: "Saving...",
-        success: "Successful saved!",
+        success: ({ data }) => {
+          setSuppliers((prevState) => ({
+            ...prevState,
+            paginatedResult: prevState.paginatedResult.map((supplier) =>
+              supplier._id === data._id ? data : supplier
+            ),
+          }));
+          return "Successful saved!";
+        },
         error: (error) => error.message,
       });
       onClose();
@@ -62,7 +75,7 @@ export const EditSupplierDataModal = ({ isOpen, onClose, supplier }) => {
   return (
     <ModalBase isOpen={isOpen} onClose={onClose}>
       <FormWrapper>
-        <FormTitle>Add a new supplier</FormTitle>
+        <FormTitle>Edit supplier</FormTitle>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <FormFieldsWrapper>
             <FormInput
