@@ -976,7 +976,22 @@
           },
           "suppliers": {
             "type": "array",
-            "example": ["Square", "ACI"],
+            "items": {
+              "type": "object",
+              "description": "Supplier info",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "example": "65e605a9403aaceab1749408",
+                  "description": "Supplier id"
+                },
+                "name": {
+                  "type": "string",
+                  "example": "Allen Raymond",
+                  "description": "Supplier name"
+                }
+              }
+            },
             "description": "Suppliers"
           }
         }
