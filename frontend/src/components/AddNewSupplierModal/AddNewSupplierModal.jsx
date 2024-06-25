@@ -1,6 +1,7 @@
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import toast from "react-hot-toast";
+import { format } from "date-fns";
 
 import API from "#services/axios";
 import { supplierSchema } from "#config/validation/supplierSchema";
@@ -23,7 +24,7 @@ import { DatePicker } from "#components/common/DatePicker/DatePicker";
 
 const statusOptions = createSelectOptions(Object.values(SupplierStatuses));
 
-export const AddNewSupplierModal = ({ isOpen, onClose }) => {
+export const AddNewSupplierModal = ({ isOpen, onClose, setSuppliers }) => {
   const {
     register,
     handleSubmit,
@@ -35,11 +36,20 @@ export const AddNewSupplierModal = ({ isOpen, onClose }) => {
   });
 
   const onSubmit = async (data) => {
+    data.date = format(data.date, "MMMM d, yyyy");
+
     try {
       const addSupplierPromise = API.post("/suppliers", data);
       await toast.promise(addSupplierPromise, {
         loading: "Adding...",
-        success: "Successful added!",
+        success: ({ data }) => {
+          setSuppliers((prevState) => ({
+            ...prevState,
+            paginatedResult: [data, ...prevState.paginatedResult.slice(0, 4)],
+            totalCount: prevState.totalCount + 1,
+          }));
+          return "Successful added!";
+        },
         error: (error) => error.message,
       });
       onClose();
