@@ -34,7 +34,15 @@ export const AllProductsTable = ({
       const removeProductPromise = API.delete(`/products/${productId}`);
       await toast.promise(removeProductPromise, {
         loading: "Removing...",
-        success: "Successful removed!",
+        success: () => {
+          setProducts((prevState) => ({
+            ...prevState,
+            paginatedResult: prevState.paginatedResult.filter(
+              (product) => product._id !== productId
+            ),
+          }));
+          return "Successful removed!";
+        },
         error: (error) => error.message,
       });
     } catch (error) {
