@@ -73,7 +73,11 @@ const ProductsPage = () => {
       {content && (
         <>
           <TableWrapper>
-            <AllProductsTable products={products.paginatedResult} />
+            <AllProductsTable
+              products={products.paginatedResult}
+              categories={products.categories}
+              suppliers={products.suppliers}
+            />
           </TableWrapper>
           <Paginator totalCount={products.totalCount} setPage={setPage} />
         </>
