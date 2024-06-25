@@ -18,6 +18,11 @@ export const BaseInput = styled.input`
   &::placeholder {
     color: ${(p) => p.theme.colors.secondaryText};
   }
+
+  &:hover,
+  &:focus {
+    border-color: ${(p) => p.theme.colors.border};
+  }
 `;
 
 export const BaseValidationMessage = styled.p`

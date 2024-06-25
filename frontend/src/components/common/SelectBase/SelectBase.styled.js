@@ -12,6 +12,7 @@ export const selectStyles = {
     cursor: "pointer",
     boxShadow: "none",
     backgroundColor: "transparent",
+    transition: theme.transition("border-color"),
     "&:hover": {
       borderColor: theme.colors.border,
     },
