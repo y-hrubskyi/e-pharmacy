@@ -1,6 +1,9 @@
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import toast from "react-hot-toast";
+import { format } from "date-fns";
 
+import API from "#services/axios";
 import { supplierSchema } from "#config/validation/supplierSchema";
 import { SupplierStatuses } from "#config/constants";
 import { createSelectOptions } from "#utils";
@@ -40,8 +43,20 @@ export const EditSupplierDataModal = ({ isOpen, onClose, supplier }) => {
     },
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    data.date = format(data.date, "MMMM d, yyyy");
+
+    try {
+      const editSupplierPromise = API.put(`/suppliers/${supplier._id}`, data);
+      await toast.promise(editSupplierPromise, {
+        loading: "Saving...",
+        success: "Successful saved!",
+        error: (error) => error.message,
+      });
+      onClose();
+    } catch (error) {
+      // handled in toast.promise
+    }
   };
 
   return (
@@ -114,7 +129,9 @@ export const EditSupplierDataModal = ({ isOpen, onClose, supplier }) => {
 
           <FormActionBtnsWrapper>
             <FormSubmitBtn type="submit">Save</FormSubmitBtn>
-            <FormCancelBtn type="reset">Cancel</FormCancelBtn>
+            <FormCancelBtn type="reset" onClick={onClose}>
+              Cancel
+            </FormCancelBtn>
           </FormActionBtnsWrapper>
         </Form>
       </FormWrapper>
