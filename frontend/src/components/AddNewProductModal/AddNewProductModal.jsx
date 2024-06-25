@@ -123,6 +123,7 @@ export const AddNewProductModal = ({
             />
             <FormInput
               type="number"
+              step="any"
               {...register("price")}
               placeholder="Price"
               data-is-correct={isCorrectPrice}
