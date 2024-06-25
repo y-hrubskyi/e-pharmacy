@@ -58,5 +58,11 @@
       <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="5.2" d="M26.667 29.333v16"></path>
       <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="5.2" d="M37.333 29.333v16"></path>
     </symbol>
+    <symbol id="icon-calendar" viewBox="0 0 64 64">
+      <path fill="none" stroke="#59b17a" style="stroke: var(--color1, #59b17a)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="6" d="M50.667 10.664h-37.334c-2.945 0-5.333 2.388-5.333 5.333v37.333c0 2.946 2.388 5.333 5.333 5.333h37.334c2.945 0 5.333-2.388 5.333-5.333v-37.333c0-2.945-2.388-5.333-5.333-5.333z"></path>
+      <path fill="none" stroke="#59b17a" style="stroke: var(--color1, #59b17a)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="6" d="M42.664 5.336v10.667"></path>
+      <path fill="none" stroke="#59b17a" style="stroke: var(--color1, #59b17a)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="6" d="M21.336 5.336v10.667"></path>
+      <path fill="none" stroke="#59b17a" style="stroke: var(--color1, #59b17a)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="6" d="M8 26.664h48"></path>
+    </symbol>
   </defs>
 </svg>
