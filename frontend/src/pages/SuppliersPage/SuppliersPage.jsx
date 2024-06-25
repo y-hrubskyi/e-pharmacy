@@ -16,7 +16,7 @@ import { Placeholder } from "#components/common/Placeholder/Placeholder";
 
 const SuppliersPage = () => {
   const [suppliers, setSuppliers] = useState(null);
-
+  const [filter, setFilter] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -26,7 +26,10 @@ const SuppliersPage = () => {
         setIsLoading(true);
         setError(null);
 
-        const { data } = await API.get("/suppliers");
+        const searchParams = new URLSearchParams();
+        if (filter) searchParams.set("name", filter.split("/")[0]);
+
+        const { data } = await API.get(`/suppliers?${searchParams}`);
         setSuppliers(data);
       } catch (error) {
         setError(error.message);
@@ -34,7 +37,12 @@ const SuppliersPage = () => {
         setIsLoading(false);
       }
     })();
-  }, []);
+  }, [filter]);
+
+  const onFilterSubmit = (value) => {
+    setFilter(`${value}/${Date.now()}`);
+    setSuppliers(null);
+  };
 
   const loading = !error && isLoading;
   const hasError = !isLoading && error;
@@ -45,7 +53,12 @@ const SuppliersPage = () => {
   return (
     <PageWrapper>
       <ControlPanel>
-        <Filter placeholder="Supplier Name" fieldName="Supplier Name" />
+        <Filter
+          placeholder="Supplier Name"
+          fieldName="Supplier Name"
+          onFilterSubmit={onFilterSubmit}
+          isLoading={isLoading}
+        />
         <AddBtnWithoutPlusIcon type="button" onClick={() => {}}>
           Add a new supplier
         </AddBtnWithoutPlusIcon>
