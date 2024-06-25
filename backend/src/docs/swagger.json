@@ -1,9 +1,9 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "e-Pharmacy API",
+    "title": "E-Pharmacy API",
     "summary": "API for managing pharmacy operations and inventory",
-    "description": "The e-Pharmacy API is designed to facilitate the management of key pharmacy operations, including customer management, supplier management, product management, and order processing. This API provides comprehensive endpoints to streamline and automate pharmacy processes, ensuring efficient and accurate management of pharmaceutical products and related business operations.",
+    "description": "The E-Pharmacy API is designed to facilitate the management of key pharmacy operations, including customer management, supplier management, product management, and order processing. This API provides comprehensive endpoints to streamline and automate pharmacy processes, ensuring efficient and accurate management of pharmaceutical products and related business operations.",
     "termsOfService": "http://swagger.io/terms/",
     "license": {
       "name": "MIT",
@@ -976,7 +976,22 @@
           },
           "suppliers": {
             "type": "array",
-            "example": ["Square", "ACI"],
+            "items": {
+              "type": "object",
+              "description": "Supplier info",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "example": "65e605a9403aaceab1749408",
+                  "description": "Supplier id"
+                },
+                "name": {
+                  "type": "string",
+                  "example": "Allen Raymond",
+                  "description": "Supplier name"
+                }
+              }
+            },
             "description": "Suppliers"
           }
         }
@@ -1157,6 +1172,23 @@
           }
         }
       },
+      "GetOrdersResponseSuccess": {
+        "type": "object",
+        "properties": {
+          "paginatedResult": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Order"
+            },
+            "description": "Paginated orders list"
+          },
+          "totalCount": {
+            "type": "number",
+            "example": 2,
+            "description": "Total orders quantity (by query params filters)"
+          }
+        }
+      },
       "Transaction": {
         "type": "object",
         "description": "Transaction",
@@ -1204,7 +1236,7 @@
           }
         }
       },
-      "GetOrdersResponseSuccess": {
+      "GetDashboardResponseSuccess": {
         "type": "object",
         "properties": {
           "productsQuantity": {
@@ -1235,23 +1267,6 @@
               "$ref": "#/components/schemas/Transaction"
             },
             "description": "Recent transactions list"
-          }
-        }
-      },
-      "GetDashboardResponseSuccess": {
-        "type": "object",
-        "properties": {
-          "paginatedResult": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Order"
-            },
-            "description": "Paginated orders list"
-          },
-          "totalCount": {
-            "type": "number",
-            "example": 2,
-            "description": "Total orders quantity (by query params filters)"
           }
         }
       }

@@ -28,12 +28,15 @@ export const get = async (page, limit, name) => {
   ]);
 
   const suppliers = await Supplier.find({}, 'company').exec();
-  const supplierNames = suppliers.map(doc => doc.company);
+  const suppliersResponse = suppliers.map(doc => ({
+    id: doc.id,
+    name: doc.company,
+  }));
 
   return {
     paginatedResult,
     totalCount,
     categories: Enums.CATEGORIES,
-    suppliers: supplierNames,
+    suppliers: suppliersResponse,
   };
 };

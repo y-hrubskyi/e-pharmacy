@@ -2,9 +2,9 @@ import Joi from 'joi';
 import { isValid, parse } from 'date-fns';
 
 export const Regexps = {
-  NAME: /^[a-zA-Z0-9_\- ]{3,30}$/,
+  NAME: /^[a-zA-Z0-9_\- ]{3,40}$/,
   ADDRESS: /^[a-zA-Z0-9\s,'-]+$/,
-  COMPANY: /^[a-zA-Z0-9_\- ]{3,30}$/,
+  COMPANY: /^[a-zA-Z0-9_\- ]{3,50}$/,
 };
 
 const Statuses = {

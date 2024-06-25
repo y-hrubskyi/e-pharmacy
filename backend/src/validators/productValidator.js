@@ -2,7 +2,7 @@ import Joi from 'joi';
 
 export const Regexps = {
   NAME: /^[a-zA-Z0-9_\- ]{3,30}$/,
-  SUPPLIER: /^[a-zA-Z0-9_\- ]{3,30}$/,
+  SUPPLIER: /^[a-zA-Z0-9_\- ]{3,50}$/,
   MONGOOSE_OBJECT_ID: /^[0-9a-fA-F]{24}$/,
 };
 
@@ -12,6 +12,8 @@ const categories = [
   'Eye Care',
   'Hand',
   'Head',
+  'Heart',
+  'Leg',
   'Medicine',
   'Orthopedic Products',
   'Skin Care',
