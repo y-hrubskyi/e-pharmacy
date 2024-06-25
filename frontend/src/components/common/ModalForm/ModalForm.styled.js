@@ -49,8 +49,8 @@ export const FormFieldsWrapper = styled.div`
   @media screen and (min-width: 768px) {
     flex-direction: row;
     flex-wrap: wrap;
-    row-gap: ${(p) => p.theme.spacing(3.5)};
-    column-gap: ${(p) => p.theme.spacing(2)};
+    justify-content: space-between;
+    column-gap: 0;
   }
 `;
 
@@ -59,7 +59,7 @@ export const FormInput = styled(BaseInput)`
   border: 1px solid ${getBorderColorByValidationResult};
 
   @media screen and (min-width: 768px) {
-    width: 224px;
+    width: 220px;
   }
 `;
 
