@@ -15,6 +15,7 @@ export const SelectBase = ({
   placeholder,
   options,
   defaultValue,
+  menuHeight,
   onChange,
   isCorrect,
   hasError,
@@ -33,6 +34,10 @@ export const SelectBase = ({
             isCorrect,
             hasError
           )}`,
+        }),
+        menu: (baseStyles, state) => ({
+          ...selectStyles.menu(baseStyles, state),
+          height: menuHeight,
         }),
       }}
       options={options}

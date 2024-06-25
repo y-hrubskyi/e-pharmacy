@@ -103,6 +103,7 @@ export const AddNewProductModal = ({
                 <SelectBase
                   options={categoryOptions}
                   placeholder="Category"
+                  menuHeight={140}
                   onChange={onChange}
                   isCorrect={isCorrectCategory}
                   hasError={hasErrorCategory}
@@ -123,6 +124,7 @@ export const AddNewProductModal = ({
                 <SelectBase
                   options={supplierOptions}
                   placeholder="Supplier"
+                  menuHeight={140}
                   onChange={onChange}
                   isCorrect={isCorrectSupplier}
                   hasError={hasErrorSupplier}

@@ -105,6 +105,7 @@ export const EditProductDataModal = ({
                   }}
                   options={categoryOptions}
                   placeholder="Category"
+                  menuHeight={140}
                   onChange={onChange}
                   isCorrect={!errors.category}
                   hasError={errors.category}
@@ -129,6 +130,7 @@ export const EditProductDataModal = ({
                   }}
                   options={supplierOptions}
                   placeholder="Supplier"
+                  menuHeight={140}
                   onChange={onChange}
                   isCorrect={!errors.supplier}
                   hasError={errors.supplier}
