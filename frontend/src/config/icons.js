@@ -33,4 +33,5 @@ export const Icons = {
   plus: new URL("#assets/icons/sprite.svg#icon-plus", import.meta.url),
   edit: new URL("#assets/icons/sprite.svg#icon-edit", import.meta.url),
   trash: new URL("#assets/icons/sprite.svg#icon-trash", import.meta.url),
+  calendar: new URL("#assets/icons/sprite.svg#icon-calendar", import.meta.url),
 };

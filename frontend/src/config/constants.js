@@ -13,3 +13,8 @@ export const OrderStatuses = {
   COMPLETED: "Completed",
   CANCELLED: "Cancelled",
 };
+
+export const SupplierStatuses = {
+  ACTIVE: "Active",
+  DEACTIVE: "Deactive",
+};
