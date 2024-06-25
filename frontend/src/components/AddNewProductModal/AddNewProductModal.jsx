@@ -1,6 +1,8 @@
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import toast from "react-hot-toast";
 
+import API from "#services/axios";
 import { productSchema } from "#config/validation/productSchema";
 import { createSelectOptions } from "#utils";
 
@@ -33,12 +35,34 @@ export const AddNewProductModal = ({
     resolver: yupResolver(productSchema),
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    const supplierName = suppliers.find(
+      (supplier) => supplier.id === data.supplier
+    )?.name;
+
+    data.supplier = {
+      id: data.supplier,
+      name: supplierName,
+    };
+
+    try {
+      const addProductPromise = API.post("/products", data);
+      await toast.promise(addProductPromise, {
+        loading: "Adding...",
+        success: "Successful added!",
+        error: (error) => error.message,
+      });
+      onClose();
+    } catch (error) {
+      // handled in toast.promise
+    }
   };
 
   const categoryOptions = createSelectOptions(categories);
-  const supplierOptions = createSelectOptions(suppliers);
+  const supplierOptions = suppliers.map(({ id, name }) => ({
+    value: id,
+    label: name,
+  }));
 
   const isCorrectName = dirtyFields.name && !errors.name;
   const hasErrorName = errors.name;
@@ -108,7 +132,9 @@ export const AddNewProductModal = ({
 
           <FormActionBtnsWrapper>
             <FormSubmitBtn type="submit">Add</FormSubmitBtn>
-            <FormCancelBtn type="reset">Cancel</FormCancelBtn>
+            <FormCancelBtn type="reset" onClick={onClose}>
+              Cancel
+            </FormCancelBtn>
           </FormActionBtnsWrapper>
         </Form>
       </FormWrapper>
