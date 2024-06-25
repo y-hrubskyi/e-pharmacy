@@ -36,6 +36,7 @@ The main frameworks and libraries used in the project are listed here. A complet
 2. [Express](https://expressjs.com/) — a web application framework for Node.js
 3. [MongoDB](https://www.mongodb.com/) — a NoSQL database
 4. [Mongoose](https://mongoosejs.com/) — an ODM (Object Data Modeling) library for MongoDB and Node.js
+5. [Swagger](https://swagger.io/) — an API documentation tool
 
 #### Folder Structure
 
@@ -116,3 +117,11 @@ You should use .env.example files as a reference.
 2. Run backend: `npm run dev -w backend`
 
 3. Run frontend: `npm run dev -w frontend`
+
+## Documentation
+
+### API Documentation
+
+For detailed API documentation, please refer to our Swagger documentation:
+
+[Swagger Documentation](https://e-pharmacy-0e2p.onrender.com/api-docs)
