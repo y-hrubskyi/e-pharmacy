@@ -98,6 +98,7 @@ const ProductsPage = () => {
           onClose={toggleModal}
           categories={products.categories}
           suppliers={products.suppliers}
+          setProducts={setProducts}
         />
       )}
     </PageWrapper>

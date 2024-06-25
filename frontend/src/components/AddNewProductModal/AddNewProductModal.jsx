@@ -24,6 +24,7 @@ export const AddNewProductModal = ({
   onClose,
   categories,
   suppliers,
+  setProducts,
 }) => {
   const {
     register,
@@ -49,7 +50,14 @@ export const AddNewProductModal = ({
       const addProductPromise = API.post("/products", data);
       await toast.promise(addProductPromise, {
         loading: "Adding...",
-        success: "Successful added!",
+        success: ({ data }) => {
+          setProducts((prevState) => ({
+            ...prevState,
+            paginatedResult: [data, ...prevState.paginatedResult.slice(0, 4)],
+            totalCount: prevState.totalCount + 1,
+          }));
+          return "Successful added!";
+        },
         error: (error) => error.message,
       });
       onClose();
