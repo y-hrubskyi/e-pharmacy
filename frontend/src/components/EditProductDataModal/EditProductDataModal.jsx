@@ -1,6 +1,8 @@
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import toast from "react-hot-toast";
 
+import API from "#services/axios";
 import { productSchema } from "#config/validation/productSchema";
 import { createSelectOptions } from "#utils";
 
@@ -41,8 +43,27 @@ export const EditProductDataModal = ({
     },
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    const supplierName = suppliers.find(
+      (supplier) => supplier.id === data.supplier
+    )?.name;
+
+    data.supplier = {
+      id: data.supplier,
+      name: supplierName,
+    };
+
+    try {
+      const editProductPromise = API.put(`/products/${product._id}`, data);
+      await toast.promise(editProductPromise, {
+        loading: "Saving...",
+        success: "Successful saved!",
+        error: (error) => error.message,
+      });
+      onClose();
+    } catch (error) {
+      // handled in toast.promise
+    }
   };
 
   const categoryOptions = createSelectOptions(categories);
@@ -117,7 +138,9 @@ export const EditProductDataModal = ({
 
           <FormActionBtnsWrapper>
             <FormSubmitBtn type="submit">Save</FormSubmitBtn>
-            <FormCancelBtn type="reset">Cancel</FormCancelBtn>
+            <FormCancelBtn type="reset" onClick={onClose}>
+              Cancel
+            </FormCancelBtn>
           </FormActionBtnsWrapper>
         </Form>
       </FormWrapper>
