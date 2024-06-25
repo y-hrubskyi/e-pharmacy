@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import API from "#services/axios";
+import { useModal } from "#hooks/useModal";
 
 import {
   PageWrapper,
@@ -12,6 +13,7 @@ import { AddBtnWithPlusIcon } from "#components/common/AddBtnWithPlusIcon/AddBtn
 import { TableWrapper } from "#components/common/Table/Table.styled";
 import { AllProductsTable } from "#components/AllProductsTable/AllProductsTable";
 import { Paginator } from "#components/common/Paginator/Paginator";
+import { AddNewProductModal } from "#components/AddNewProductModal/AddNewProductModal";
 import { Loader } from "#components/common/Loader/Loader";
 import { Placeholder } from "#components/common/Placeholder/Placeholder";
 
@@ -21,6 +23,7 @@ const ProductsPage = () => {
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const { isModalOpen, toggleModal } = useModal();
 
   useEffect(() => {
     (async () => {
@@ -62,7 +65,7 @@ const ProductsPage = () => {
           onFilterSubmit={onFilterSubmit}
           isLoading={isLoading}
         />
-        <AddBtnWithPlusIcon onClick={() => {}}>
+        <AddBtnWithPlusIcon onClick={toggleModal}>
           Add a new product
         </AddBtnWithPlusIcon>
       </ControlPanel>
@@ -87,6 +90,15 @@ const ProductsPage = () => {
             Nothing found. Please check your spelling or try other terms
           </Placeholder>
         </PlaceholderWrapper>
+      )}
+
+      {isModalOpen && (
+        <AddNewProductModal
+          isOpen={isModalOpen}
+          onClose={toggleModal}
+          categories={products.categories}
+          suppliers={products.suppliers}
+        />
       )}
     </PageWrapper>
   );
