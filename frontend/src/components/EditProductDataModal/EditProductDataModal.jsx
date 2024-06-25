@@ -25,6 +25,7 @@ export const EditProductDataModal = ({
   product,
   categories,
   suppliers,
+  setProducts,
 }) => {
   const {
     register,
@@ -57,7 +58,15 @@ export const EditProductDataModal = ({
       const editProductPromise = API.put(`/products/${product._id}`, data);
       await toast.promise(editProductPromise, {
         loading: "Saving...",
-        success: "Successful saved!",
+        success: ({ data }) => {
+          setProducts((prevState) => ({
+            ...prevState,
+            paginatedResult: prevState.paginatedResult.map((product) =>
+              product._id === data._id ? data : product
+            ),
+          }));
+          return "Successful saved!";
+        },
         error: (error) => error.message,
       });
       onClose();

@@ -77,6 +77,7 @@ const ProductsPage = () => {
               products={products.paginatedResult}
               categories={products.categories}
               suppliers={products.suppliers}
+              setProducts={setProducts}
             />
           </TableWrapper>
           <Paginator totalCount={products.totalCount} setPage={setPage} />

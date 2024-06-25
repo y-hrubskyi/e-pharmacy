@@ -13,7 +13,12 @@ import { EditProductDataModal } from "#components/EditProductDataModal/EditProdu
 
 import * as SC from "./AllProductsTable.styled";
 
-export const AllProductsTable = ({ products, categories, suppliers }) => {
+export const AllProductsTable = ({
+  products,
+  categories,
+  suppliers,
+  setProducts,
+}) => {
   const [currentProduct, setCurrentProduct] = useState(null);
   const { isModalOpen, toggleModal } = useModal();
 
@@ -71,6 +76,7 @@ export const AllProductsTable = ({ products, categories, suppliers }) => {
           product={currentProduct}
           categories={categories}
           suppliers={suppliers}
+          setProducts={setProducts}
         />
       )}
     </>
