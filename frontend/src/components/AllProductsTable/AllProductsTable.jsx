@@ -1,7 +1,9 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 import { Icons } from "#config/icons";
 import { useModal } from "#hooks/useModal";
+import API from "#services/axios";
 
 import {
   Table,
@@ -25,6 +27,19 @@ export const AllProductsTable = ({
   const handleEditProductClick = (product) => {
     setCurrentProduct(product);
     toggleModal();
+  };
+
+  const handleRemoveProductClick = async (productId) => {
+    try {
+      const removeProductPromise = API.delete(`/products/${productId}`);
+      await toast.promise(removeProductPromise, {
+        loading: "Removing...",
+        success: "Successful removed!",
+        error: (error) => error.message,
+      });
+    } catch (error) {
+      // handled in toast.promise
+    }
   };
 
   return (
@@ -58,7 +73,10 @@ export const AllProductsTable = ({
                     <use href={Icons.edit}></use>
                   </SC.ActionIcon>
                 </SC.EditBtn>
-                <SC.RemoveBtn type="button" onClick={() => {}}>
+                <SC.RemoveBtn
+                  type="button"
+                  onClick={() => handleRemoveProductClick(product._id)}
+                >
                   <SC.ActionIcon>
                     <use href={Icons.trash}></use>
                   </SC.ActionIcon>
