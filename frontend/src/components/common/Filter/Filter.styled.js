@@ -17,8 +17,12 @@ const getBorderColorByValidationResult = (p) => {
 export const FilterForm = styled.form`
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: center;
   gap: ${(p) => p.theme.spacing(2)};
+
+  @media screen and (min-width: 375px) {
+    justify-content: flex-end;
+  }
 
   @media screen and (min-width: 768px) {
     gap: ${(p) => p.theme.spacing(3.5)};
