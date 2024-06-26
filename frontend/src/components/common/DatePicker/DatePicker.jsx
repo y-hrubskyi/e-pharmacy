@@ -19,6 +19,7 @@ export const DatePicker = ({
         placeholderText={placeholder}
         onChange={onChange}
         selected={selected}
+        minDate={new Date()}
         showIcon
         icon={
           <SC.CalendarIcon>
