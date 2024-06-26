@@ -26,6 +26,10 @@ export const Filter = ({
     onFilterSubmit(data.name);
   };
 
+  const handleResetFilter = () => {
+    onFilterSubmit("");
+  };
+
   const isCorrectName = dirtyFields.name && !errors.name;
   const hasErrorName = errors.name;
 
@@ -41,12 +45,19 @@ export const Filter = ({
         />
       </TextField>
 
-      <SC.FilterSubmitBtn type="submit" disabled={isLoading}>
+      <SC.FilterActionBtn type="submit" disabled={isLoading}>
         <SC.FilterIcon>
           <use href={Icons.filter}></use>
         </SC.FilterIcon>
         Filter
-      </SC.FilterSubmitBtn>
+      </SC.FilterActionBtn>
+      <SC.FilterActionBtn
+        type="reset"
+        disabled={isLoading}
+        onClick={handleResetFilter}
+      >
+        Reset
+      </SC.FilterActionBtn>
     </SC.FilterForm>
   );
 };

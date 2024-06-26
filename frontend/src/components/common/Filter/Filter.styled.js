@@ -34,7 +34,7 @@ export const NameInput = styled(BaseInput)`
   }
 `;
 
-export const FilterSubmitBtn = styled.button`
+export const FilterActionBtn = styled.button`
   align-self: start;
   display: flex;
   align-items: center;
