@@ -108,6 +108,7 @@ export const RemoveBtn = styled(ActionBtn)`
 `;
 
 export const ActionIcon = styled.svg`
+  flex-shrink: 0;
   width: 16px;
   height: 16px;
 
