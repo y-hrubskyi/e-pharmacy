@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import LogoIMG from "#assets/img/login-page/logo.webp";
-import PillIMG from "#assets/img/login-page/pill.webp";
-import DecorElelemtsIMG from "#assets/img/login-page/decor-elements.webp";
+import LogoIMG from "@/assets/img/login-page/logo.webp";
+import PillIMG from "@/assets/img/login-page/pill.webp";
+import DecorElelemtsIMG from "@/assets/img/login-page/decor-elements.webp";
 
 export const Container = styled.div`
   margin: 0 auto;

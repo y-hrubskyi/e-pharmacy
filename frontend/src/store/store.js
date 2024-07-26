@@ -9,7 +9,7 @@ import {
   REGISTER,
 } from "redux-persist";
 
-import { authReducer } from "#store/auth/slice";
+import { authReducer } from "@/store/auth/slice";
 
 export const store = configureStore({
   reducer: {

@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 
-import { Icons } from "#config/icons";
+import { Icons } from "@/config/icons";
 
-import { SidebarMenu } from "#components/SidebarMenu/SidebarMenu";
-import { LogOutBtn } from "#components/common/LogOutBtn/LogOutBtn";
+import { SidebarMenu } from "@/components/SidebarMenu/SidebarMenu";
+import { LogOutBtn } from "@/components/common/LogOutBtn/LogOutBtn";
 
 import * as SC from "./Sidebar.styled";
 

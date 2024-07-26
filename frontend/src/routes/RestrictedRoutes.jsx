@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 
-import LoginPage from "#pages/LoginPage/LoginPage";
+import LoginPage from "@/pages/LoginPage/LoginPage";
 
 const RestrictedRoutes = () => {
   return (

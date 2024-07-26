@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { BaseInput } from "#components/common/TextField/TextField.styled";
+import { BaseInput } from "@/components/common/TextField/TextField.styled";
 
 export const AuthForm = styled.form`
   align-self: start;

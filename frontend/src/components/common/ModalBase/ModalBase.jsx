@@ -1,6 +1,6 @@
 import ReactModal from "react-modal";
 
-import { Icons } from "#config/icons";
+import { Icons } from "@/config/icons";
 
 import * as SC from "./ModalBase.styled";
 

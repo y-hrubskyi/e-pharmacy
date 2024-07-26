@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import API, { clearAuthHeader, setAuthHeader } from "#services/axios";
+import API, { clearAuthHeader, setAuthHeader } from "@/services/axios";
 
 export const login = createAsyncThunk(
   "auth/login",

@@ -1,21 +1,21 @@
 import { useEffect, useState } from "react";
 
-import API from "#services/axios";
-import { useModal } from "#hooks/useModal";
+import API from "@/services/axios";
+import { useModal } from "@/hooks/useModal";
 
 import {
   PageWrapper,
   ControlPanel,
   PlaceholderWrapper,
-} from "#components/common/Page/Page.styled";
-import { Filter } from "#components/common/Filter/Filter";
-import { AddBtnWithoutPlusIcon } from "#components/common/AddBtnWithoutPlusIcon/AddBtnWithoutPlusIcon.styled";
-import { TableWrapper } from "#components/common/Table/Table.styled";
-import { AllSuppliersTable } from "#components/AllSuppliersTable/AllSuppliersTable";
-import { Paginator } from "#components/common/Paginator/Paginator";
-import { AddNewSupplierModal } from "#components/AddNewSupplierModal/AddNewSupplierModal";
-import { Loader } from "#components/common/Loader/Loader";
-import { Placeholder } from "#components/common/Placeholder/Placeholder";
+} from "@/components/common/Page/Page.styled";
+import { Filter } from "@/components/common/Filter/Filter";
+import { AddBtnWithoutPlusIcon } from "@/components/common/AddBtnWithoutPlusIcon/AddBtnWithoutPlusIcon.styled";
+import { TableWrapper } from "@/components/common/Table/Table.styled";
+import { AllSuppliersTable } from "@/components/AllSuppliersTable/AllSuppliersTable";
+import { Paginator } from "@/components/common/Paginator/Paginator";
+import { AddNewSupplierModal } from "@/components/AddNewSupplierModal/AddNewSupplierModal";
+import { Loader } from "@/components/common/Loader/Loader";
+import { Placeholder } from "@/components/common/Placeholder/Placeholder";
 
 const SuppliersPage = () => {
   const [suppliers, setSuppliers] = useState(null);

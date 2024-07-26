@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-import { SupplierStatuses } from "#config/constants";
+import { SupplierStatuses } from "@/config/constants";
 
-import { THeadCell, TDataCell } from "#components/common/Table/Table.styled";
+import { THeadCell, TDataCell } from "@/components/common/Table/Table.styled";
 
 const getTextColorBySupplierStatus = (p) => {
   const supplierStatus = p["data-supplier-status"];

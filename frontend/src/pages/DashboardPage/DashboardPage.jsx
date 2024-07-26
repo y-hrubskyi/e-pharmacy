@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
-import API from "#services/axios";
+import API from "@/services/axios";
 
-import { Statistics } from "#components/Statistics/Statistics";
-import { RecentCustomersTable } from "#components/RecentCustomersTable/RecentCustomersTable";
-import { IncomesExpensesTable } from "#components/IncomesExpensesTable/IncomesExpensesTable";
-import { Loader } from "#components/common/Loader/Loader";
-import { Placeholder } from "#components/common/Placeholder/Placeholder";
+import { Statistics } from "@/components/Statistics/Statistics";
+import { RecentCustomersTable } from "@/components/RecentCustomersTable/RecentCustomersTable";
+import { IncomesExpensesTable } from "@/components/IncomesExpensesTable/IncomesExpensesTable";
+import { Loader } from "@/components/common/Loader/Loader";
+import { Placeholder } from "@/components/common/Placeholder/Placeholder";
 
 import * as SC from "./DashboardPage.styled";
 

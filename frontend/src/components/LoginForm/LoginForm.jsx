@@ -4,12 +4,12 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import toast from "react-hot-toast";
 
-import { loginSchema } from "#config/validation/loginSchema";
-import { selectAuthIsLoading } from "#store/auth/selectors";
-import { login } from "#store/auth/operations";
+import { loginSchema } from "@/config/validation/loginSchema";
+import { selectAuthIsLoading } from "@/store/auth/selectors";
+import { login } from "@/store/auth/operations";
 
-import { TextField } from "#components/common/TextField/TextField";
-import { PasswordField } from "#components/common/PasswordField/PasswordField";
+import { TextField } from "@/components/common/TextField/TextField";
+import { PasswordField } from "@/components/common/PasswordField/PasswordField";
 import * as SC from "./LoginForm.styled";
 
 export const LoginForm = () => {

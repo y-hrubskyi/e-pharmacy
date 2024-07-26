@@ -1,4 +1,4 @@
-import { Icons } from "#config/icons";
+import { Icons } from "@/config/icons";
 
 import * as SC from "./SidebarMenu.styled";
 

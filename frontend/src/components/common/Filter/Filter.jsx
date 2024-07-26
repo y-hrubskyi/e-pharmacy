@@ -1,10 +1,10 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { Icons } from "#config/icons";
-import { filterSchema } from "#config/validation/filterSchema";
+import { Icons } from "@/config/icons";
+import { filterSchema } from "@/config/validation/filterSchema";
 
-import { TextField } from "#components/common/TextField/TextField";
+import { TextField } from "@/components/common/TextField/TextField";
 import * as SC from "./Filter.styled";
 
 export const Filter = ({

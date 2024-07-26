@@ -1,9 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 
-import { Icons } from "#config/icons";
-import { selectAuthIsLoading } from "#store/auth/selectors";
-import { logout } from "#store/auth/operations";
+import { Icons } from "@/config/icons";
+import { selectAuthIsLoading } from "@/store/auth/selectors";
+import { logout } from "@/store/auth/operations";
 
 import * as SC from "./LogOutBtn.styled";
 

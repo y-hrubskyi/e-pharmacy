@@ -1,9 +1,9 @@
 import { createGlobalStyle } from "styled-components";
 import "modern-normalize";
 
-import InterRegularWOFF2 from "#assets/fonts/Inter-Regular.woff2";
-import InterMediumWOFF2 from "#assets/fonts/Inter-Medium.woff2";
-import InterSemiBoldWOFF2 from "#assets/fonts/Inter-SemiBold.woff2";
+import InterRegularWOFF2 from "@/assets/fonts/Inter-Regular.woff2";
+import InterMediumWOFF2 from "@/assets/fonts/Inter-Medium.woff2";
+import InterSemiBoldWOFF2 from "@/assets/fonts/Inter-SemiBold.woff2";
 
 export const GlobalStyle = createGlobalStyle`
   @font-face {

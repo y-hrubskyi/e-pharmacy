@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { THeadCell, TDataCell } from "#components/common/Table/Table.styled";
+import { THeadCell, TDataCell } from "@/components/common/Table/Table.styled";
 
 export const TBody = styled.tbody`
   tr {

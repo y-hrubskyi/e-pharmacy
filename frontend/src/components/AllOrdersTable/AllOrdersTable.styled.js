@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import { THeadCell, TDataCell } from "#components/common/Table/Table.styled";
-import { OrderStatuses } from "#config/constants";
+import { THeadCell, TDataCell } from "@/components/common/Table/Table.styled";
+import { OrderStatuses } from "@/config/constants";
 
 const getTextColorByOrderStatus = (p) => {
   const orderStatus = p["data-order-status"];

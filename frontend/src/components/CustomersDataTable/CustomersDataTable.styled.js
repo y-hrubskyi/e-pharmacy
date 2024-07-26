@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { THeadCell, TDataCell } from "#components/common/Table/Table.styled";
+import { THeadCell, TDataCell } from "@/components/common/Table/Table.styled";
 
 export const NameColumn = styled(THeadCell)`
   min-width: 94px;

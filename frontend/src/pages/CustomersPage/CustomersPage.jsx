@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 
-import API from "#services/axios";
+import API from "@/services/axios";
 
 import {
   PageWrapper,
   ControlPanel,
   PlaceholderWrapper,
-} from "#components/common/Page/Page.styled";
-import { Filter } from "#components/common/Filter/Filter";
-import { TableWrapper } from "#components/common/Table/Table.styled";
-import { CustomersDataTable } from "#components/CustomersDataTable/CustomersDataTable";
-import { Paginator } from "#components/common/Paginator/Paginator";
-import { Loader } from "#components/common/Loader/Loader";
-import { Placeholder } from "#components/common/Placeholder/Placeholder";
+} from "@/components/common/Page/Page.styled";
+import { Filter } from "@/components/common/Filter/Filter";
+import { TableWrapper } from "@/components/common/Table/Table.styled";
+import { CustomersDataTable } from "@/components/CustomersDataTable/CustomersDataTable";
+import { Paginator } from "@/components/common/Paginator/Paginator";
+import { Loader } from "@/components/common/Loader/Loader";
+import { Placeholder } from "@/components/common/Placeholder/Placeholder";
 
 const CustomersPage = () => {
   const [customers, setCustomers] = useState(null);

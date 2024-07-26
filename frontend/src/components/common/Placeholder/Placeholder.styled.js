@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import PlaceholderIMG from "#assets/img/placeholders/img.webp";
+import PlaceholderIMG from "@/assets/img/placeholders/img.webp";
 
 export const PlaceholderWrapper = styled.div`
   flex-grow: 1;

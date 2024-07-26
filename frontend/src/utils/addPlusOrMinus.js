@@ -1,4 +1,4 @@
-import { TransactionTypes } from "#config/constants";
+import { TransactionTypes } from "@/config/constants";
 
 export const addPlusOrMinus = (transactionType) => {
   switch (transactionType) {

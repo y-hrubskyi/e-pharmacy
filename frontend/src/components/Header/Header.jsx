@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 
-import { Icons } from "#config/icons";
-import { selectAuthUser } from "#store/auth/selectors";
+import { Icons } from "@/config/icons";
+import { selectAuthUser } from "@/store/auth/selectors";
 
-import { LogOutBtn } from "#components/common/LogOutBtn/LogOutBtn";
+import { LogOutBtn } from "@/components/common/LogOutBtn/LogOutBtn";
 import * as SC from "./Header.styled";
 
 const Pages = {

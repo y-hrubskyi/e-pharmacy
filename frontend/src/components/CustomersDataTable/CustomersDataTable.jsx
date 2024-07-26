@@ -4,7 +4,7 @@ import {
   TRow,
   TDataCell,
   Avatar,
-} from "#components/common/Table/Table.styled";
+} from "@/components/common/Table/Table.styled";
 
 import * as SC from "./CustomersDataTable.styled";
 

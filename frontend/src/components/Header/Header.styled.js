@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import LogoIMG from "#assets/img/header/logo.webp";
+import LogoIMG from "@/assets/img/header/logo.webp";
 
 export const Header = styled.header`
   display: flex;

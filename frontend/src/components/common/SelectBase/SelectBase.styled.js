@@ -1,4 +1,4 @@
-import { theme } from "#styles/theme";
+import { theme } from "@/styles/theme";
 
 const minTablet = "@media only screen and (min-width: 768px)";
 

@@ -1,15 +1,15 @@
 import { useState } from "react";
 
-import { Icons } from "#config/icons";
-import { useModal } from "#hooks/useModal";
+import { Icons } from "@/config/icons";
+import { useModal } from "@/hooks/useModal";
 
 import {
   Table,
   Caption,
   TRow,
   TDataCell,
-} from "#components/common/Table/Table.styled";
-import { EditSupplierDataModal } from "#components/EditSupplierDataModal/EditSupplierDataModal";
+} from "@/components/common/Table/Table.styled";
+import { EditSupplierDataModal } from "@/components/EditSupplierDataModal/EditSupplierDataModal";
 
 import * as SC from "./AllSuppliersTable.styled";
 

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import { THeadCell, TDataCell } from "#components/common/Table/Table.styled";
-import { TransactionTypes } from "#config/constants";
+import { THeadCell, TDataCell } from "@/components/common/Table/Table.styled";
+import { TransactionTypes } from "@/config/constants";
 
 const getTextColorByTransactionType = (p) => {
   const transactionType = p["data-transaction-type"];

@@ -3,12 +3,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import toast from "react-hot-toast";
 import { format } from "date-fns";
 
-import API from "#services/axios";
-import { supplierSchema } from "#config/validation/supplierSchema";
-import { SupplierStatuses } from "#config/constants";
-import { createSelectOptions } from "#utils";
+import API from "@/services/axios";
+import { supplierSchema } from "@/config/validation/supplierSchema";
+import { SupplierStatuses } from "@/config/constants";
+import { createSelectOptions } from "@/utils";
 
-import { ModalBase } from "#components/common/ModalBase/ModalBase";
+import { ModalBase } from "@/components/common/ModalBase/ModalBase";
 import {
   FormWrapper,
   FormTitle,
@@ -18,9 +18,9 @@ import {
   FormActionBtnsWrapper,
   FormSubmitBtn,
   FormCancelBtn,
-} from "#components/common/ModalForm/ModalForm.styled";
-import { SelectBase } from "#components/common/SelectBase/SelectBase";
-import { DatePicker } from "#components/common/DatePicker/DatePicker";
+} from "@/components/common/ModalForm/ModalForm.styled";
+import { SelectBase } from "@/components/common/SelectBase/SelectBase";
+import { DatePicker } from "@/components/common/DatePicker/DatePicker";
 
 const statusOptions = createSelectOptions(Object.values(SupplierStatuses));
 

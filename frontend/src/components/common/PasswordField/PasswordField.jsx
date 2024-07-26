@@ -1,9 +1,9 @@
-import { Icons } from "#config/icons";
+import { Icons } from "@/config/icons";
 
 import {
   CorrectMessage,
   ErrorMessage,
-} from "#components/common/TextField/TextField.styled";
+} from "@/components/common/TextField/TextField.styled";
 import * as SC from "./PasswordField.styled";
 
 export const PasswordField = ({

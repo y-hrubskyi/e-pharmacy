@@ -1,8 +1,8 @@
 import { Fragment } from "react";
 
-import { groupByDate, addPlusOrMinus } from "#utils";
+import { groupByDate, addPlusOrMinus } from "@/utils";
 
-import { Table, Caption, TRow } from "#components/common/Table/Table.styled";
+import { Table, Caption, TRow } from "@/components/common/Table/Table.styled";
 
 import * as SC from "./IncomesExpensesTable.styled";
 

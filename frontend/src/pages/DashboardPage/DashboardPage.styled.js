@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { TableWrapper as BaseTableWrapper } from "#components/common/Table/Table.styled";
+import { TableWrapper as BaseTableWrapper } from "@/components/common/Table/Table.styled";
 
 export const PageWrapper = styled.div`
   height: 100%;
