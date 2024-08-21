@@ -7,7 +7,7 @@ export default defineConfig({
   base: "/e-pharmacy/",
   resolve: {
     alias: {
-      "@": "/src",
+      "~": "/src",
     },
   },
 });

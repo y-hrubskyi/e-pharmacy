@@ -1,9 +1,9 @@
 import { createGlobalStyle } from "styled-components";
 import "modern-normalize";
 
-import InterRegularWOFF2 from "@/assets/fonts/Inter-Regular.woff2";
-import InterMediumWOFF2 from "@/assets/fonts/Inter-Medium.woff2";
-import InterSemiBoldWOFF2 from "@/assets/fonts/Inter-SemiBold.woff2";
+import InterRegularWOFF2 from "~/assets/fonts/Inter-Regular.woff2";
+import InterMediumWOFF2 from "~/assets/fonts/Inter-Medium.woff2";
+import InterSemiBoldWOFF2 from "~/assets/fonts/Inter-SemiBold.woff2";
 
 export const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -37,7 +37,7 @@ export const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     background-color: ${(p) => p.theme.colors.pageBg};
   }
-  
+
   h1,
   h2,
   h3,
@@ -51,14 +51,14 @@ export const GlobalStyle = createGlobalStyle`
   button {
   cursor: pointer;
   }
-  
+
   ul,
   ol {
     margin: 0;
     padding: 0;
     list-style: none;
   }
-  
+
   img {
     display: block;
     max-width: 100%;

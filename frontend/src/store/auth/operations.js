@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import API, { clearAuthHeader, setAuthHeader } from "@/services/axios";
+import API, { clearAuthHeader, setAuthHeader } from "~/services/axios";
 
 export const login = createAsyncThunk(
   "auth/login",
@@ -12,7 +12,7 @@ export const login = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.response.data.message);
     }
-  }
+  },
 );
 
 export const logout = createAsyncThunk(
@@ -25,7 +25,7 @@ export const logout = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.response.data.message);
     }
-  }
+  },
 );
 
 export const refreshUser = createAsyncThunk(
@@ -44,5 +44,5 @@ export const refreshUser = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.response.data.message);
     }
-  }
+  },
 );

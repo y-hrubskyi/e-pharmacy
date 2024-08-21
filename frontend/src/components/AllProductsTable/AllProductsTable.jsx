@@ -1,17 +1,17 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 
-import { Icons } from "@/config/icons";
-import { useModal } from "@/hooks/useModal";
-import API from "@/services/axios";
+import { Icons } from "~/config/icons";
+import { useModal } from "~/hooks/useModal";
+import API from "~/services/axios";
 
 import {
   Table,
   Caption,
   TRow,
   TDataCell,
-} from "@/components/common/Table/Table.styled";
-import { EditProductDataModal } from "@/components/EditProductDataModal/EditProductDataModal";
+} from "~/components/common/Table/Table.styled";
+import { EditProductDataModal } from "~/components/EditProductDataModal/EditProductDataModal";
 
 import * as SC from "./AllProductsTable.styled";
 
@@ -38,7 +38,7 @@ export const AllProductsTable = ({
           setProducts((prevState) => ({
             ...prevState,
             paginatedResult: prevState.paginatedResult.filter(
-              (product) => product._id !== productId
+              (product) => product._id !== productId,
             ),
           }));
           return "Successful removed!";

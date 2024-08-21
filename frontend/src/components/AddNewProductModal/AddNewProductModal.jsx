@@ -2,11 +2,11 @@ import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import toast from "react-hot-toast";
 
-import API from "@/services/axios";
-import { productSchema } from "@/config/validation/productSchema";
-import { createSelectOptions } from "@/utils";
+import API from "~/services/axios";
+import { productSchema } from "~/config/validation/productSchema";
+import { createSelectOptions } from "~/utils";
 
-import { ModalBase } from "@/components/common/ModalBase/ModalBase";
+import { ModalBase } from "~/components/common/ModalBase/ModalBase";
 import {
   FormWrapper,
   FormTitle,
@@ -16,8 +16,8 @@ import {
   FormActionBtnsWrapper,
   FormSubmitBtn,
   FormCancelBtn,
-} from "@/components/common/ModalForm/ModalForm.styled";
-import { SelectBase } from "@/components/common/SelectBase/SelectBase";
+} from "~/components/common/ModalForm/ModalForm.styled";
+import { SelectBase } from "~/components/common/SelectBase/SelectBase";
 
 export const AddNewProductModal = ({
   isOpen,
@@ -38,7 +38,7 @@ export const AddNewProductModal = ({
 
   const onSubmit = async (data) => {
     const supplierName = suppliers.find(
-      (supplier) => supplier.id === data.supplier
+      (supplier) => supplier.id === data.supplier,
     )?.name;
 
     data.supplier = {
