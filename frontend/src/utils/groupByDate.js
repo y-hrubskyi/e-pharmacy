@@ -1,6 +1,6 @@
-import { formatDate } from "./formatDate";
+import { formatDate } from './formatDate';
 
-export const groupByDate = (transactions) => {
+export const groupByDate = transactions => {
   const currentDate = new Date();
   const today = formatDate(currentDate);
   const yesterday = formatDate(new Date().setDate(currentDate.getDate() - 1));
@@ -9,9 +9,9 @@ export const groupByDate = (transactions) => {
     let date = formatDate(transaction.date);
 
     if (date === today) {
-      date = "Today";
+      date = 'Today';
     } else if (date === yesterday) {
-      date = "Yesterday";
+      date = 'Yesterday';
     }
 
     if (!acc[date]) {

@@ -1,14 +1,14 @@
-import { Controller, useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import toast from "react-hot-toast";
-import { format } from "date-fns";
+import { Controller, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import toast from 'react-hot-toast';
+import { format } from 'date-fns';
 
-import API from "~/services/axios";
-import { supplierSchema } from "~/config/validation/supplierSchema";
-import { SupplierStatuses } from "~/config/constants";
-import { createSelectOptions } from "~/utils";
+import API from '~/services/axios';
+import { supplierSchema } from '~/config/validation/supplierSchema';
+import { SupplierStatuses } from '~/config/constants';
+import { createSelectOptions } from '~/utils';
 
-import { ModalBase } from "~/components/common/ModalBase/ModalBase";
+import { ModalBase } from '~/components/common/ModalBase/ModalBase';
 import {
   FormWrapper,
   FormTitle,
@@ -17,10 +17,10 @@ import {
   FormInput,
   FormActionBtnsWrapper,
   FormSubmitBtn,
-  FormCancelBtn,
-} from "~/components/common/ModalForm/ModalForm.styled";
-import { SelectBase } from "~/components/common/SelectBase/SelectBase";
-import { DatePicker } from "~/components/common/DatePicker/DatePicker";
+  FormCancelBtn
+} from '~/components/common/ModalForm/ModalForm.styled';
+import { SelectBase } from '~/components/common/SelectBase/SelectBase';
+import { DatePicker } from '~/components/common/DatePicker/DatePicker';
 
 const statusOptions = createSelectOptions(Object.values(SupplierStatuses));
 
@@ -29,28 +29,28 @@ export const AddNewSupplierModal = ({ isOpen, onClose, setSuppliers }) => {
     register,
     handleSubmit,
     control,
-    formState: { errors, dirtyFields },
+    formState: { errors, dirtyFields }
   } = useForm({
-    mode: "onChange",
-    resolver: yupResolver(supplierSchema),
+    mode: 'onChange',
+    resolver: yupResolver(supplierSchema)
   });
 
-  const onSubmit = async (data) => {
-    data.date = format(data.date, "MMMM d, yyyy");
+  const onSubmit = async data => {
+    data.date = format(data.date, 'MMMM d, yyyy');
 
     try {
-      const addSupplierPromise = API.post("/suppliers", data);
+      const addSupplierPromise = API.post('/suppliers', data);
       await toast.promise(addSupplierPromise, {
-        loading: "Adding...",
+        loading: 'Adding...',
         success: ({ data }) => {
-          setSuppliers((prevState) => ({
+          setSuppliers(prevState => ({
             ...prevState,
             paginatedResult: [data, ...prevState.paginatedResult.slice(0, 4)],
-            totalCount: prevState.totalCount + 1,
+            totalCount: prevState.totalCount + 1
           }));
-          return "Successful added!";
+          return 'Successful added!';
         },
-        error: (error) => error.message,
+        error: error => error.message
       });
       onClose();
     } catch (error) {
@@ -79,21 +79,21 @@ export const AddNewSupplierModal = ({ isOpen, onClose, setSuppliers }) => {
           <FormFieldsWrapper>
             <FormInput
               type="text"
-              {...register("name")}
+              {...register('name')}
               placeholder="Supplier Info"
               data-is-correct={isCorrectName}
               data-has-error={hasErrorName}
             />
             <FormInput
               type="text"
-              {...register("address")}
+              {...register('address')}
               placeholder="Address"
               data-is-correct={isCorrectAddress}
               data-has-error={hasErrorAddress}
             />
             <FormInput
               type="text"
-              {...register("company")}
+              {...register('company')}
               placeholder="Company"
               data-is-correct={isCorrectCompany}
               data-has-error={hasErrorCompany}
@@ -114,7 +114,7 @@ export const AddNewSupplierModal = ({ isOpen, onClose, setSuppliers }) => {
             <FormInput
               type="number"
               step="any"
-              {...register("amount")}
+              {...register('amount')}
               placeholder="Amount"
               data-is-correct={isCorrectAmount}
               data-has-error={hasErrorAmount}

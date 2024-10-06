@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import API from "~/services/axios";
+import API from '~/services/axios';
 
-import { Statistics } from "~/components/Statistics/Statistics";
-import { RecentCustomersTable } from "~/components/RecentCustomersTable/RecentCustomersTable";
-import { IncomesExpensesTable } from "~/components/IncomesExpensesTable/IncomesExpensesTable";
-import { Loader } from "~/components/common/Loader/Loader";
-import { Placeholder } from "~/components/common/Placeholder/Placeholder";
+import { Statistics } from '~/components/Statistics/Statistics';
+import { RecentCustomersTable } from '~/components/RecentCustomersTable/RecentCustomersTable';
+import { IncomesExpensesTable } from '~/components/IncomesExpensesTable/IncomesExpensesTable';
+import { Loader } from '~/components/common/Loader/Loader';
+import { Placeholder } from '~/components/common/Placeholder/Placeholder';
 
-import * as SC from "./DashboardPage.styled";
+import * as SC from './DashboardPage.styled';
 
 const DashboardPage = () => {
   const [dashboardInfo, setDashboardInfo] = useState(null);
@@ -21,7 +21,7 @@ const DashboardPage = () => {
         setIsLoading(true);
         setError(null);
 
-        const { data } = await API.get("/dashboard");
+        const { data } = await API.get('/dashboard');
         setDashboardInfo(data);
       } catch (error) {
         setError(error.message);

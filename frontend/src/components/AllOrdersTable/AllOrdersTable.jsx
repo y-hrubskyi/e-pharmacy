@@ -3,10 +3,10 @@ import {
   Caption,
   TRow,
   TDataCell,
-  Avatar,
-} from "~/components/common/Table/Table.styled";
+  Avatar
+} from '~/components/common/Table/Table.styled';
 
-import * as SC from "./AllOrdersTable.styled";
+import * as SC from './AllOrdersTable.styled';
 
 export const AllOrdersTable = ({ orders }) => {
   return (
@@ -23,7 +23,7 @@ export const AllOrdersTable = ({ orders }) => {
         </TRow>
       </thead>
       <tbody>
-        {orders.map((order) => (
+        {orders.map(order => (
           <TRow key={order._id}>
             <SC.NameDataCell>
               <Avatar
@@ -35,7 +35,7 @@ export const AllOrdersTable = ({ orders }) => {
             <SC.AddressDataCell>{order.customer.address}</SC.AddressDataCell>
             <TDataCell>{order.products}</TDataCell>
             <TDataCell>{order.orderDate}</TDataCell>
-            <TDataCell>{order.price.toLocaleString("en-US")}</TDataCell>
+            <TDataCell>{order.price.toLocaleString('en-US')}</TDataCell>
             <TDataCell>
               <SC.OrderStatusText data-order-status={order.status}>
                 {order.status}

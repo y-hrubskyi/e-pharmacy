@@ -1,6 +1,6 @@
-import * as Yup from "yup";
+import * as Yup from 'yup';
 
-export const filterSchema = (fieldName) =>
+export const filterSchema = fieldName =>
   Yup.object().shape({
-    name: Yup.string().required(`${fieldName} is required`),
+    name: Yup.string().required(`${fieldName} is required`)
   });

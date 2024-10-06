@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const AddProductBtn = styled.button`
   align-self: start;
   display: flex;
   align-items: center;
-  gap: ${(p) => p.theme.spacing(2)};
+  gap: ${p => p.theme.spacing(2)};
 
   font-weight: 500;
   font-size: 14px;
@@ -16,7 +16,7 @@ export const AddProductBtn = styled.button`
 
   &:hover span,
   &:focus span {
-    background-color: ${(p) => p.theme.colors.hover};
+    background-color: ${p => p.theme.colors.hover};
   }
 `;
 
@@ -27,15 +27,15 @@ export const AddIconWrapper = styled.span`
   width: 42px;
   height: 42px;
 
-  background-color: ${(p) => p.theme.colors.green()};
-  border-radius: ${(p) => p.theme.radii.btn};
+  background-color: ${p => p.theme.colors.green()};
+  border-radius: ${p => p.theme.radii.btn};
 
-  transition: ${(p) => p.theme.transition("background-color")};
+  transition: ${p => p.theme.transition('background-color')};
 `;
 
 export const AddIcon = styled.svg`
   width: 18px;
   height: 18px;
 
-  fill: ${(p) => p.theme.colors.primaryBg};
+  fill: ${p => p.theme.colors.primaryBg};
 `;

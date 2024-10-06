@@ -1,6 +1,6 @@
-import { Icons } from "~/config/icons";
+import { Icons } from '~/config/icons';
 
-import * as SC from "./SidebarMenu.styled";
+import * as SC from './SidebarMenu.styled';
 
 export const SidebarMenu = ({ onCloseSidebar }) => {
   return (

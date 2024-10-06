@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const FieldWrapper = styled.div`
   position: relative;
@@ -13,7 +13,7 @@ export const EyeBtn = styled.button`
   height: 18px;
   padding: 0;
 
-  color: ${(p) => p.theme.colors.primaryText};
+  color: ${p => p.theme.colors.primaryText};
 
   background-color: transparent;
   border: none;

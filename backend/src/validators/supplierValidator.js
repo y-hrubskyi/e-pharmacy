@@ -4,16 +4,16 @@ import { isValid, parse } from 'date-fns';
 export const Regexps = {
   NAME: /^[a-zA-Z0-9_\- ]{3,40}$/,
   ADDRESS: /^[a-zA-Z0-9\s,'-]+$/,
-  COMPANY: /^[a-zA-Z0-9_\- ]{3,50}$/,
+  COMPANY: /^[a-zA-Z0-9_\- ]{3,50}$/
 };
 
 const Statuses = {
   ACTIVE: 'Active',
-  DEACTIVE: 'Deactive',
+  DEACTIVE: 'Deactive'
 };
 
 export const Enums = {
-  STATUSES: Object.values(Statuses),
+  STATUSES: Object.values(Statuses)
 };
 
 const customDateValidator = (value, helpers) => {
@@ -34,10 +34,10 @@ const supplierSchema = Joi.object({
   amount: Joi.number().min(0.01).required(),
   status: Joi.string()
     .equal(...Enums.STATUSES)
-    .required(),
+    .required()
 });
 
 export const joiSchemas = {
   create: supplierSchema,
-  update: supplierSchema,
+  update: supplierSchema
 };

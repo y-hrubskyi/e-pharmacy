@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { SupplierStatuses } from "~/config/constants";
+import { SupplierStatuses } from '~/config/constants';
 
-import { THeadCell, TDataCell } from "~/components/common/Table/Table.styled";
+import { THeadCell, TDataCell } from '~/components/common/Table/Table.styled';
 
-const getTextColorBySupplierStatus = (p) => {
-  const supplierStatus = p["data-supplier-status"];
+const getTextColorBySupplierStatus = p => {
+  const supplierStatus = p['data-supplier-status'];
 
   switch (supplierStatus) {
     case SupplierStatuses.ACTIVE:
@@ -17,8 +17,8 @@ const getTextColorBySupplierStatus = (p) => {
   }
 };
 
-const getBgColorBySupplierStatus = (p) => {
-  const supplierStatus = p["data-supplier-status"];
+const getBgColorBySupplierStatus = p => {
+  const supplierStatus = p['data-supplier-status'];
 
   switch (supplierStatus) {
     case SupplierStatuses.ACTIVE:
@@ -128,8 +128,8 @@ export const DeliveryDateDataCell = styled(TDataCell)`
 
 export const SupplierStatusText = styled.p`
   width: 62px;
-  padding-top: ${(p) => p.theme.spacing(1)};
-  padding-bottom: ${(p) => p.theme.spacing(1)};
+  padding-top: ${p => p.theme.spacing(1)};
+  padding-bottom: ${p => p.theme.spacing(1)};
 
   letter-spacing: -0.05em;
   text-align: center;
@@ -149,18 +149,18 @@ export const EditBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: ${(p) => p.theme.spacing(1)};
-  padding: ${(p) => p.theme.spacing(1.25)} ${(p) => p.theme.spacing(3.25)};
+  gap: ${p => p.theme.spacing(1)};
+  padding: ${p => p.theme.spacing(1.25)} ${p => p.theme.spacing(3.25)};
 
   font-weight: 500;
-  color: ${(p) => p.theme.colors.green()};
+  color: ${p => p.theme.colors.green()};
 
   background-color: transparent;
-  border: 1px solid ${(p) => p.theme.colors.green(0.5)};
+  border: 1px solid ${p => p.theme.colors.green(0.5)};
   border-radius: 30px;
 
   @media screen and (min-width: 768px) {
-    padding: ${(p) => p.theme.spacing(1.75)} ${(p) => p.theme.spacing(4)};
+    padding: ${p => p.theme.spacing(1.75)} ${p => p.theme.spacing(4)};
   }
 `;
 

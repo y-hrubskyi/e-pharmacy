@@ -10,8 +10,8 @@ export const get = async (page, limit, name) => {
   const [
     {
       paginatedResult,
-      totalCount: [{ totalCount } = { totalCount: 0 }],
-    },
+      totalCount: [{ totalCount } = { totalCount: 0 }]
+    }
   ] = await Order.aggregate([
     {
       $facet: {
@@ -19,11 +19,11 @@ export const get = async (page, limit, name) => {
           { $match: filter },
           { $sort: { createdAt: -1 } },
           { $skip: paginationOptions.skip },
-          { $limit: paginationOptions.limit },
+          { $limit: paginationOptions.limit }
         ],
-        totalCount: [{ $match: filter }, { $count: 'totalCount' }],
-      },
-    },
+        totalCount: [{ $match: filter }, { $count: 'totalCount' }]
+      }
+    }
   ]);
 
   return { paginatedResult, totalCount };

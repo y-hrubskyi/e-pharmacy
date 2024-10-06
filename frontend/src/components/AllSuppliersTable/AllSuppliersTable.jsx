@@ -1,23 +1,23 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import { Icons } from "~/config/icons";
-import { useModal } from "~/hooks/useModal";
+import { Icons } from '~/config/icons';
+import { useModal } from '~/hooks/useModal';
 
 import {
   Table,
   Caption,
   TRow,
-  TDataCell,
-} from "~/components/common/Table/Table.styled";
-import { EditSupplierDataModal } from "~/components/EditSupplierDataModal/EditSupplierDataModal";
+  TDataCell
+} from '~/components/common/Table/Table.styled';
+import { EditSupplierDataModal } from '~/components/EditSupplierDataModal/EditSupplierDataModal';
 
-import * as SC from "./AllSuppliersTable.styled";
+import * as SC from './AllSuppliersTable.styled';
 
 export const AllSuppliersTable = ({ suppliers, setSuppliers }) => {
   const [currentSupplier, setCurrentSupplier] = useState(null);
   const { isModalOpen, toggleModal } = useModal();
 
-  const handleEditSupplierClick = (supplier) => {
+  const handleEditSupplierClick = supplier => {
     setCurrentSupplier(supplier);
     toggleModal();
   };
@@ -38,13 +38,13 @@ export const AllSuppliersTable = ({ suppliers, setSuppliers }) => {
           </TRow>
         </thead>
         <tbody>
-          {suppliers.map((supplier) => (
+          {suppliers.map(supplier => (
             <TRow key={supplier._id}>
               <TDataCell>{supplier.name}</TDataCell>
               <SC.AddressDataCell>{supplier.address}</SC.AddressDataCell>
               <SC.CompanyDataCell>{supplier.company}</SC.CompanyDataCell>
               <SC.DeliveryDateDataCell>{supplier.date}</SC.DeliveryDateDataCell>
-              <TDataCell>{supplier.amount.toLocaleString("en-US")}</TDataCell>
+              <TDataCell>{supplier.amount.toLocaleString('en-US')}</TDataCell>
               <TDataCell>
                 <SC.SupplierStatusText data-supplier-status={supplier.status}>
                   {supplier.status}

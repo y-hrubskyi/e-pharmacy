@@ -1,6 +1,6 @@
 export const Regexps = {
   NAME: /^[a-zA-Z0-9_\- ]{3,30}$/,
-  ADDRESS: /^[a-zA-Z0-9\s,'-]+$/,
+  ADDRESS: /^[a-zA-Z0-9\s,'-]+$/
 };
 
 const Statuses = {
@@ -10,9 +10,9 @@ const Statuses = {
   SHIPPED: 'Shipped',
   DELIVERED: 'Delivered',
   COMPLETED: 'Completed',
-  CANCELLED: 'Cancelled',
+  CANCELLED: 'Cancelled'
 };
 
 export const Enums = {
-  STATUSES: Object.values(Statuses),
+  STATUSES: Object.values(Statuses)
 };

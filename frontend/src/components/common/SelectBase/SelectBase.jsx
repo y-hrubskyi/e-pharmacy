@@ -1,7 +1,7 @@
-import Select from "react-select";
-import { useTheme } from "styled-components";
+import Select from 'react-select';
+import { useTheme } from 'styled-components';
 
-import { selectStyles } from "./SelectBase.styled";
+import { selectStyles } from './SelectBase.styled';
 
 const getBorderColorByValidationResult = (theme, isCorrect, hasError) => {
   if (isCorrect) return theme.colors.green();
@@ -18,7 +18,7 @@ export const SelectBase = ({
   menuHeight,
   onChange,
   isCorrect,
-  hasError,
+  hasError
 }) => {
   const theme = useTheme();
 
@@ -33,16 +33,16 @@ export const SelectBase = ({
             theme,
             isCorrect,
             hasError
-          )}`,
+          )}`
         }),
         menu: (baseStyles, state) => ({
           ...selectStyles.menu(baseStyles, state),
-          height: menuHeight,
-        }),
+          height: menuHeight
+        })
       }}
       options={options}
       defaultValue={defaultValue}
-      onChange={(selected) => onChange(selected?.value || "")}
+      onChange={selected => onChange(selected?.value || '')}
       isCorrect={isCorrect}
       hasError={hasError}
     />

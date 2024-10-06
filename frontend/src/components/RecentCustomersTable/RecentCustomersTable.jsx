@@ -3,10 +3,10 @@ import {
   Caption,
   TRow,
   TDataCell,
-  Avatar,
-} from "~/components/common/Table/Table.styled";
+  Avatar
+} from '~/components/common/Table/Table.styled';
 
-import * as SC from "./RecentCustomersTable.styled";
+import * as SC from './RecentCustomersTable.styled';
 
 export const RecentCustomersTable = ({ customers }) => {
   return (
@@ -20,14 +20,14 @@ export const RecentCustomersTable = ({ customers }) => {
         </TRow>
       </thead>
       <SC.TBody>
-        {customers.map((customer) => (
+        {customers.map(customer => (
           <TRow key={customer._id}>
             <SC.NameDataCell>
               <Avatar src={customer.image} alt={`${customer.name} avatar`} />
               {customer.name}
             </SC.NameDataCell>
             <TDataCell>{customer.email}</TDataCell>
-            <TDataCell>{customer.spent.toLocaleString("en-US")}</TDataCell>
+            <TDataCell>{customer.spent.toLocaleString('en-US')}</TDataCell>
           </TRow>
         ))}
       </SC.TBody>

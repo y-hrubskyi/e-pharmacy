@@ -1,13 +1,13 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { BaseInput } from "~/components/common/TextField/TextField.styled";
+import { BaseInput } from '~/components/common/TextField/TextField.styled';
 
-const getBorderColorByValidationResult = (p) => {
-  if (p["data-is-correct"]) {
+const getBorderColorByValidationResult = p => {
+  if (p['data-is-correct']) {
     return p.theme.colors.green();
   }
 
-  if (p["data-has-error"]) {
+  if (p['data-has-error']) {
     return p.theme.colors.red();
   }
 
@@ -18,14 +18,14 @@ export const FilterForm = styled.form`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: ${(p) => p.theme.spacing(2)};
+  gap: ${p => p.theme.spacing(2)};
 
   @media screen and (min-width: 375px) {
     justify-content: flex-end;
   }
 
   @media screen and (min-width: 768px) {
-    gap: ${(p) => p.theme.spacing(3.5)};
+    gap: ${p => p.theme.spacing(3.5)};
   }
 `;
 
@@ -44,24 +44,24 @@ export const FilterActionBtn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: ${(p) => p.theme.spacing(2)};
+  gap: ${p => p.theme.spacing(2)};
   width: 112px;
-  padding: ${(p) => p.theme.spacing(3.25)} ${(p) => p.theme.spacing(4.25)};
+  padding: ${p => p.theme.spacing(3.25)} ${p => p.theme.spacing(4.25)};
 
   font-weight: 500;
   font-size: 12px;
   line-height: 1.5;
-  color: ${(p) => p.theme.colors.primaryBg};
+  color: ${p => p.theme.colors.primaryBg};
 
-  background-color: ${(p) => p.theme.colors.green()};
-  border-radius: ${(p) => p.theme.radii.btn};
+  background-color: ${p => p.theme.colors.green()};
+  border-radius: ${p => p.theme.radii.btn};
   border: none;
 
-  transition: ${(p) => p.theme.transition("background-color")};
+  transition: ${p => p.theme.transition('background-color')};
 
   &:hover,
   &:focus {
-    background-color: ${(p) => p.theme.colors.hover};
+    background-color: ${p => p.theme.colors.hover};
   }
 
   @media screen and (min-width: 768px) {

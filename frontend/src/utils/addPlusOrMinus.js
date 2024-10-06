@@ -1,12 +1,12 @@
-import { TransactionTypes } from "~/config/constants";
+import { TransactionTypes } from '~/config/constants';
 
-export const addPlusOrMinus = (transactionType) => {
+export const addPlusOrMinus = transactionType => {
   switch (transactionType) {
     case TransactionTypes.INCOME:
-      return "+";
+      return '+';
     case TransactionTypes.EXPENSE:
-      return "-";
+      return '-';
     default:
-      return "";
+      return '';
   }
 };

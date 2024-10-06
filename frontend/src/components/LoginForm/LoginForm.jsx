@@ -1,16 +1,16 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import toast from "react-hot-toast";
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import toast from 'react-hot-toast';
 
-import { loginSchema } from "~/config/validation/loginSchema";
-import { selectAuthIsLoading } from "~/store/auth/selectors";
-import { login } from "~/store/auth/operations";
+import { loginSchema } from '~/config/validation/loginSchema';
+import { selectAuthIsLoading } from '~/store/auth/selectors';
+import { login } from '~/store/auth/operations';
 
-import { TextField } from "~/components/common/TextField/TextField";
-import { PasswordField } from "~/components/common/PasswordField/PasswordField";
-import * as SC from "./LoginForm.styled";
+import { TextField } from '~/components/common/TextField/TextField';
+import { PasswordField } from '~/components/common/PasswordField/PasswordField';
+import * as SC from './LoginForm.styled';
 
 export const LoginForm = () => {
   const [passwordShown, setPasswordShown] = useState(false);
@@ -19,23 +19,23 @@ export const LoginForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, dirtyFields },
+    formState: { errors, dirtyFields }
   } = useForm({
-    mode: "onChange",
-    resolver: yupResolver(loginSchema),
+    mode: 'onChange',
+    resolver: yupResolver(loginSchema)
   });
 
   const togglePasswordShown = () => {
-    setPasswordShown((prevState) => !prevState);
+    setPasswordShown(prevState => !prevState);
   };
 
-  const onSubmit = async (data) => {
+  const onSubmit = async data => {
     try {
       const loginPromise = dispatch(login(data)).unwrap();
       await toast.promise(loginPromise, {
-        loading: "Logging in...",
-        success: "Login successful!",
-        error: (error) => error,
+        loading: 'Logging in...',
+        success: 'Login successful!',
+        error: error => error
       });
     } catch (error) {
       // handled in toast.promise
@@ -58,7 +58,7 @@ export const LoginForm = () => {
         >
           <SC.AuthInput
             type="email"
-            {...register("email")}
+            {...register('email')}
             placeholder="Email address"
             data-is-correct={isCorrectEmail}
             data-has-error={hasErrorEmail}
@@ -73,8 +73,8 @@ export const LoginForm = () => {
           errorMessage={errors.password?.message}
         >
           <SC.PasswordInput
-            type={passwordShown ? "text" : "password"}
-            {...register("password")}
+            type={passwordShown ? 'text' : 'password'}
+            {...register('password')}
             placeholder="Password"
             data-is-correct={isCorrectPassword}
             data-has-error={hasErrorPassword}

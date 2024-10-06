@@ -8,7 +8,7 @@ const dateValidator = [
     const date = parse(value, 'MMMM d, yyyy', new Date());
     return isValid(date);
   },
-  'Invalid date format',
+  'Invalid date format'
 ];
 
 const supplierSchema = new Schema(
@@ -16,34 +16,34 @@ const supplierSchema = new Schema(
     name: {
       type: String,
       match: Regexps.NAME,
-      required: [true, 'Supplier info is required'],
+      required: [true, 'Supplier info is required']
     },
     address: {
       type: String,
       match: Regexps.ADDRESS,
-      required: [true, 'Address is required'],
+      required: [true, 'Address is required']
     },
     company: {
       type: String,
       match: Regexps.COMPANY,
       unique: true,
-      required: [true, 'Company is required'],
+      required: [true, 'Company is required']
     },
     date: {
       type: String,
       validate: dateValidator,
-      required: [true, 'Delivery date is required'],
+      required: [true, 'Delivery date is required']
     },
     amount: {
       type: Number,
       min: 0.01,
-      required: [true, 'Amount is required'],
+      required: [true, 'Amount is required']
     },
     status: {
       type: String,
       enum: Enums.STATUSES,
-      required: [true, 'Status is required'],
-    },
+      required: [true, 'Status is required']
+    }
   },
   { versionKey: false, timestamps: true }
 );

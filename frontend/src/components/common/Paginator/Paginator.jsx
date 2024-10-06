@@ -1,9 +1,9 @@
-import ReactPaginate from "react-paginate";
+import ReactPaginate from 'react-paginate';
 
-import * as SC from "./Paginator.styled";
+import * as SC from './Paginator.styled';
 
 export const Paginator = ({ totalCount, setPage }) => {
-  const handlePageChange = (e) => {
+  const handlePageChange = e => {
     setPage(e.selected + 1);
   };
 

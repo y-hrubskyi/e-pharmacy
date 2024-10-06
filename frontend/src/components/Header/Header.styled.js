@@ -1,22 +1,22 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-import LogoIMG from "~/assets/img/header/logo.webp";
+import LogoIMG from '~/assets/img/header/logo.webp';
 
 export const Header = styled.header`
   display: flex;
   align-items: center;
-  padding: ${(p) => p.theme.spacing(4)} ${(p) => p.theme.spacing(5)};
+  padding: ${p => p.theme.spacing(4)} ${p => p.theme.spacing(5)};
 
-  border-bottom: 1px solid ${(p) => p.theme.colors.border};
+  border-bottom: 1px solid ${p => p.theme.colors.border};
 
   @media screen and (min-width: 768px) {
-    padding: ${(p) => p.theme.spacing(3.75)} ${(p) => p.theme.spacing(8)};
+    padding: ${p => p.theme.spacing(3.75)} ${p => p.theme.spacing(8)};
   }
 
   @media screen and (min-width: 1440px) {
-    padding-right: ${(p) => p.theme.spacing(10)};
-    padding-left: ${(p) => p.theme.spacing(10)};
+    padding-right: ${p => p.theme.spacing(10)};
+    padding-left: ${p => p.theme.spacing(10)};
   }
 `;
 
@@ -24,23 +24,23 @@ export const MobileMenuBtn = styled.button`
   flex-shrink: 0;
   width: 32px;
   height: 32px;
-  margin-right: ${(p) => p.theme.spacing(5)};
+  margin-right: ${p => p.theme.spacing(5)};
   padding: 0;
 
-  color: ${(p) => p.theme.colors.primaryText};
+  color: ${p => p.theme.colors.primaryText};
 
   border: none;
   background-color: transparent;
 
-  transition: ${(p) => p.theme.transition("color")};
+  transition: ${p => p.theme.transition('color')};
 
   &:hover,
   &:focus {
-    color: ${(p) => p.theme.colors.green()};
+    color: ${p => p.theme.colors.green()};
   }
 
   @media screen and (min-width: 7680px) {
-    margin-right: ${(p) => p.theme.spacing(4)};
+    margin-right: ${p => p.theme.spacing(4)};
   }
 
   @media screen and (min-width: 1440px) {
@@ -59,7 +59,7 @@ export const Logo = styled(Link)`
   flex-shrink: 0;
   width: 32px;
   height: 32px;
-  margin-right: ${(p) => p.theme.spacing(5)};
+  margin-right: ${p => p.theme.spacing(5)};
 
   color: currentColor;
   text-decoration: none;
@@ -72,18 +72,18 @@ export const Logo = styled(Link)`
   @media screen and (min-width: 768px) {
     width: 40px;
     height: 40px;
-    margin-right: ${(p) => p.theme.spacing(8)};
+    margin-right: ${p => p.theme.spacing(8)};
   }
 
   @media screen and (min-width: 1440px) {
     width: 40px;
     height: 40px;
-    margin-right: ${(p) => p.theme.spacing(15)};
+    margin-right: ${p => p.theme.spacing(15)};
   }
 `;
 
 export const Title = styled.p`
-  margin-bottom: ${(p) => p.theme.spacing(1)};
+  margin-bottom: ${p => p.theme.spacing(1)};
 
   font-weight: 600;
   font-size: 20px;
@@ -99,7 +99,7 @@ export const SubTitle = styled.p`
   font-weight: 400;
   font-size: 12px;
   line-height: 1.5;
-  color: ${(p) => p.theme.colors.secondaryText};
+  color: ${p => p.theme.colors.secondaryText};
 `;
 
 export const LogOutBtnWrapper = styled.div`

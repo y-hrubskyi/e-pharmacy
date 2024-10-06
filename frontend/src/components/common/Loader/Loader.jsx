@@ -1,4 +1,4 @@
-import * as SC from "./Loader.styled";
+import * as SC from './Loader.styled';
 
 export const Loader = () => {
   return (

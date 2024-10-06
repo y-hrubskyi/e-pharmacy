@@ -1,28 +1,28 @@
-import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
-import { login, logout, refreshUser } from "./operations";
+import { login, logout, refreshUser } from './operations';
 
 const initialState = {
   user: {
     name: null,
-    email: null,
+    email: null
   },
   tokens: {
     accessToken: null,
-    refreshToken: null,
+    refreshToken: null
   },
   isLoggedIn: false,
   isLoading: false,
-  isRefreshing: false,
+  isRefreshing: false
 };
 
-const authPending = (state) => {
+const authPending = state => {
   state.isLoading = true;
 };
 
-const authRejected = (state) => {
+const authRejected = state => {
   state.isLoading = false;
 };
 
@@ -33,7 +33,7 @@ const authInFulfilled = (state, { payload }) => {
   state.isLoading = false;
 };
 
-const authOutFulfilled = (state) => {
+const authOutFulfilled = state => {
   state.user = { name: null, email: null };
   state.tokens = { accessToken: null, refreshToken: null };
   state.isLoggedIn = false;
@@ -41,17 +41,17 @@ const authOutFulfilled = (state) => {
 };
 
 const authSlice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState,
   reducers: {
     setTokens: (state, { payload }) => {
       state.tokens = payload;
-    },
+    }
   },
-  extraReducers: (builder) =>
+  extraReducers: builder =>
     builder
       .addCase(login.fulfilled, authInFulfilled)
-      .addCase(refreshUser.pending, (state) => {
+      .addCase(refreshUser.pending, state => {
         state.isRefreshing = true;
       })
       .addCase(refreshUser.fulfilled, (state, { payload }) => {
@@ -60,18 +60,18 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
-      .addCase(refreshUser.rejected, (state) => {
+      .addCase(refreshUser.rejected, state => {
         state.isRefreshing = false;
       })
       .addMatcher(isAnyOf(login.pending, logout.pending), authPending)
       .addMatcher(isAnyOf(login.rejected, logout.rejected), authRejected)
-      .addMatcher(isAnyOf(logout.fulfilled, logout.rejected), authOutFulfilled),
+      .addMatcher(isAnyOf(logout.fulfilled, logout.rejected), authOutFulfilled)
 });
 
 const authPersistConfig = {
-  key: "auth",
+  key: 'auth',
   storage,
-  whitelist: ["tokens"],
+  whitelist: ['tokens']
 };
 
 export const { setTokens } = authSlice.actions;

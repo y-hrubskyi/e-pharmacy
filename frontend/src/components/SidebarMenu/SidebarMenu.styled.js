@@ -1,15 +1,15 @@
-import styled from "styled-components";
-import { NavLink as Link } from "react-router-dom";
+import styled from 'styled-components';
+import { NavLink as Link } from 'react-router-dom';
 
 export const SidebarMenu = styled.nav``;
 
 export const NavList = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: ${(p) => p.theme.spacing(3.5)};
+  gap: ${p => p.theme.spacing(3.5)};
 
   @media screen and (max-height: 464px) and (max-width: 1439px) {
-    gap: ${(p) => p.theme.spacing(1)};
+    gap: ${p => p.theme.spacing(1)};
   }
 `;
 
@@ -17,7 +17,7 @@ export const NavItem = styled.li`
   width: 38px;
   height: 38px;
 
-  background-color: ${(p) => p.theme.colors.primaryBg};
+  background-color: ${p => p.theme.colors.primaryBg};
   border-radius: 100%;
   box-shadow: 0 -1px 7px 0 rgba(71, 71, 71, 0.05);
 
@@ -35,12 +35,12 @@ export const NavLink = styled(Link)`
   height: 100%;
   color: #dcdddf;
 
-  transition: ${(p) => p.theme.transition("color")};
+  transition: ${p => p.theme.transition('color')};
 
   &.active,
   &:hover,
   &:focus {
-    color: ${(p) => p.theme.colors.green()};
+    color: ${p => p.theme.colors.green()};
   }
 `;
 

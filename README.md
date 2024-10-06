@@ -19,7 +19,9 @@ Include demo GIF to visually showcase the application.
 
 ## Technologies
 
-The main frameworks and libraries used in the project are listed here. A complete list of technologies used for each part of the project is in the `package.json` files in the `backend` and `frontend` folders.
+The main frameworks and libraries used in the project are listed here. A
+complete list of technologies used for each part of the project is in the
+`package.json` files in the `backend` and `frontend` folders.
 
 ### Global
 
@@ -35,7 +37,8 @@ The main frameworks and libraries used in the project are listed here. A complet
 1. [Node.js](https://nodejs.org/en) — a JavaScript runtime environment
 2. [Express](https://expressjs.com/) — a web application framework for Node.js
 3. [MongoDB](https://www.mongodb.com/) — a NoSQL database
-4. [Mongoose](https://mongoosejs.com/) — an ODM (Object Data Modeling) library for MongoDB and Node.js
+4. [Mongoose](https://mongoosejs.com/) — an ODM (Object Data Modeling) library
+   for MongoDB and Node.js
 5. [Swagger](https://swagger.io/) — an API documentation tool
 
 #### Folder Structure
@@ -62,7 +65,8 @@ backend/
 #### Technologies
 
 1. [React](https://react.dev/) — a frontend library
-2. [Redux](https://redux.js.org/) + [Redux Toolkit](https://redux-toolkit.js.org/) — a state manager
+2. [Redux](https://redux.js.org/) +
+   [Redux Toolkit](https://redux-toolkit.js.org/) — a state manager
 3. [react-router-dom](https://reactrouter.com/en/main) — a routing library
 4. [react-hook-form](https://react-hook-form.com/) — a form management library
 5. [styled-components](https://styled-components.com/) — a CSS-in-JS library
@@ -89,7 +93,9 @@ frontend/
 
 ## Installation
 
-1.  Get [Node.js](https://nodejs.org/en/ "Node.js") (LTS). **Note:** npm will be installed automatically. Check the correctness of the installation: to do this, run in the command line (terminal):
+1.  Get [Node.js](https://nodejs.org/en/ 'Node.js') (LTS). **Note:** npm will be
+    installed automatically. Check the correctness of the installation: to do
+    this, run in the command line (terminal):
 
     ```
     node -v  // for checking Node.js version

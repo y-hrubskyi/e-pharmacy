@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const LoaderWrapper = styled.div`
   position: absolute;
@@ -17,14 +17,10 @@ export const Loader = styled.div`
 
   &::before,
   &::after {
-    content: "";
+    content: '';
     grid-area: 1/1;
     --c: no-repeat
-      radial-gradient(
-        farthest-side,
-        ${(p) => p.theme.colors.green()} 92%,
-        #0000
-      );
+      radial-gradient(farthest-side, ${p => p.theme.colors.green()} 92%, #0000);
     background:
       var(--c) 50% 0,
       var(--c) 50% 100%,

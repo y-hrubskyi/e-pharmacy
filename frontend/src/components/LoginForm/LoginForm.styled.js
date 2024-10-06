@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { BaseInput } from "~/components/common/TextField/TextField.styled";
+import { BaseInput } from '~/components/common/TextField/TextField.styled';
 
 export const AuthForm = styled.form`
   align-self: start;
@@ -14,19 +14,19 @@ export const AuthForm = styled.form`
 export const AuthFieldsWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${(p) => p.theme.spacing(3.5)};
-  margin-bottom: ${(p) => p.theme.spacing(10)};
+  gap: ${p => p.theme.spacing(3.5)};
+  margin-bottom: ${p => p.theme.spacing(10)};
 `;
 
 export const AuthInput = styled(BaseInput)`
   width: 100%;
   border: 1px solid
-    ${(p) => {
-      if (p["data-is-correct"]) {
+    ${p => {
+      if (p['data-is-correct']) {
         return p.theme.colors.green();
       }
 
-      if (p["data-has-error"]) {
+      if (p['data-has-error']) {
         return p.theme.colors.red();
       }
 
@@ -35,26 +35,26 @@ export const AuthInput = styled(BaseInput)`
 `;
 
 export const PasswordInput = styled(AuthInput)`
-  padding-right: ${(p) => p.theme.spacing(11)};
+  padding-right: ${p => p.theme.spacing(11)};
 `;
 
 export const AuthSubmitBtn = styled.button`
   width: 100%;
-  padding: ${(p) => p.theme.spacing(3.25)} ${(p) => p.theme.spacing(4.25)};
+  padding: ${p => p.theme.spacing(3.25)} ${p => p.theme.spacing(4.25)};
 
   font-weight: 500;
   font-size: 14px;
   line-height: 1.28571;
-  color: ${(p) => p.theme.colors.primaryBg};
+  color: ${p => p.theme.colors.primaryBg};
 
-  background-color: ${(p) => p.theme.colors.green()};
-  border-radius: ${(p) => p.theme.radii.btn};
+  background-color: ${p => p.theme.colors.green()};
+  border-radius: ${p => p.theme.radii.btn};
   border: none;
 
-  transition: ${(p) => p.theme.transition("background-color")};
+  transition: ${p => p.theme.transition('background-color')};
 
   &:hover,
   &:focus {
-    background-color: ${(p) => p.theme.colors.hover};
+    background-color: ${p => p.theme.colors.hover};
   }
 `;

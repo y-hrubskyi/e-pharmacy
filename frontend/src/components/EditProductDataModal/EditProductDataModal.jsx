@@ -1,12 +1,12 @@
-import { Controller, useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import toast from "react-hot-toast";
+import { Controller, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import toast from 'react-hot-toast';
 
-import API from "~/services/axios";
-import { productSchema } from "~/config/validation/productSchema";
-import { createSelectOptions } from "~/utils";
+import API from '~/services/axios';
+import { productSchema } from '~/config/validation/productSchema';
+import { createSelectOptions } from '~/utils';
 
-import { ModalBase } from "~/components/common/ModalBase/ModalBase";
+import { ModalBase } from '~/components/common/ModalBase/ModalBase';
 import {
   FormWrapper,
   FormTitle,
@@ -15,9 +15,9 @@ import {
   FormInput,
   FormActionBtnsWrapper,
   FormSubmitBtn,
-  FormCancelBtn,
-} from "~/components/common/ModalForm/ModalForm.styled";
-import { SelectBase } from "~/components/common/SelectBase/SelectBase";
+  FormCancelBtn
+} from '~/components/common/ModalForm/ModalForm.styled';
+import { SelectBase } from '~/components/common/SelectBase/SelectBase';
 
 export const EditProductDataModal = ({
   isOpen,
@@ -25,49 +25,49 @@ export const EditProductDataModal = ({
   product,
   categories,
   suppliers,
-  setProducts,
+  setProducts
 }) => {
   const {
     register,
     handleSubmit,
     control,
-    formState: { errors },
+    formState: { errors }
   } = useForm({
-    mode: "onChange",
+    mode: 'onChange',
     resolver: yupResolver(productSchema),
     defaultValues: {
       name: product.name,
       category: product.category,
       stock: product.stock,
       supplier: product.supplier.id,
-      price: product.price,
-    },
+      price: product.price
+    }
   });
 
-  const onSubmit = async (data) => {
+  const onSubmit = async data => {
     const supplierName = suppliers.find(
-      (supplier) => supplier.id === data.supplier,
+      supplier => supplier.id === data.supplier
     )?.name;
 
     data.supplier = {
       id: data.supplier,
-      name: supplierName,
+      name: supplierName
     };
 
     try {
       const editProductPromise = API.put(`/products/${product._id}`, data);
       await toast.promise(editProductPromise, {
-        loading: "Saving...",
+        loading: 'Saving...',
         success: ({ data }) => {
-          setProducts((prevState) => ({
+          setProducts(prevState => ({
             ...prevState,
-            paginatedResult: prevState.paginatedResult.map((product) =>
-              product._id === data._id ? data : product,
-            ),
+            paginatedResult: prevState.paginatedResult.map(product =>
+              product._id === data._id ? data : product
+            )
           }));
-          return "Successful saved!";
+          return 'Successful saved!';
         },
-        error: (error) => error.message,
+        error: error => error.message
       });
       onClose();
     } catch (error) {
@@ -78,7 +78,7 @@ export const EditProductDataModal = ({
   const categoryOptions = createSelectOptions(categories);
   const supplierOptions = suppliers.map(({ id, name }) => ({
     value: id,
-    label: name,
+    label: name
   }));
 
   return (
@@ -89,7 +89,7 @@ export const EditProductDataModal = ({
           <FormFieldsWrapper>
             <FormInput
               type="text"
-              {...register("name")}
+              {...register('name')}
               placeholder="Product Info"
               data-is-correct={!errors.name}
               data-has-error={errors.name}
@@ -101,7 +101,7 @@ export const EditProductDataModal = ({
                 <SelectBase
                   defaultValue={{
                     value: product.category,
-                    label: product.category,
+                    label: product.category
                   }}
                   options={categoryOptions}
                   placeholder="Category"
@@ -114,7 +114,7 @@ export const EditProductDataModal = ({
             />
             <FormInput
               type="number"
-              {...register("stock")}
+              {...register('stock')}
               placeholder="Stock"
               data-is-correct={!errors.stock}
               data-has-error={errors.stock}
@@ -126,7 +126,7 @@ export const EditProductDataModal = ({
                 <SelectBase
                   defaultValue={{
                     value: product.supplier.id,
-                    label: product.supplier.name,
+                    label: product.supplier.name
                   }}
                   options={supplierOptions}
                   placeholder="Supplier"
@@ -140,7 +140,7 @@ export const EditProductDataModal = ({
             <FormInput
               type="number"
               step="any"
-              {...register("price")}
+              {...register('price')}
               placeholder="Price"
               data-is-correct={!errors.price}
               data-has-error={errors.price}

@@ -1,49 +1,49 @@
-import { useState } from "react";
-import toast from "react-hot-toast";
+import { useState } from 'react';
+import toast from 'react-hot-toast';
 
-import { Icons } from "~/config/icons";
-import { useModal } from "~/hooks/useModal";
-import API from "~/services/axios";
+import { Icons } from '~/config/icons';
+import { useModal } from '~/hooks/useModal';
+import API from '~/services/axios';
 
 import {
   Table,
   Caption,
   TRow,
-  TDataCell,
-} from "~/components/common/Table/Table.styled";
-import { EditProductDataModal } from "~/components/EditProductDataModal/EditProductDataModal";
+  TDataCell
+} from '~/components/common/Table/Table.styled';
+import { EditProductDataModal } from '~/components/EditProductDataModal/EditProductDataModal';
 
-import * as SC from "./AllProductsTable.styled";
+import * as SC from './AllProductsTable.styled';
 
 export const AllProductsTable = ({
   products,
   categories,
   suppliers,
-  setProducts,
+  setProducts
 }) => {
   const [currentProduct, setCurrentProduct] = useState(null);
   const { isModalOpen, toggleModal } = useModal();
 
-  const handleEditProductClick = (product) => {
+  const handleEditProductClick = product => {
     setCurrentProduct(product);
     toggleModal();
   };
 
-  const handleRemoveProductClick = async (productId) => {
+  const handleRemoveProductClick = async productId => {
     try {
       const removeProductPromise = API.delete(`/products/${productId}`);
       await toast.promise(removeProductPromise, {
-        loading: "Removing...",
+        loading: 'Removing...',
         success: () => {
-          setProducts((prevState) => ({
+          setProducts(prevState => ({
             ...prevState,
             paginatedResult: prevState.paginatedResult.filter(
-              (product) => product._id !== productId,
-            ),
+              product => product._id !== productId
+            )
           }));
-          return "Successful removed!";
+          return 'Successful removed!';
         },
-        error: (error) => error.message,
+        error: error => error.message
       });
     } catch (error) {
       // handled in toast.promise
@@ -65,13 +65,13 @@ export const AllProductsTable = ({
           </TRow>
         </thead>
         <tbody>
-          {products.map((product) => (
+          {products.map(product => (
             <TRow key={product._id}>
               <TDataCell>{product.name}</TDataCell>
               <TDataCell>{product.category}</TDataCell>
               <TDataCell>{product.stock}</TDataCell>
               <TDataCell>{product.supplier.name}</TDataCell>
-              <TDataCell>{product.price.toLocaleString("en-US")}</TDataCell>
+              <TDataCell>{product.price.toLocaleString('en-US')}</TDataCell>
               <SC.ActionDataCell>
                 <SC.EditBtn
                   type="button"

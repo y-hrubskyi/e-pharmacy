@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   margin: 0 auto;
@@ -29,18 +29,18 @@ export const Wrapper = styled.div`
 
 export const Main = styled.main`
   width: 100%;
-  padding-right: ${(p) => p.theme.spacing(5)};
-  padding-left: ${(p) => p.theme.spacing(5)};
+  padding-right: ${p => p.theme.spacing(5)};
+  padding-left: ${p => p.theme.spacing(5)};
 
   overflow: hidden;
 
   @media screen and (min-width: 768px) {
-    padding-right: ${(p) => p.theme.spacing(8)};
-    padding-left: ${(p) => p.theme.spacing(8)};
+    padding-right: ${p => p.theme.spacing(8)};
+    padding-left: ${p => p.theme.spacing(8)};
   }
 
   @media screen and (min-width: 1440px) {
-    padding-right: ${(p) => p.theme.spacing(10)};
-    padding-left: ${(p) => p.theme.spacing(10)};
+    padding-right: ${p => p.theme.spacing(10)};
+    padding-left: ${p => p.theme.spacing(10)};
   }
 `;

@@ -1,11 +1,11 @@
-import { useSelector, useDispatch } from "react-redux";
-import toast from "react-hot-toast";
+import { useSelector, useDispatch } from 'react-redux';
+import toast from 'react-hot-toast';
 
-import { Icons } from "~/config/icons";
-import { selectAuthIsLoading } from "~/store/auth/selectors";
-import { logout } from "~/store/auth/operations";
+import { Icons } from '~/config/icons';
+import { selectAuthIsLoading } from '~/store/auth/selectors';
+import { logout } from '~/store/auth/operations';
 
-import * as SC from "./LogOutBtn.styled";
+import * as SC from './LogOutBtn.styled';
 
 export const LogOutBtn = () => {
   const isLoading = useSelector(selectAuthIsLoading);
@@ -15,9 +15,9 @@ export const LogOutBtn = () => {
     try {
       const logoutPromise = dispatch(logout()).unwrap();
       await toast.promise(logoutPromise, {
-        loading: "Logging out...",
-        success: "Logout successful!",
-        error: (error) => error,
+        loading: 'Logging out...',
+        success: 'Logout successful!',
+        error: error => error
       });
     } catch (error) {
       // handled in toast.promise

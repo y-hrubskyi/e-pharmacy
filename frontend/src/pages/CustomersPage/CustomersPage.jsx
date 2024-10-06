@@ -1,22 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import API from "~/services/axios";
+import API from '~/services/axios';
 
 import {
   PageWrapper,
   ControlPanel,
-  PlaceholderWrapper,
-} from "~/components/common/Page/Page.styled";
-import { Filter } from "~/components/common/Filter/Filter";
-import { TableWrapper } from "~/components/common/Table/Table.styled";
-import { CustomersDataTable } from "~/components/CustomersDataTable/CustomersDataTable";
-import { Paginator } from "~/components/common/Paginator/Paginator";
-import { Loader } from "~/components/common/Loader/Loader";
-import { Placeholder } from "~/components/common/Placeholder/Placeholder";
+  PlaceholderWrapper
+} from '~/components/common/Page/Page.styled';
+import { Filter } from '~/components/common/Filter/Filter';
+import { TableWrapper } from '~/components/common/Table/Table.styled';
+import { CustomersDataTable } from '~/components/CustomersDataTable/CustomersDataTable';
+import { Paginator } from '~/components/common/Paginator/Paginator';
+import { Loader } from '~/components/common/Loader/Loader';
+import { Placeholder } from '~/components/common/Placeholder/Placeholder';
 
 const CustomersPage = () => {
   const [customers, setCustomers] = useState(null);
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState('');
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -28,7 +28,7 @@ const CustomersPage = () => {
         setError(null);
 
         const searchParams = new URLSearchParams({ page });
-        if (filter) searchParams.set("name", filter.split("/")[0]);
+        if (filter) searchParams.set('name', filter.split('/')[0]);
 
         const { data } = await API.get(`/customers?${searchParams}`);
         setCustomers(data);
@@ -40,7 +40,7 @@ const CustomersPage = () => {
     })();
   }, [page, filter]);
 
-  const onFilterSubmit = (value) => {
+  const onFilterSubmit = value => {
     setFilter(`${value}/${Date.now()}`);
     setPage(1);
     setCustomers(null);

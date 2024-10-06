@@ -1,25 +1,25 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { TableWrapper as BaseTableWrapper } from "~/components/common/Table/Table.styled";
+import { TableWrapper as BaseTableWrapper } from '~/components/common/Table/Table.styled';
 
 export const PageWrapper = styled.div`
   height: 100%;
 
-  padding-top: ${(p) => p.theme.spacing(5)};
-  padding-bottom: ${(p) => p.theme.spacing(20)};
+  padding-top: ${p => p.theme.spacing(5)};
+  padding-bottom: ${p => p.theme.spacing(20)};
 
   @media screen and (min-width: 768px) {
-    padding-bottom: ${(p) => p.theme.spacing(10)};
+    padding-bottom: ${p => p.theme.spacing(10)};
   }
 `;
 
 export const TablesContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${(p) => p.theme.spacing(10)};
+  gap: ${p => p.theme.spacing(10)};
 
   @media screen and (min-width: 768px) {
-    gap: ${(p) => p.theme.spacing(5)};
+    gap: ${p => p.theme.spacing(5)};
   }
 
   @media screen and (min-width: 1440px) {

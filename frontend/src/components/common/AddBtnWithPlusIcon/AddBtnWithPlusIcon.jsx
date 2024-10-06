@@ -1,6 +1,6 @@
-import { Icons } from "~/config/icons";
+import { Icons } from '~/config/icons';
 
-import * as SC from "./AddBtnWithPlusIcon.styled";
+import * as SC from './AddBtnWithPlusIcon.styled';
 
 export const AddBtnWithPlusIcon = ({ children, onClick }) => {
   return (

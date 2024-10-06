@@ -1,28 +1,28 @@
-import { Icons } from "~/config/icons";
+import { Icons } from '~/config/icons';
 
-import * as SC from "./Statistics.styled";
+import * as SC from './Statistics.styled';
 
 export const Statistics = ({
   productsQuantity,
   suppliersQuantity,
-  customersQuantity,
+  customersQuantity
 }) => {
   const statisticList = [
     {
-      title: "All products",
+      title: 'All products',
       icon: Icons.statProducts,
-      value: productsQuantity,
+      value: productsQuantity
     },
     {
-      title: "All suppliers",
+      title: 'All suppliers',
       icon: Icons.statUsers,
-      value: suppliersQuantity,
+      value: suppliersQuantity
     },
     {
-      title: "All customers",
+      title: 'All customers',
       icon: Icons.statUsers,
-      value: customersQuantity,
-    },
+      value: customersQuantity
+    }
   ];
 
   return (
@@ -36,7 +36,7 @@ export const Statistics = ({
             <SC.StatisticTitle>{item.title}</SC.StatisticTitle>
           </SC.StatisticTitleWrapper>
           <SC.StatisticValue>
-            {item.value.toLocaleString("en-US")}
+            {item.value.toLocaleString('en-US')}
           </SC.StatisticValue>
         </SC.StatisticItem>
       ))}

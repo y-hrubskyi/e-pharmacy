@@ -4,7 +4,7 @@ import { HttpError } from '#utils/index.js';
 export const update = async (productId, update) => {
   const product = await Product.findByIdAndUpdate(productId, update, {
     new: true,
-    runValidators: true,
+    runValidators: true
   });
 
   if (!product) {

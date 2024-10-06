@@ -3,10 +3,10 @@ import {
   Caption,
   TRow,
   TDataCell,
-  Avatar,
-} from "~/components/common/Table/Table.styled";
+  Avatar
+} from '~/components/common/Table/Table.styled';
 
-import * as SC from "./CustomersDataTable.styled";
+import * as SC from './CustomersDataTable.styled';
 
 export const CustomersDataTable = ({ customers }) => {
   return (
@@ -22,7 +22,7 @@ export const CustomersDataTable = ({ customers }) => {
         </TRow>
       </thead>
       <tbody>
-        {customers.map((customer) => (
+        {customers.map(customer => (
           <TRow key={customer._id}>
             <SC.NameDataCell>
               <Avatar src={customer.image} alt={`${customer.name} avatar`} />

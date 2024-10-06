@@ -1,11 +1,11 @@
-import * as SC from "./TextField.styled";
+import * as SC from './TextField.styled';
 
 export const TextField = ({
   isCorrect,
   correctMessage,
   hasError,
   errorMessage,
-  children,
+  children
 }) => {
   return (
     <div>

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Backdrop = styled.div`
   position: fixed;
@@ -9,7 +9,7 @@ export const Backdrop = styled.div`
   width: 100%;
   height: 100%;
 
-  background-color: ${(p) => p.theme.colors.backdrop};
+  background-color: ${p => p.theme.colors.backdrop};
   overflow: auto;
 `;
 
@@ -21,10 +21,10 @@ export const Modal = styled.div`
 
   width: calc(100% - 40px);
   max-height: 90%;
-  padding: ${(p) => p.theme.spacing(10)} ${(p) => p.theme.spacing(5)};
+  padding: ${p => p.theme.spacing(10)} ${p => p.theme.spacing(5)};
 
-  background-color: ${(p) => p.theme.colors.primaryBg};
-  border-radius: ${(p) => p.theme.radii.modal};
+  background-color: ${p => p.theme.colors.primaryBg};
+  border-radius: ${p => p.theme.radii.modal};
   border: 0;
   overflow: auto;
 
@@ -35,13 +35,13 @@ export const Modal = styled.div`
   &::-webkit-scrollbar-track {
     margin-top: 20px;
     margin-bottom: 20px;
-    background: ${(p) => p.theme.colors.scrollbarTrack};
-    border-radius: ${(p) => p.theme.radii.scrollbar};
+    background: ${p => p.theme.colors.scrollbarTrack};
+    border-radius: ${p => p.theme.radii.scrollbar};
   }
 
   &::-webkit-scrollbar-thumb {
-    border-radius: ${(p) => p.theme.radii.scrollbar};
-    background: ${(p) => p.theme.colors.scrollbarThumb};
+    border-radius: ${p => p.theme.radii.scrollbar};
+    background: ${p => p.theme.colors.scrollbarThumb};
   }
 
   @media screen and (min-width: 375px) {
@@ -50,7 +50,7 @@ export const Modal = styled.div`
 
   @media screen and (min-width: 768px) {
     width: 536px;
-    padding: ${(p) => p.theme.spacing(10)};
+    padding: ${p => p.theme.spacing(10)};
   }
 `;
 
@@ -63,16 +63,16 @@ export const CloseBtn = styled.button`
   height: 24px;
   padding: 0;
 
-  color: ${(p) => p.theme.colors.primaryText};
+  color: ${p => p.theme.colors.primaryText};
 
   background-color: transparent;
   border: 0;
 
-  transition: ${(p) => p.theme.transition("color")};
+  transition: ${p => p.theme.transition('color')};
 
   &:hover,
   &:focus {
-    color: ${(p) => p.theme.colors.green()};
+    color: ${p => p.theme.colors.green()};
   }
 
   @media screen and (min-width: 768px) {

@@ -11,8 +11,8 @@ export const get = async (page, limit, name) => {
   const [
     {
       paginatedResult,
-      totalCount: [{ totalCount } = { totalCount: 0 }],
-    },
+      totalCount: [{ totalCount } = { totalCount: 0 }]
+    }
   ] = await Product.aggregate([
     {
       $facet: {
@@ -20,23 +20,23 @@ export const get = async (page, limit, name) => {
           { $match: filter },
           { $sort: { createdAt: -1 } },
           { $skip: paginationOptions.skip },
-          { $limit: paginationOptions.limit },
+          { $limit: paginationOptions.limit }
         ],
-        totalCount: [{ $match: filter }, { $count: 'totalCount' }],
-      },
-    },
+        totalCount: [{ $match: filter }, { $count: 'totalCount' }]
+      }
+    }
   ]);
 
   const suppliers = await Supplier.find({}, 'company').exec();
   const suppliersResponse = suppliers.map(doc => ({
     id: doc.id,
-    name: doc.company,
+    name: doc.company
   }));
 
   return {
     paginatedResult,
     totalCount,
     categories: Enums.CATEGORIES,
-    suppliers: suppliersResponse,
+    suppliers: suppliersResponse
   };
 };

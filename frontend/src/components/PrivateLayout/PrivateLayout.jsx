@@ -1,10 +1,10 @@
-import { useState, Suspense } from "react";
-import { Outlet } from "react-router-dom";
+import { useState, Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
 
-import { Header } from "~/components/Header/Header";
-import { Sidebar } from "~/components/Sidebar/Sidebar";
+import { Header } from '~/components/Header/Header';
+import { Sidebar } from '~/components/Sidebar/Sidebar';
 
-import * as SC from "./PrivateLayout.styled";
+import * as SC from './PrivateLayout.styled';
 
 export const PrivateLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);

@@ -1,6 +1,6 @@
-import { LoginForm } from "~/components/LoginForm/LoginForm";
+import { LoginForm } from '~/components/LoginForm/LoginForm';
 
-import * as SC from "./LoginPage.styled";
+import * as SC from './LoginPage.styled';
 
 const LoginPage = () => {
   return (
@@ -11,7 +11,7 @@ const LoginPage = () => {
       </SC.Logo>
       <SC.ContentWrapper>
         <SC.Heading>
-          Your medication, delivered. Say goodbye to all{" "}
+          Your medication, delivered. Say goodbye to all{' '}
           <SC.AccentText>your healthcare</SC.AccentText> worries with us
         </SC.Heading>
         <LoginForm />

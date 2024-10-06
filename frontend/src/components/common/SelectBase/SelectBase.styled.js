@@ -1,73 +1,73 @@
-import { theme } from "~/styles/theme";
+import { theme } from '~/styles/theme';
 
-const minTablet = "@media only screen and (min-width: 768px)";
+const minTablet = '@media only screen and (min-width: 768px)';
 
 export const selectStyles = {
   control: (baseStyles, state) => ({
     ...baseStyles,
-    width: "100%",
+    width: '100%',
     padding: `${theme.spacing(3)} ${theme.spacing(4.25)}`,
     borderRadius: theme.radii.field,
     border: `1px solid ${theme.colors.border}`,
-    cursor: "pointer",
-    boxShadow: "none",
-    backgroundColor: "transparent",
-    transition: theme.transition("border-color"),
-    "&:hover": {
-      borderColor: theme.colors.border,
+    cursor: 'pointer',
+    boxShadow: 'none',
+    backgroundColor: 'transparent',
+    transition: theme.transition('border-color'),
+    '&:hover': {
+      borderColor: theme.colors.border
     },
-    "& .css-tj5bde-Svg": {
-      transform: state.menuIsOpen && "rotate(180deg)",
+    '& .css-tj5bde-Svg': {
+      transform: state.menuIsOpen && 'rotate(180deg)'
     },
     [minTablet]: {
-      width: 220,
-    },
+      width: 220
+    }
   }),
-  valueContainer: (baseStyles) => ({
+  valueContainer: baseStyles => ({
     ...baseStyles,
     padding: 0,
     fontSize: 12,
     fontWeight: 400,
     lineHeight: 1.5,
-    color: theme.colors.primaryText,
+    color: theme.colors.primaryText
   }),
-  placeholder: (baseStyles) => ({
+  placeholder: baseStyles => ({
     ...baseStyles,
     marginLeft: 0,
     marginRight: 0,
-    color: theme.colors.secondaryText,
+    color: theme.colors.secondaryText
   }),
-  singleValue: (baseStyles) => ({
+  singleValue: baseStyles => ({
     ...baseStyles,
     marginLeft: 0,
     marginRight: 0,
-    color: "inherit",
+    color: 'inherit'
   }),
-  input: (baseStyles) => ({
+  input: baseStyles => ({
     ...baseStyles,
     margin: 0,
     paddingTop: 0,
-    paddingBottom: 0,
+    paddingBottom: 0
   }),
   indicatorSeparator: () => ({
-    display: "none",
+    display: 'none'
   }),
-  dropdownIndicator: (baseStyles) => ({
+  dropdownIndicator: baseStyles => ({
     ...baseStyles,
     padding: 0,
     height: 16,
     width: 16,
     color: theme.colors.primaryText,
-    "&:hover": {
-      color: theme.colors.primaryText,
+    '&:hover': {
+      color: theme.colors.primaryText
     },
-    "& .css-tj5bde-Svg": {
-      width: "100%",
-      height: "100%",
-      transition: theme.transition("transform"),
-    },
+    '& .css-tj5bde-Svg': {
+      width: '100%',
+      height: '100%',
+      transition: theme.transition('transform')
+    }
   }),
-  menu: (baseStyles) => ({
+  menu: baseStyles => ({
     ...baseStyles,
     height: 140,
     marginTop: theme.spacing(1),
@@ -78,27 +78,27 @@ export const selectStyles = {
     zIndex: 10,
     backgroundColor: theme.colors.green(),
     borderRadius: 15,
-    boxShadow: "none",
-    border: "none",
+    boxShadow: 'none',
+    border: 'none',
     [minTablet]: {
-      marginTop: theme.spacing(2),
-    },
+      marginTop: theme.spacing(2)
+    }
   }),
-  menuList: (baseStyles) => ({
+  menuList: baseStyles => ({
     ...baseStyles,
-    height: "100%",
+    height: '100%',
     paddingTop: 0,
     paddingBottom: 0,
-    "&::-webkit-scrollbar": {
-      width: 6,
+    '&::-webkit-scrollbar': {
+      width: 6
     },
-    "&::-webkit-scrollbar-track": {
-      background: "transparent",
+    '&::-webkit-scrollbar-track': {
+      background: 'transparent'
     },
-    "&::-webkit-scrollbar-thumb": {
+    '&::-webkit-scrollbar-thumb': {
       borderRadius: 12,
-      background: "rgba(255, 255, 255, 0.4)",
-    },
+      background: 'rgba(255, 255, 255, 0.4)'
+    }
   }),
   option: (baseStyles, state) => ({
     ...baseStyles,
@@ -109,22 +109,22 @@ export const selectStyles = {
     fontSize: 12,
     fontWeight: 400,
     lineHeight: 1.5,
-    letterSpacing: "-0.02em",
+    letterSpacing: '-0.02em',
     color: [
-      state.isSelected ? theme.colors.pageBg : "rgba(255, 255, 255, 0.5)",
+      state.isSelected ? theme.colors.pageBg : 'rgba(255, 255, 255, 0.5)'
     ],
-    cursor: "pointer",
-    backgroundColor: "transparent",
-    transition: theme.transition("color"),
-    "&:hover": {
-      color: theme.colors.primaryBg,
+    cursor: 'pointer',
+    backgroundColor: 'transparent',
+    transition: theme.transition('color'),
+    '&:hover': {
+      color: theme.colors.primaryBg
     },
-    "&:active": {
-      backgroundColor: "transparent",
+    '&:active': {
+      backgroundColor: 'transparent'
     },
     [minTablet]: {
       fontSize: 14,
-      lineHeight: 1.28571,
-    },
-  }),
+      lineHeight: 1.28571
+    }
+  })
 };

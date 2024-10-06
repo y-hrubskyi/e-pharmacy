@@ -8,7 +8,7 @@ const dateValidator = [
     const date = parse(value, 'MMMM d, yyyy', new Date());
     return isValid(date);
   },
-  'Invalid date format',
+  'Invalid date format'
 ];
 
 const orderSchema = new Schema(
@@ -17,43 +17,43 @@ const orderSchema = new Schema(
       id: {
         type: Schema.Types.ObjectId,
         ref: 'Customer',
-        required: [true, 'Customer info is required'],
+        required: [true, 'Customer info is required']
       },
       photo: {
         type: String,
-        default: '',
+        default: ''
       },
       name: {
         type: String,
         match: Regexps.NAME,
-        required: [true, 'Customer info is required'],
+        required: [true, 'Customer info is required']
       },
       address: {
         type: String,
         match: Regexps.ADDRESS,
-        required: [true, 'Address is required'],
-      },
+        required: [true, 'Address is required']
+      }
     },
     products: {
       type: Number,
       min: 1,
-      required: [true, 'Products is required'],
+      required: [true, 'Products is required']
     },
     price: {
       type: Number,
       min: 0.1,
-      required: [true, 'Price is required'],
+      required: [true, 'Price is required']
     },
     status: {
       type: String,
       enum: Enums.STATUSES,
-      required: [true, 'Status is required'],
+      required: [true, 'Status is required']
     },
     orderDate: {
       type: String,
       validate: dateValidator,
-      required: [true, 'Order date is required'],
-    },
+      required: [true, 'Order date is required']
+    }
   },
   { versionKey: false, timestamps: true }
 );

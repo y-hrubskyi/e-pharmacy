@@ -4,7 +4,7 @@ import { HttpError } from '#utils/index.js';
 export const update = async (supplierId, update) => {
   const supplier = await Supplier.findByIdAndUpdate(supplierId, update, {
     new: true,
-    runValidators: true,
+    runValidators: true
   });
 
   if (!supplier) {

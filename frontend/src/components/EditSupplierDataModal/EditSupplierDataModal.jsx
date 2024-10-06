@@ -1,14 +1,14 @@
-import { Controller, useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import toast from "react-hot-toast";
-import { format } from "date-fns";
+import { Controller, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import toast from 'react-hot-toast';
+import { format } from 'date-fns';
 
-import API from "~/services/axios";
-import { supplierSchema } from "~/config/validation/supplierSchema";
-import { SupplierStatuses } from "~/config/constants";
-import { createSelectOptions } from "~/utils";
+import API from '~/services/axios';
+import { supplierSchema } from '~/config/validation/supplierSchema';
+import { SupplierStatuses } from '~/config/constants';
+import { createSelectOptions } from '~/utils';
 
-import { ModalBase } from "~/components/common/ModalBase/ModalBase";
+import { ModalBase } from '~/components/common/ModalBase/ModalBase';
 import {
   FormWrapper,
   FormTitle,
@@ -17,10 +17,10 @@ import {
   FormInput,
   FormActionBtnsWrapper,
   FormSubmitBtn,
-  FormCancelBtn,
-} from "~/components/common/ModalForm/ModalForm.styled";
-import { SelectBase } from "~/components/common/SelectBase/SelectBase";
-import { DatePicker } from "~/components/common/DatePicker/DatePicker";
+  FormCancelBtn
+} from '~/components/common/ModalForm/ModalForm.styled';
+import { SelectBase } from '~/components/common/SelectBase/SelectBase';
+import { DatePicker } from '~/components/common/DatePicker/DatePicker';
 
 const statusOptions = createSelectOptions(Object.values(SupplierStatuses));
 
@@ -28,15 +28,15 @@ export const EditSupplierDataModal = ({
   isOpen,
   onClose,
   supplier,
-  setSuppliers,
+  setSuppliers
 }) => {
   const {
     register,
     handleSubmit,
     control,
-    formState: { errors },
+    formState: { errors }
   } = useForm({
-    mode: "onChange",
+    mode: 'onChange',
     resolver: yupResolver(supplierSchema),
     defaultValues: {
       name: supplier.name,
@@ -44,27 +44,27 @@ export const EditSupplierDataModal = ({
       company: supplier.company,
       date: supplier.date,
       amount: supplier.amount,
-      status: supplier.status,
-    },
+      status: supplier.status
+    }
   });
 
-  const onSubmit = async (data) => {
-    data.date = format(data.date, "MMMM d, yyyy");
+  const onSubmit = async data => {
+    data.date = format(data.date, 'MMMM d, yyyy');
 
     try {
       const editSupplierPromise = API.put(`/suppliers/${supplier._id}`, data);
       await toast.promise(editSupplierPromise, {
-        loading: "Saving...",
+        loading: 'Saving...',
         success: ({ data }) => {
-          setSuppliers((prevState) => ({
+          setSuppliers(prevState => ({
             ...prevState,
-            paginatedResult: prevState.paginatedResult.map((supplier) =>
-              supplier._id === data._id ? data : supplier,
-            ),
+            paginatedResult: prevState.paginatedResult.map(supplier =>
+              supplier._id === data._id ? data : supplier
+            )
           }));
-          return "Successful saved!";
+          return 'Successful saved!';
         },
-        error: (error) => error.message,
+        error: error => error.message
       });
       onClose();
     } catch (error) {
@@ -80,21 +80,21 @@ export const EditSupplierDataModal = ({
           <FormFieldsWrapper>
             <FormInput
               type="text"
-              {...register("name")}
+              {...register('name')}
               placeholder="Supplier Info"
               data-is-correct={!errors.name}
               data-has-error={errors.name}
             />
             <FormInput
               type="text"
-              {...register("address")}
+              {...register('address')}
               placeholder="Address"
               data-is-correct={!errors.address}
               data-has-error={errors.address}
             />
             <FormInput
               type="text"
-              {...register("company")}
+              {...register('company')}
               placeholder="Company"
               data-is-correct={!errors.company}
               data-has-error={errors.company}
@@ -115,7 +115,7 @@ export const EditSupplierDataModal = ({
             <FormInput
               type="number"
               step="any"
-              {...register("amount")}
+              {...register('amount')}
               placeholder="Amount"
               data-is-correct={!errors.amount}
               data-has-error={errors.amount}
@@ -127,7 +127,7 @@ export const EditSupplierDataModal = ({
                 <SelectBase
                   defaultValue={{
                     value: supplier.status,
-                    label: supplier.status,
+                    label: supplier.status
                   }}
                   options={statusOptions}
                   placeholder="Status"

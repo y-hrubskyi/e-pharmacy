@@ -18,10 +18,10 @@ export const login = async (email, password) => {
 
   const payload = { id: user._id };
   const accessToken = jwt.sign(payload, ACCESS_SECRET_KEY, {
-    expiresIn: '15m',
+    expiresIn: '15m'
   });
   const refreshToken = jwt.sign(payload, REFRESH_SECRET_KEY, {
-    expiresIn: '7d',
+    expiresIn: '7d'
   });
 
   await User.findByIdAndUpdate(user._id, { accessToken, refreshToken });
@@ -29,11 +29,11 @@ export const login = async (email, password) => {
   return {
     tokens: {
       accessToken,
-      refreshToken,
+      refreshToken
     },
     user: {
       name: user.name,
-      email: user.email,
-    },
+      email: user.email
+    }
   };
 };

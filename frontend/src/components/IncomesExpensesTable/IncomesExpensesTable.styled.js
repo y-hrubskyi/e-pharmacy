@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { THeadCell, TDataCell } from "~/components/common/Table/Table.styled";
-import { TransactionTypes } from "~/config/constants";
+import { THeadCell, TDataCell } from '~/components/common/Table/Table.styled';
+import { TransactionTypes } from '~/config/constants';
 
-const getTextColorByTransactionType = (p) => {
-  const transactionType = p["data-transaction-type"];
+const getTextColorByTransactionType = p => {
+  const transactionType = p['data-transaction-type'];
 
   switch (transactionType) {
     case TransactionTypes.INCOME:
@@ -16,8 +16,8 @@ const getTextColorByTransactionType = (p) => {
   }
 };
 
-const getBgColorByTransactionType = (p) => {
-  const transactionType = p["data-transaction-type"];
+const getBgColorByTransactionType = p => {
+  const transactionType = p['data-transaction-type'];
 
   switch (transactionType) {
     case TransactionTypes.INCOME:
@@ -45,8 +45,8 @@ export const TransactionTypeCell = styled(TDataCell)`
 
 export const TransactionTypeText = styled.p`
   width: 80px;
-  padding-top: ${(p) => p.theme.spacing(1)};
-  padding-bottom: ${(p) => p.theme.spacing(1)};
+  padding-top: ${p => p.theme.spacing(1)};
+  padding-bottom: ${p => p.theme.spacing(1)};
 
   letter-spacing: -0.05em;
   text-align: center;
@@ -79,10 +79,10 @@ export const TransactionAmountCell = styled(TDataCell)`
   min-width: 78px;
 
   text-align: right;
-  text-decoration: ${(p) =>
-    p["data-transaction-type"] === TransactionTypes.ERROR
-      ? "line-through"
-      : "unset"};
+  text-decoration: ${p =>
+    p['data-transaction-type'] === TransactionTypes.ERROR
+      ? 'line-through'
+      : 'unset'};
   color: ${getTextColorByTransactionType};
 
   border-left: 0;

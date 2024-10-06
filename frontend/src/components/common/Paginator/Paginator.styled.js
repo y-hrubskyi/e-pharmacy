@@ -1,13 +1,13 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledPaginateContainer = styled.div`
-  margin-top: ${(p) => p.theme.spacing(5)};
+  margin-top: ${p => p.theme.spacing(5)};
 
   .pagination {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: ${(p) => p.theme.spacing(2)};
+    gap: ${p => p.theme.spacing(2)};
 
     font-size: 8px;
   }
@@ -52,6 +52,6 @@ export const StyledPaginateContainer = styled.div`
 
     line-height: 11.88px;
 
-    background-color: ${(p) => p.theme.colors.green()};
+    background-color: ${p => p.theme.colors.green()};
   }
 `;

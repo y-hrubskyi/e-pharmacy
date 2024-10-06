@@ -1,12 +1,12 @@
-import { Controller, useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import toast from "react-hot-toast";
+import { Controller, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import toast from 'react-hot-toast';
 
-import API from "~/services/axios";
-import { productSchema } from "~/config/validation/productSchema";
-import { createSelectOptions } from "~/utils";
+import API from '~/services/axios';
+import { productSchema } from '~/config/validation/productSchema';
+import { createSelectOptions } from '~/utils';
 
-import { ModalBase } from "~/components/common/ModalBase/ModalBase";
+import { ModalBase } from '~/components/common/ModalBase/ModalBase';
 import {
   FormWrapper,
   FormTitle,
@@ -15,50 +15,50 @@ import {
   FormInput,
   FormActionBtnsWrapper,
   FormSubmitBtn,
-  FormCancelBtn,
-} from "~/components/common/ModalForm/ModalForm.styled";
-import { SelectBase } from "~/components/common/SelectBase/SelectBase";
+  FormCancelBtn
+} from '~/components/common/ModalForm/ModalForm.styled';
+import { SelectBase } from '~/components/common/SelectBase/SelectBase';
 
 export const AddNewProductModal = ({
   isOpen,
   onClose,
   categories,
   suppliers,
-  setProducts,
+  setProducts
 }) => {
   const {
     register,
     handleSubmit,
     control,
-    formState: { errors, dirtyFields },
+    formState: { errors, dirtyFields }
   } = useForm({
-    mode: "onChange",
-    resolver: yupResolver(productSchema),
+    mode: 'onChange',
+    resolver: yupResolver(productSchema)
   });
 
-  const onSubmit = async (data) => {
+  const onSubmit = async data => {
     const supplierName = suppliers.find(
-      (supplier) => supplier.id === data.supplier,
+      supplier => supplier.id === data.supplier
     )?.name;
 
     data.supplier = {
       id: data.supplier,
-      name: supplierName,
+      name: supplierName
     };
 
     try {
-      const addProductPromise = API.post("/products", data);
+      const addProductPromise = API.post('/products', data);
       await toast.promise(addProductPromise, {
-        loading: "Adding...",
+        loading: 'Adding...',
         success: ({ data }) => {
-          setProducts((prevState) => ({
+          setProducts(prevState => ({
             ...prevState,
             paginatedResult: [data, ...prevState.paginatedResult.slice(0, 4)],
-            totalCount: prevState.totalCount + 1,
+            totalCount: prevState.totalCount + 1
           }));
-          return "Successful added!";
+          return 'Successful added!';
         },
-        error: (error) => error.message,
+        error: error => error.message
       });
       onClose();
     } catch (error) {
@@ -69,7 +69,7 @@ export const AddNewProductModal = ({
   const categoryOptions = createSelectOptions(categories);
   const supplierOptions = suppliers.map(({ id, name }) => ({
     value: id,
-    label: name,
+    label: name
   }));
 
   const isCorrectName = dirtyFields.name && !errors.name;
@@ -91,7 +91,7 @@ export const AddNewProductModal = ({
           <FormFieldsWrapper>
             <FormInput
               type="text"
-              {...register("name")}
+              {...register('name')}
               placeholder="Product Info"
               data-is-correct={isCorrectName}
               data-has-error={hasErrorName}
@@ -112,7 +112,7 @@ export const AddNewProductModal = ({
             />
             <FormInput
               type="number"
-              {...register("stock")}
+              {...register('stock')}
               placeholder="Stock"
               data-is-correct={isCorrectStock}
               data-has-error={hasErrorStock}
@@ -134,7 +134,7 @@ export const AddNewProductModal = ({
             <FormInput
               type="number"
               step="any"
-              {...register("price")}
+              {...register('price')}
               placeholder="Price"
               data-is-correct={isCorrectPrice}
               data-has-error={hasErrorPrice}

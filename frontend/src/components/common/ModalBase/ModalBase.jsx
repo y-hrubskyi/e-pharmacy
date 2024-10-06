@@ -1,18 +1,18 @@
-import ReactModal from "react-modal";
+import ReactModal from 'react-modal';
 
-import { Icons } from "~/config/icons";
+import { Icons } from '~/config/icons';
 
-import * as SC from "./ModalBase.styled";
+import * as SC from './ModalBase.styled';
 
-ReactModal.setAppElement("#root");
+ReactModal.setAppElement('#root');
 
 export const ModalBase = ({ isOpen, onClose, children }) => {
   return (
     <ReactModal
       isOpen={isOpen}
       onRequestClose={onClose}
-      onAfterOpen={() => (document.body.style.overflow = "hidden")}
-      onAfterClose={() => (document.body.style.overflow = "unset")}
+      onAfterOpen={() => (document.body.style.overflow = 'hidden')}
+      onAfterClose={() => (document.body.style.overflow = 'unset')}
       className="_"
       overlayClassName="_"
       contentElement={(props, children) => (

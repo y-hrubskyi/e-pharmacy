@@ -1,4 +1,4 @@
-import * as SC from "./Placeholder.styled";
+import * as SC from './Placeholder.styled';
 
 export const Placeholder = ({ children }) => {
   return (

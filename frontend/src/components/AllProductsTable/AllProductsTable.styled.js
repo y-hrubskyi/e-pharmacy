@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { THeadCell, TDataCell } from "~/components/common/Table/Table.styled";
+import { THeadCell, TDataCell } from '~/components/common/Table/Table.styled';
 
 export const NameColumn = styled(THeadCell)`
   min-width: 112px;
@@ -76,7 +76,7 @@ export const ActionColumn = styled(THeadCell)`
 
 export const ActionDataCell = styled(TDataCell)`
   display: flex;
-  gap: ${(p) => p.theme.spacing(2)};
+  gap: ${p => p.theme.spacing(2)};
 `;
 
 export const ActionBtn = styled.button`
@@ -96,15 +96,15 @@ export const ActionBtn = styled.button`
 `;
 
 export const EditBtn = styled(ActionBtn)`
-  color: ${(p) => p.theme.colors.green()};
+  color: ${p => p.theme.colors.green()};
 
-  border: 1px solid ${(p) => p.theme.colors.green(0.5)};
+  border: 1px solid ${p => p.theme.colors.green(0.5)};
 `;
 
 export const RemoveBtn = styled(ActionBtn)`
-  color: ${(p) => p.theme.colors.red()};
+  color: ${p => p.theme.colors.red()};
 
-  border: 1px solid ${(p) => p.theme.colors.red(0.5)};
+  border: 1px solid ${p => p.theme.colors.red(0.5)};
 `;
 
 export const ActionIcon = styled.svg`

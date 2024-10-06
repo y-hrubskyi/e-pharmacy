@@ -1,33 +1,33 @@
-import axios from "axios";
+import axios from 'axios';
 
-import { store } from "~/store/store";
-import { setTokens } from "~/store/auth/slice";
+import { store } from '~/store/store';
+import { setTokens } from '~/store/auth/slice';
 
 const instance = axios.create({
-  baseURL: "https://e-pharmacy-0e2p.onrender.com/api",
+  baseURL: 'https://e-pharmacy-0e2p.onrender.com/api'
 });
 
-export const setAuthHeader = (token) => {
+export const setAuthHeader = token => {
   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
 export const clearAuthHeader = () => {
-  instance.defaults.headers.common.Authorization = "";
+  instance.defaults.headers.common.Authorization = '';
 };
 
 instance.interceptors.response.use(
-  (response) => response,
-  async (error) => {
+  response => response,
+  async error => {
     const hasForbiddenRoutes =
-      error.request.responseURL.includes("login") ||
-      error.request.responseURL.includes("refresh");
+      error.request.responseURL.includes('login') ||
+      error.request.responseURL.includes('refresh');
 
     if (error.response?.status === 401 && !hasForbiddenRoutes) {
       try {
         const refreshToken = store.getState().auth.tokens.refreshToken;
         setAuthHeader(refreshToken);
 
-        const { data } = await instance.get("/user/refresh");
+        const { data } = await instance.get('/user/refresh');
 
         setAuthHeader(data.accessToken);
         store.dispatch(setTokens(data));
@@ -40,7 +40,7 @@ instance.interceptors.response.use(
     }
 
     return Promise.reject(error);
-  },
+  }
 );
 
 export default instance;

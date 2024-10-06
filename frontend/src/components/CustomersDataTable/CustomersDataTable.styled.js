@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { THeadCell, TDataCell } from "~/components/common/Table/Table.styled";
+import { THeadCell, TDataCell } from '~/components/common/Table/Table.styled';
 
 export const NameColumn = styled(THeadCell)`
   min-width: 94px;
@@ -66,7 +66,7 @@ export const NameDataCell = styled(TDataCell)`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: ${(p) => p.theme.spacing(2)};
+  gap: ${p => p.theme.spacing(2)};
 
   @media screen and (min-width: 768px) {
     flex-wrap: nowrap;

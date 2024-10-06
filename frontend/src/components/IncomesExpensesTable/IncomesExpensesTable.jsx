@@ -1,10 +1,10 @@
-import { Fragment } from "react";
+import { Fragment } from 'react';
 
-import { groupByDate, addPlusOrMinus } from "~/utils";
+import { groupByDate, addPlusOrMinus } from '~/utils';
 
-import { Table, Caption, TRow } from "~/components/common/Table/Table.styled";
+import { Table, Caption, TRow } from '~/components/common/Table/Table.styled';
 
-import * as SC from "./IncomesExpensesTable.styled";
+import * as SC from './IncomesExpensesTable.styled';
 
 export const IncomesExpensesTable = ({ transactions }) => {
   const grouppedByDateEntries = groupByDate(transactions);
@@ -18,7 +18,7 @@ export const IncomesExpensesTable = ({ transactions }) => {
             <TRow key={date}>
               <SC.DateColumn colSpan="3">{date}</SC.DateColumn>
             </TRow>
-            {transactions.map((transaction) => (
+            {transactions.map(transaction => (
               <TRow key={transaction._id}>
                 <SC.TransactionTypeCell>
                   <SC.TransactionTypeText
@@ -34,7 +34,7 @@ export const IncomesExpensesTable = ({ transactions }) => {
                   data-transaction-type={transaction.type}
                 >
                   {addPlusOrMinus(transaction.type)}
-                  {transaction.amount.toLocaleString("en-US")}
+                  {transaction.amount.toLocaleString('en-US')}
                 </SC.TransactionAmountCell>
               </TRow>
             ))}

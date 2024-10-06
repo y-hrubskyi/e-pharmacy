@@ -1,16 +1,16 @@
-import ReactDatePicker from "react-datepicker";
+import ReactDatePicker from 'react-datepicker';
 
-import { Icons } from "~/config/icons";
+import { Icons } from '~/config/icons';
 
-import { FormInput } from "~/components/common/ModalForm/ModalForm.styled";
-import * as SC from "./DatePicker.styled";
+import { FormInput } from '~/components/common/ModalForm/ModalForm.styled';
+import * as SC from './DatePicker.styled';
 
 export const DatePicker = ({
   placeholder,
   onChange,
   selected,
   isCorrect,
-  hasError,
+  hasError
 }) => {
   return (
     <SC.StyledDatePickerContainer>

@@ -15,15 +15,15 @@ export const refresh = async refreshToken => {
 
     const payload = { id: user._id };
     const newAccessToken = jwt.sign(payload, ACCESS_SECRET_KEY, {
-      expiresIn: '15m',
+      expiresIn: '15m'
     });
     const newRefreshToken = jwt.sign(payload, REFRESH_SECRET_KEY, {
-      expiresIn: '7d',
+      expiresIn: '7d'
     });
 
     const update = {
       accessToken: newAccessToken,
-      refreshToken: newRefreshToken,
+      refreshToken: newRefreshToken
     };
     await User.findByIdAndUpdate(user._id, update);
 

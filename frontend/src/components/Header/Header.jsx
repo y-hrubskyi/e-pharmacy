@@ -1,18 +1,18 @@
-import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
-import { Icons } from "~/config/icons";
-import { selectAuthUser } from "~/store/auth/selectors";
+import { Icons } from '~/config/icons';
+import { selectAuthUser } from '~/store/auth/selectors';
 
-import { LogOutBtn } from "~/components/common/LogOutBtn/LogOutBtn";
-import * as SC from "./Header.styled";
+import { LogOutBtn } from '~/components/common/LogOutBtn/LogOutBtn';
+import * as SC from './Header.styled';
 
 const Pages = {
-  dashboard: "Dashboard",
-  orders: "All orders",
-  products: "All products",
-  suppliers: "All suppliers",
-  customers: "All customers",
+  dashboard: 'Dashboard',
+  orders: 'All orders',
+  products: 'All products',
+  suppliers: 'All suppliers',
+  customers: 'All customers'
 };
 
 export const Header = ({ onOpenSidebar }) => {

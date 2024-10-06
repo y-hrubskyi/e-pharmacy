@@ -1,11 +1,11 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
-import { Icons } from "~/config/icons";
+import { Icons } from '~/config/icons';
 
-import { SidebarMenu } from "~/components/SidebarMenu/SidebarMenu";
-import { LogOutBtn } from "~/components/common/LogOutBtn/LogOutBtn";
+import { SidebarMenu } from '~/components/SidebarMenu/SidebarMenu';
+import { LogOutBtn } from '~/components/common/LogOutBtn/LogOutBtn';
 
-import * as SC from "./Sidebar.styled";
+import * as SC from './Sidebar.styled';
 
 export const Sidebar = ({ isSidebarOpen, onCloseSidebar }) => {
   useEffect(() => {
@@ -13,22 +13,22 @@ export const Sidebar = ({ isSidebarOpen, onCloseSidebar }) => {
       if (innerWidth >= 1440) onCloseSidebar();
     };
 
-    window.addEventListener("resize", handleWindowResize);
+    window.addEventListener('resize', handleWindowResize);
 
     return () => {
-      window.removeEventListener("resize", handleWindowResize);
+      window.removeEventListener('resize', handleWindowResize);
     };
   }, [onCloseSidebar]);
 
   useEffect(() => {
-    document.body.style.overflow = isSidebarOpen ? "hidden" : "unset";
+    document.body.style.overflow = isSidebarOpen ? 'hidden' : 'unset';
 
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = 'unset';
     };
   }, [isSidebarOpen]);
 
-  const handleBackdropClick = (e) => {
+  const handleBackdropClick = e => {
     if (e.target === e.currentTarget) {
       onCloseSidebar();
     }

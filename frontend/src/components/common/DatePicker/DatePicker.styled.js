@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import "react-datepicker/dist/react-datepicker.css";
+import styled from 'styled-components';
+import 'react-datepicker/dist/react-datepicker.css';
 
 export const StyledDatePickerContainer = styled.div`
   .react-datepicker-wrapper {
@@ -7,7 +7,7 @@ export const StyledDatePickerContainer = styled.div`
 
     .react-datepicker__input-container {
       input {
-        padding: ${(p) => p.theme.spacing(3)} ${(p) => p.theme.spacing(4.25)};
+        padding: ${p => p.theme.spacing(3)} ${p => p.theme.spacing(4.25)};
 
         cursor: pointer;
       }
@@ -29,5 +29,5 @@ export const CalendarIcon = styled.svg`
   cursor: pointer;
 
   fill: none;
-  stroke: ${(p) => p.theme.colors.green()};
+  stroke: ${p => p.theme.colors.green()};
 `;

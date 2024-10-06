@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const LogOutBtn = styled.button`
   display: flex;
@@ -8,17 +8,17 @@ export const LogOutBtn = styled.button`
   height: 38px;
   padding: 0;
 
-  color: ${(p) => p.theme.colors.primaryBg};
+  color: ${p => p.theme.colors.primaryBg};
 
-  background-color: ${(p) => p.theme.colors.green()};
+  background-color: ${p => p.theme.colors.green()};
   border: none;
   border-radius: 100%;
 
-  transition: ${(p) => p.theme.transition("background-color")};
+  transition: ${p => p.theme.transition('background-color')};
 
   &:hover,
   &:focus {
-    background-color: ${(p) => p.theme.colors.hover};
+    background-color: ${p => p.theme.colors.hover};
   }
 
   @media screen and (min-width: 768px) {
