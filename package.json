@@ -6,7 +6,12 @@
     "backend",
     "frontend"
   ],
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "scripts": {
+    "_prettier": "prettier \"**/*.{js,jsx,json,md,css,html}\"",
+    "lint:format": "npm run _prettier -- --check",
+    "format": "npm run _prettier -- --write"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3"
+  }
 }
