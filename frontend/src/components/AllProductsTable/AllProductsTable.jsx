@@ -45,7 +45,7 @@ export const AllProductsTable = ({
         },
         error: error => error.message
       });
-    } catch (error) {
+    } catch {
       // handled in toast.promise
     }
   };

@@ -37,7 +37,7 @@ export const LoginForm = () => {
         success: 'Login successful!',
         error: error => error
       });
-    } catch (error) {
+    } catch {
       // handled in toast.promise
     }
   };

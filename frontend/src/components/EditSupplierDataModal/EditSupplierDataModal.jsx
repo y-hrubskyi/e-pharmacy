@@ -67,7 +67,7 @@ export const EditSupplierDataModal = ({
         error: error => error.message
       });
       onClose();
-    } catch (error) {
+    } catch {
       // handled in toast.promise
     }
   };

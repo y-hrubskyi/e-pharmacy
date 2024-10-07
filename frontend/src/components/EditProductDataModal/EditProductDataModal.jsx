@@ -70,7 +70,7 @@ export const EditProductDataModal = ({
         error: error => error.message
       });
       onClose();
-    } catch (error) {
+    } catch {
       // handled in toast.promise
     }
   };

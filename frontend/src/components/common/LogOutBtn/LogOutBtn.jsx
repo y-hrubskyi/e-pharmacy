@@ -19,7 +19,7 @@ export const LogOutBtn = () => {
         success: 'Logout successful!',
         error: error => error
       });
-    } catch (error) {
+    } catch {
       // handled in toast.promise
     }
   };
