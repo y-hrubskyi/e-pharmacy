@@ -12,9 +12,6 @@
     "format": "npm run _prettier -- --write",
     "prepare": "husky || true"
   },
-  "dependencies": {
-    "date-fns": "^4.1.0"
-  },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
     "eslint": "^9.9.0",
